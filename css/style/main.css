@@ -14,7 +14,7 @@
 
 html {
     font-size: 62.5%;
-    font-family: Monsenrrat, sans-serif;
+    font-family: 'Monsenrrat', sans-serif;
 }
 
 :root {
@@ -27,12 +27,13 @@ html {
     --gris-claro: ;
     --alerta: ;
 
-    --xxx-lg: ;
-    --xx-lg: ;
-    --x-lg: ;
-    --lg: 5rem;
-    --md: 3.2rem;
-    --sm: 1.8rem;
+    --xxx-lg: 5rem;
+    --xx-lg: 3.2rem;
+    --x-lg: 2rem;
+    --lg: 1.8rem;
+    --md: 1.5rem;
+    --sm: 1.3rem;
+    --link-size: 1.6rem;
 
     --sombra-caja: 0px 4px 9px rgba(0, 0, 0, 0.45);
     --sombra-ficha: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -69,14 +70,14 @@ img, picture {
 }
 
 .login__title {
-    font-size: var(--lg);
+    font-size: var(--xxx-lg);
     font-weight: 700;
     line-height: 5rem;
 }
 
 .login__text {
     font-weight: 700;
-    font-size: var(--md);
+    font-size: var(--xx-lg);
     margin-bottom: 24px;
 }
 
@@ -87,37 +88,31 @@ img, picture {
 }
 
 .btn-primary {
+    margin-bottom: 16px;
     padding: 18px 80px;
     color: black;
-    font-size: var(--sm);
+    font-size: var(--lg);
     font-weight: 600;
     background-color: var(--verde);
     border-radius: 4px;
     box-shadow: var(--sombra-boton);
 }
 
-.login__in {
-    margin-bottom: 16px;
-}
-
 .btn-secondary {
     padding: 18px 80px;
     color: black;
-    font-size: var(--sm);
+    font-size: var(--lg);
     font-weight: 600;
     background-color: var(--blanco);
     border-radius: 4px;
     box-shadow: var(--sombra-boton);
 }
 
-.login__new {
-    margin-bottom: 36px;
-}
-
 .login__link {
+    margin-top: 36px;
     color: var(--link);
     text-align: initial;
-    font-size: var(--sm);
+    font-size: var(--link-size);
 }
 
 .login__link:hover {
@@ -128,7 +123,7 @@ img, picture {
 
 .login__subtitle {
     font-weight: 700;
-    font-size: var(--md);
+    font-size: var(--xx-lg);
     letter-spacing: 0rem;
     margin-bottom: 27px;
 }
@@ -139,19 +134,15 @@ img, picture {
 }
 
 .login__input {
-    font-family: Monsenrrat, sans-serif;
+    font-family: 'Monsenrrat', sans-serif;
     height: 58px;
     width: inherit;
     padding: 0 41px;
     margin-bottom: 12px;
     font-weight: 600;
-    font-size: var(--sm);
+    font-size: var(--lg);
     border-radius: 4px;
     border: none;
     color: #7E7E7E;
     background-color: var(--gris);
-}
-
-.login__input[type="tel"] {
-    color:red;
 }
