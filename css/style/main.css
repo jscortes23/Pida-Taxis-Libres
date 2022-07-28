@@ -81,13 +81,15 @@ img, picture {
     margin-bottom: 24px;
 }
 
-.btn {
+.btn-n {
     text-decoration: none;
     display: block;
     text-align: center;
+    cursor: pointer;
+    border: none;
 }
 
-.btn-primary {
+.btn-n-primary {
     margin-bottom: 16px;
     padding: 18px 80px;
     color: black;
@@ -98,7 +100,7 @@ img, picture {
     box-shadow: var(--sombra-boton);
 }
 
-.btn-secondary {
+.btn-n-secondary {
     padding: 18px 80px;
     color: black;
     font-size: var(--lg);
@@ -113,6 +115,12 @@ img, picture {
     color: var(--link);
     text-align: initial;
     font-size: var(--link-size);
+}
+
+.login__link__small {
+    display: inline;
+    color: var(--link);
+    font-size: 1.4rem;
 }
 
 .login__link:hover {
@@ -146,3 +154,72 @@ img, picture {
     color: #7E7E7E;
     background-color: var(--gris);
 }
+
+.login__text__small {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+/* Section Pop-up */
+.pop-up {
+    margin: auto;
+    width: 271px;
+    height: 254px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 11px;
+}
+
+.pop-up__close {
+    width: 27px;
+    height: 27px;
+    margin-right: 14px;
+    align-self: end;
+    background-color: inherit;
+    background-image: url('/assets/icons/close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    border: none;
+}
+
+.pop-up__close::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* position: fixed; */
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pop-up__title {
+    font-weight: 800;
+    font-size: var(--lg);
+}
+
+.pop-up__text {
+    width: 189px;
+    padding: 0 12px;
+    font-weight: 500;
+    font-size: var(--md);
+}
+
+.pop-up__btn {
+    width: 158px;
+    height: 43px;
+    font-size: var(--md);
+    font-weight: 500;
+    background-color: var(--verde);
+    color: black;
+    border-radius: 6px;
+}
+

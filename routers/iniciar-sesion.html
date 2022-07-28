@@ -20,10 +20,23 @@
             </label>
             <label class="login__label" for="">
                 <input class="login__input" type="password" name="" id="" placeholder="Contraseña"></label>
-            <a class="btn btn-primary" href="#">Siguiente</a>
-            <a class="btn btn-secondary" href="../index.html">Volver</a>
-            <a class="login__link btn" href="#" target="_blank" rel="noopener noreferrer">Olvidé la contraseña</a>
+            <a class="btn-n btn-n-primary" href="#">Siguiente</a>
+            <a class="btn-n btn-n-secondary" href="../index.html">Volver</a>
+            <a class="login__link btn-n" href="#" target="_blank" rel="noopener noreferrer">Olvidé la contraseña</a>
         </div>
+        <dialog class="pop-up" open>
+            <button class="btn-n pop-up__close"></button>
+            <h4 class="pop-up__title">Datos incorrectos</h4>
+            <p class="pop-up__text">Revisa la contraseña o el celular</p>
+            <button class="btn-n pop-up__btn">Volver</button>
+        </dialog>
     </main>
+    <script>
+        const btnClose = document.querySelector('.pop-up__close');
+        const popUp = document.querySelector('.pop-up');
+        btnClose.addEventListener('click', () => {
+            popUp.style.display="none";
+        })
+    </script>
 </body>
 </html>
