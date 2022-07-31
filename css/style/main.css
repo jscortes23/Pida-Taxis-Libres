@@ -165,10 +165,12 @@ img, picture {
 
 /* Section Pop-up */
 .pop-up {
+    position: absolute;
     margin: auto;
     width: 271px;
     height: 254px;
     display: flex;
+    background-color: inherit;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -177,13 +179,12 @@ img, picture {
     border-radius: 11px;
 }
 
+.pop-up > .pop-up:nth-child(2) {
+    padding-top: 44px;
+}
+
 .pop-up__close {
-    width: 27px;
-    height: 27px;
-    margin-right: 14px;
-    align-self: end;
     background-color: inherit;
-    background-image: url('/assets/icons/close.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -197,8 +198,19 @@ img, picture {
     height: 100%;
     top: 0;
     left: 0;
-    /* position: fixed; */
-    background-color: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    background-color: rgba(27, 31, 59, 0.3);
+}
+
+.pop-up__close::after {
+    content: '';
+    width: 27px;
+    height: 27px;
+    top: 11px;
+    right: 14px;
+    position: absolute;
+    z-index: 1;
+    background-image: url('/assets/icons/close.svg');
 }
 
 .pop-up__title {
@@ -211,11 +223,15 @@ img, picture {
     padding: 0 12px;
     font-weight: 500;
     font-size: var(--md);
+    line-height: 1.95rem;
 }
 
 .pop-up__btn {
     width: 158px;
     height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: var(--md);
     font-weight: 500;
     background-color: var(--verde);
