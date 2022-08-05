@@ -24,8 +24,9 @@ html {
     --blanco: #FFFFFF;
     --link: #2A79FF;
     --gris: #EFEFFC;
-    --gris-claro: ;
+    --gris-claro: #D0D0D0;
     --alerta: ;
+    --gris-texto: rgba(0, 0, 0, 0.3);
 
     --xxx-lg: 5rem;
     --xx-lg: 3.2rem;
@@ -38,6 +39,7 @@ html {
     --sombra-caja: 0px 4px 9px rgba(0, 0, 0, 0.45);
     --sombra-ficha: 0px 4px 12px rgba(0, 0, 0, 0.1);
     --sombra-boton: 2px 5px 10px rgba(0, 0, 0, 0.25);
+    --sombra-boton-pequeno: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 img, picture {
@@ -239,3 +241,248 @@ img, picture {
     border-radius: 6px;
 }
 
+/* Section Home */
+
+.container__home {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/assets/imgs/Mapsicle-Map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Box home float */
+.content__home {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+}
+
+.home__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 183px;
+    height: 64px;
+    font-size: var(--x-lg);
+    font-weight: 500;
+    box-shadow: var(--sombra-boton);
+    background-color: var(--blanco);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.home__btn:nth-child(4) {
+    margin-left: 10px;
+}
+
+.home__input-radio {
+    display: none;
+}
+
+.home__input-radio:checked + .home__btn {
+    width: 147px;
+    height: 51px;
+    color: var(--gris-texto);
+}
+
+/* Home box functions */
+
+.home__box-functions {
+    height: auto;
+    padding: 24px 30px;
+    padding-top: 4px;
+    margin-top: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Monsenrrat', sans-serif;
+    font-size: var(--x-lg);
+    background-color: var(--blanco);
+    box-shadow: var(--sombra-boton);
+    border-radius: 20px;
+}
+
+.home__box__container__btn {
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: min-content auto;
+    column-gap: 20px;
+    border-bottom: 1.5px solid var(--gris-claro);
+}
+
+.home__box__btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 66px;
+    justify-self: start;
+    font-size: var(--x-lg);
+    background-color: inherit;
+}
+
+.home__box__btn::after {
+    content: '';
+    width: 10px;
+    height: 14px;
+    background-image: url('/assets/icons/flecha.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.icon {
+    width: 22px;
+    height: 27px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.icon-origin {
+    background-image: url('/assets/icons/ubicacion.svg');
+}
+
+.icon-destiny {
+    background-image: url('/assets/icons/banderas.svg');
+}
+
+.icon-bill {
+    width: 44px;
+    background-image: url('/assets/icons/billete.svg');
+}
+
+.icon-taxi {
+    width: 44px;
+    background-image: url('/assets/icons/taxi-normal.svg');
+}
+
+.icon-user {
+    background-image: url('/assets/icons/Perfil.png');
+}
+
+.icon-phone {
+    background-image: url('/assets/icons/celular.png');
+}
+
+.icon-ubication {
+    width: 22px;
+    background-image: url('/assets/icons/feather-map-pin.svg');
+}
+
+.home__box__btn--inactive {
+    height: 60px;
+    font-size: var(--x-lg);
+    color: #898989;
+    text-align: left;
+    background-color: inherit;
+}
+
+.home__box__container__btn:nth-last-child(2) {
+    border: none;
+}
+
+.btn-n-primary-small {
+    width: 100%;
+    height: 58px;
+    margin-top: 8px;
+    font-size: var(--lg);
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--verde);
+    box-shadow: var(--sombra-boton-pequeno);
+    border-radius: 4px;
+}
+
+/* Filtros solo de prueba */
+.home__input-radio[id="para-mi"]:checked ~ .home__btn[for="para-otros"] ~ .home__box-functions .home__box__container__btn[data-eleccion="otros"]{
+    display: none;
+}
+
+.home__box__content {
+    width: 100%;
+    height: auto;
+}
+
+/* At origin */
+
+.home__title__sm {
+    margin-bottom: 3px;
+    font-size: var(--sm);
+    line-height: 1.585rem;
+    font-weight: 700;
+}
+
+.home__container__row{
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: min-content auto;
+    column-gap: 20px;
+}
+
+.home__container__row:nth-child(2) {
+    margin-bottom: 19px;
+}
+
+.home__description {
+    font-weight: 500;
+    line-height: 2.438rem;
+}
+
+.home__title__md {
+    margin-bottom: 24px;
+    font-size: var(--md);
+    font-weight: 700;
+}
+
+/* For scroll */
+
+.home__box__content-scroll {
+    height: 170px;
+    padding-bottom: 12px;
+    font-size: var(--md);
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    list-style: none;
+    border-bottom: 1.5px solid var(--gris-claro);
+}
+
+.item__ubication {
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.box__ubication{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.box__ubication__fixed::before {
+    content: '';
+    width: 36px;
+    height: 36px;
+    background-color: var(--verde);
+    background-image: url(/assets/icons/feather-map-pin.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    border-radius: 50%;
+}
+
+.ubication__suggestied::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    margin-left: 2px;
+    background-image: url(/assets/icons/feather-map-pin.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
