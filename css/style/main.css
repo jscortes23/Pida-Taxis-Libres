@@ -26,6 +26,7 @@ html {
     --gris: #EFEFFC;
     --gris-claro: #D0D0D0;
     --alerta: ;
+    --azul: #1B1F3B;
     --gris-texto: rgba(0, 0, 0, 0.3);
 
     --xxx-lg: 5rem;
@@ -252,6 +253,51 @@ img, picture {
     background-size: cover;
 }
 
+/* Menu */
+.btn-n-menu {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background-image: url('/assets/icons/feather-menu.svg');
+    background-color: var(--azul);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 34px;
+    border-radius: 50%;
+}
+
+.home__menu__side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 294px;
+    height: 100%;
+    padding: 0 32px;
+    padding-top: 56px;
+    font-weight: 500;
+    font-size: var(--md);
+    list-style: none;
+    background-color: var(--blanco);
+    background-image: url(/assets/imgs/logo-taxis-libres.png);
+    background-repeat: no-repeat;
+    background-size: 112px 38px;
+    background-position: 12% 96%;
+}
+
+.home__menu__side__title {
+    display: grid;
+    grid-template-rows: min-content auto;
+    font-size: var(--x-lg);
+    font-weight: 700;
+    margin-bottom: 54px;
+}
+
+.home__menu__side__item {
+    margin-bottom: 42px;
+}
+
 /* Box home float */
 .content__home {
     position: absolute;
@@ -373,6 +419,22 @@ img, picture {
     background-image: url('/assets/icons/feather-map-pin.svg');
 }
 
+.icon-trip {
+    background-image: url('/assets/icons/mis-viajes.svg');
+}
+
+.icon-reservation {
+    background-image: url('/assets/icons/calendario.svg');
+}
+
+.icon-book {
+    background-image: url('/assets/icons/libro.svg');
+}
+
+.icon-exclamation-mark {
+    background-image: url('/assets/icons/novedad.svg');
+}
+
 .home__box__btn--inactive {
     height: 60px;
     font-size: var(--x-lg);
@@ -398,8 +460,16 @@ img, picture {
 }
 
 /* Filtros solo de prueba */
-.home__input-radio[id="para-mi"]:checked ~ .home__btn[for="para-otros"] ~ .home__box-functions .home__box__container__btn[data-eleccion="otros"]{
+.home__input-radio[id="para-mi"]:checked ~ .home__btn ~ .home__box-functions .home__box__container__btn[data-eleccion="otros"]{
     display: none;
+}
+
+.home__box--hidden {
+    display: none;
+}
+
+.home__box--show {
+    display: initial;
 }
 
 .home__box__content {
