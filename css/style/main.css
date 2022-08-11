@@ -246,7 +246,7 @@ img, picture {
 
 .container__home {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-image: url('/assets/imgs/Mapsicle-Map.png');
     background-repeat: no-repeat;
@@ -265,7 +265,28 @@ img, picture {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 34px;
+    box-shadow: var(--sombra-caja);
     border-radius: 50%;
+}
+
+.btn-n-menu__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: var(--x-lg);
+    font-weight: 700;
+    background-color: inherit;
+}
+
+.btn-n-menu__close::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: calc(100% - 294px);
+    height: 100%;
+    background-color: rgba(27, 31, 59, 0.3);
 }
 
 .home__menu__side {
@@ -276,6 +297,7 @@ img, picture {
     height: 100%;
     padding: 0 32px;
     padding-top: 56px;
+    z-index: 2;
     font-weight: 500;
     font-size: var(--md);
     list-style: none;
@@ -287,15 +309,61 @@ img, picture {
 }
 
 .home__menu__side__title {
-    display: grid;
-    grid-template-rows: min-content auto;
     font-size: var(--x-lg);
     font-weight: 700;
     margin-bottom: 54px;
 }
 
 .home__menu__side__item {
+    display: grid;
+    grid-template-columns: min-content auto;
+    align-items: center;
+    column-gap: 20px;
     margin-bottom: 42px;
+}
+
+.side__item__text {
+    font-size: var(--md);
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+}
+
+/* Section zoom */
+
+.container__zoom {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    width: 44px;
+    height: 137px;
+}
+
+.btn-zoom {
+    width: 100%;
+    height: 43px;
+    background-color: var(--azul);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: var(--sombra-caja);
+    border-radius: 8px;
+}
+
+.zoom-in {
+    background-image: url(/assets/icons/mas.svg);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.zoom-off {
+    background-image: url(/assets/icons/menos.svg);
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.btn-location {
+    margin-bottom: 8px;
+    background-image: url(/assets/icons/boton-ubicacion.svg);
 }
 
 /* Box home float */
@@ -419,7 +487,7 @@ img, picture {
     background-image: url('/assets/icons/feather-map-pin.svg');
 }
 
-.icon-trip {
+.icon-reloj {
     background-image: url('/assets/icons/mis-viajes.svg');
 }
 
@@ -432,6 +500,10 @@ img, picture {
 }
 
 .icon-exclamation-mark {
+    background-image: url('/assets/icons/novedad.svg');
+}
+
+.icon-life-jacket {
     background-image: url('/assets/icons/novedad.svg');
 }
 
@@ -520,6 +592,15 @@ img, picture {
     overflow-y: scroll;
     list-style: none;
     border-bottom: 1.5px solid var(--gris-claro);
+}
+
+.home__box__content-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.home__box__content-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--azul);
+    border-radius: 4px;
 }
 
 .item__ubication {

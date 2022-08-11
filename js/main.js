@@ -1,9 +1,14 @@
 /* Close and open menu*/
-const btnMenu = document.querySelector('.btn-n-menu');
+const btnMenuOpen = document.querySelector('.btn-n-menu');
+const btnMenuClose = document.querySelector('.btn-n-menu__close');
 const homeMenu = document.querySelector('.home__menu__side');
 
-btnMenu.addEventListener('click', () => {
-    homeMenu.classList.toggle('home__box--show')
+btnMenuOpen.addEventListener('click', () => {
+    homeMenu.classList.add('home__box--show')
+});
+
+btnMenuClose.addEventListener('click', () => {
+    homeMenu.classList.remove('home__box--show');
 });
 
 /* Close and open pop-up */

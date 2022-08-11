@@ -13,17 +13,35 @@
     <main class="container__home">
         <button class="btn-n btn-n-menu"></button>
         <ul class="home__menu__side home__box--hidden">
+            <button class="btn-n btn-n-menu__close">X</button>
             <h3 class="home__menu__side__title">Ana Luna</h3>
             <li class="home__menu__side__item">
-                <span class="icon icon-user">2</span> <a href="">Perfil</a>
+                <span class="icon icon-user"></span> <a class="side__item__text" href="#">Perfil</a>
             </li>
-            <li class="home__menu__side__item">Viajes</li>
-            <li class="home__menu__side__item">Centro de ayuda</li>
-            <li class="home__menu__side__item">Reserva viajes</li>
-            <li class="home__menu__side__item">Habla con nosotros</li>
-            <li class="home__menu__side__item">Centro de conocimiento</li>
-            <li class="home__menu__side__item">Novedades</li>
+            <li class="home__menu__side__item">
+                <span class="icon icon-reloj"></span> <a class="side__item__text" href="#">Viajes</a>
+            </li>
+            <li class="home__menu__side__item">
+                <span class="icon icon-life-jacket"></span> <a class="side__item__text" href="#">Centro de ayuda</a>
+            </li>
+            <li class="home__menu__side__item">
+                <span class="icon icon-reservation"></span> <a class="side__item__text" href="#">Reserva viajes</a>
+            </li>
+            <li class="home__menu__side__item">
+                <span class="icon icon-phone"></span> <a class="side__item__text" href="#">Habla con nosotros</a>
+                </li>
+            <li class="home__menu__side__item">
+                <span class="icon icon-book"></span> <a class="side__item__text" href="#">Centro de conocimiento</a>
+            </li>
+            <li class="home__menu__side__item">
+                <span class="icon icon-exclamation-mark"></span> <a class="side__item__text" href="#">Novedades</a>
+            </li>
         </ul>
+        <div class="container__zoom">
+            <button class="btn-n btn-zoom btn-location"></button>
+            <button class="btn-n btn-zoom zoom-in"></button>
+            <button class="btn-n btn-zoom zoom-off"></button>
+        </div>
         <div class="content__home">
             <input type="radio" name="eleccion" class="home__input-radio" id="para-otros">
             <label class="home__btn" for="para-mi">Para mi</label>
