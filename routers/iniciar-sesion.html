@@ -12,18 +12,23 @@
 <body>
     <main class="container__login">
         <div class="content__login">
-            <img class="login__img" src="/assets/imgs/logo-taxis-libres.png" alt="Logo Taxis Libres">
-            <h1 class="login__title">Pide un taxi</h1>
-            <p class="login__text">desde el computador</p>
-            <h2 class="login__subtitle">Iniciar sesión</h2>
-            <label class="login__label" for="">
-                <input class="login__input" type="text" name="" id="" placeholder="Celular">
-            </label>
-            <label class="login__label" for="">
-                <input class="login__input" type="password" name="" id="" placeholder="Contraseña"></label>
-            <a class="btn-n btn-n-primary" href="/routers/home.html">Iniciar sesión</a>
-            <a class="btn-n btn-n-secondary" href="../index.html">Volver</a>
-            <a class="login__link btn-n" href="#" target="_blank" rel="noopener noreferrer">Olvidé la contraseña</a>
+            <form action="/" class="form__login">
+                <img class="login__img" src="/assets/imgs/logo-taxis-libres.png" alt="Logo Taxis Libres">
+                <h1 class="login__title">Pide un taxi</h1>
+                <p class="login__text">desde el computador</p>
+                <h2 class="login__subtitle">Iniciar sesión</h2>
+                <label class="login__label">
+                    <input class="login__input" type="number" name="" id="" placeholder="Celular" required>
+                </label>
+                <label class="login__label">
+                    <span class="icon icon-eye-block"></span>
+                    <span class="icon icon-eye"></span>
+                    <input class="login__input" type="password" name="" id="" placeholder="Contraseña" required>
+                </label>
+                <a class="btn-n btn-n-primary" href="/routers/home.html">Iniciar sesión</a>
+                <a class="btn-n btn-n-secondary" href="../index.html">Volver</a>
+                <a class="login__link btn-n" href="#" target="_blank" rel="noopener noreferrer">Olvidé la contraseña</a>
+            </form>
         </div>
         <dialog class="pop-up">
             <button class="btn-n pop-up__close"></button>
