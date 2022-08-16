@@ -64,18 +64,14 @@
                     <button class="btn-n home__box__btn">Origen</button>
                 </label>
                 <div class="home__box__content home__box--hidden">
-                    <h5 class="home__title__sm">Aquí me recoje</h5>
+                    <h5 class="home__title__md">Aquí me recoje</h5>
                     <div class="home__container__row">
                         <span class="icon icon-origin"></span>
                         <p class="home__description">Kr 70b...</p>
                     </div>
-                    <h5 class="home__title__md">Sugerencias de dirección</h5>
-                    <ul class="home__box__content-scroll">
+                        <ul class="home__box__content-scroll">
                             <li class="item__ubication">
-                                <div class="box__ubication box__ubication__fixed">Fijar la ubicación en el mapa</div>
-                            </li>
-                            <li class="item__ubication">
-                                <div class="box__ubication ubication__suggestied">Kr 70 b # 80 -20</div>
+                                <div class="box__ubication ubication__suggestied">Kr 70 b # 80 - 20</div>
                             </li>
                             <li class="item__ubication">
                                 <div class="box__ubication ubication__suggestied">Kr 70 b # 40</div> 
@@ -93,6 +89,7 @@
                                 <div class="box__ubication ubication__suggestied">Salitre plaza</div>
                             </li>
                         </ul>
+                        <div class="box__ubication box__ubication__fixed">Fijar la ubicación en el mapa</div>
                 </div>
                 <div class="home__box__container__btn">
                     <input class="home__input-radio" type="radio" name="seccion">
@@ -109,8 +106,14 @@
                     <span class="icon icon-bill"></span>
                     <button class="btn-n home__box__btn--inactive">Forma de pago</button>
                 </div>
-                <button class="btn-n btn-n-primary-small">Pedir taxi</button>
+                <button class="btn-n btn-n-primary-small" disabled>Pedir taxi</button>
             </div>
+        </div>
+        <div class="container__current-location home__box--hidden">
+            <button class="btn-n btn-n-circle icon icon-right-arrow"></button>
+            <input class="btn-n btn-n-white" type="text" name="" id="" placeholder="Kr 70 B # 80 - 20" readonly>
+            <button class="btn-n btn-n-dark">¡Aquí me recoge!</button>
+            <div class="point-location"></div>
         </div>
     </main>
 </body>

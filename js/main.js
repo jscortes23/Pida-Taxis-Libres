@@ -26,11 +26,10 @@ if (partOneLogin && partTwoLogin) {
     });    
 }
 
-
 /* Show password */
 const btnShowPassword = document.querySelector('.icon-eye');
 const btnHiddenPassword = document.querySelector('.icon-eye-block');
-const fieldPassword = document.querySelector('.login__input[type="password"]')
+const fieldPassword = document.querySelector('.login__input[type="password"]');
 
 if (btnShowPassword && btnHiddenPassword) {
     btnShowPassword.addEventListener('click', () => {
@@ -47,27 +46,49 @@ if (btnShowPassword && btnHiddenPassword) {
 }
 
 /* Close and open menu*/
-/* const btnMenuOpen = document.querySelector('.btn-n-menu');
+const btnMenuOpen = document.querySelector('.btn-n-menu');
 const btnMenuClose = document.querySelector('.btn-n-menu__close');
 const homeMenu = document.querySelector('.home__menu__side');
 
-btnMenuOpen.addEventListener('click', () => {
-    homeMenu.classList.add('home__box--show')
-});
-
-btnMenuClose.addEventListener('click', () => {
-    homeMenu.classList.remove('home__box--show');
-}); */
+if (btnMenuOpen && btnMenuClose) {
+    btnMenuOpen.addEventListener('click', () => {
+        homeMenu.classList.add('home__box--show')
+    });
+    
+    btnMenuClose.addEventListener('click', () => {
+        homeMenu.classList.remove('home__box--show');
+    });
+}
 
 /* For continue the process */
-/* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
-const contentBox = document.querySelector('.home__box__container__btn + .home__box__content')
+const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
+const contentBox = document.querySelector('.home__box__container__btn + .home__box__content');
 
-btnsBoxHome.forEach((btnBoxHome) => {
-    btnBoxHome.addEventListener('click', () => {
-        contentBox.classList.toggle('home__box--show')
+if (btnsBoxHome) {
+    btnsBoxHome.forEach((btnBoxHome) => {
+        btnBoxHome.addEventListener('click', () => {
+            contentBox.classList.toggle('home__box--show')
+        })
+    });
+}
+
+/* Show my current location */
+const contentHome = document.querySelector('.content__home');
+const btnFixedLocation = document.querySelector('.box__ubication__fixed');
+const btnBackHome = document.querySelector('.container__current-location > .icon-right-arrow')
+const viewCurrentLocation = document.querySelector('.container__current-location');
+
+if (contentHome) {
+    btnFixedLocation.addEventListener('click', () => {
+        contentHome.classList.toggle('home__box--hidden')
+        viewCurrentLocation.classList.toggle('home__box--hidden')
+    });
+
+    btnBackHome.addEventListener('click', () => {
+        contentHome.classList.toggle('home__box--hidden')
+        viewCurrentLocation.classList.toggle('home__box--hidden')
     })
-}); */
+}
 
 
 /* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');

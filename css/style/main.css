@@ -19,7 +19,6 @@ html {
 
 :root {
     --verde: #CADC31;
-    --azul: ;
     --morado: ;
     --blanco: #FFFFFF;
     --link: #2A79FF;
@@ -364,7 +363,7 @@ img, picture {
 
 .container__zoom {
     position: absolute;
-    bottom: 48px;
+    bottom: 32px;
     right: 48px;
     width: 44px;
     height: 137px;
@@ -562,7 +561,7 @@ img, picture {
 .home__box__btn--inactive {
     height: 60px;
     font-size: var(--x-lg);
-    color: #898989;
+    color: var(--azul);
     text-align: left;
     background-color: inherit;
 }
@@ -575,12 +574,22 @@ img, picture {
     width: 100%;
     height: 58px;
     margin-top: 8px;
+    font-family: 'Monsenrrat', sans-serif;
     font-size: var(--lg);
     font-weight: 600;
     text-align: center;
-    background-color: var(--verde);
     box-shadow: var(--sombra-boton-pequeno);
     border-radius: 4px;
+}
+
+.btn-n-primary-small:disabled {
+    color: #3F3F3F;
+    background-color: #D9D9D9;
+}
+
+.btn-n-primary-small:enabled {
+    color: var(--azul);
+    background-color: var(--verde);
 }
 
 /* Filtros solo de prueba */
@@ -619,7 +628,7 @@ img, picture {
 }
 
 .home__container__row:nth-child(2) {
-    margin-bottom: 19px;
+    margin-bottom: 12px;
 }
 
 .home__description {
@@ -628,7 +637,7 @@ img, picture {
 }
 
 .home__title__md {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-size: var(--md);
     font-weight: 700;
 }
@@ -636,14 +645,15 @@ img, picture {
 /* For scroll */
 
 .home__box__content-scroll {
-    height: 170px;
-    padding-bottom: 12px;
+    height: 100px;
+    margin-bottom: 4px;
     font-size: var(--md);
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     overflow-y: scroll;
     list-style: none;
-    border-bottom: 1.5px solid var(--gris-claro);
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul) var(--blanco);
 }
 
 .home__box__content-scroll::-webkit-scrollbar {
@@ -655,16 +665,28 @@ img, picture {
     border-radius: 4px;
 }
 
+.home__box__content-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #474762;
+}
+
 .item__ubication {
     font-weight: 500;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    cursor: pointer;
 }
 
 .box__ubication{
-    width: 100%;
     display: flex;
     align-items: center;
     column-gap: 20px;
+}
+
+.box__ubication__fixed {
+    height: 66px;
+    font-size: var(--md);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1.5px solid var(--gris-claro);
 }
 
 .box__ubication__fixed::before {
@@ -679,13 +701,92 @@ img, picture {
     border-radius: 50%;
 }
 
-.ubication__suggestied::before {
+.ubication__suggestied {
+    margin-left: 32px;
+}
+
+
+/* Section my current location */
+.container__current-location {
+    position: absolute;
+    bottom: 40px;
+    left:  calc(50% - 167.5px);
+}
+
+.btn-n-circle {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--blanco);
+    border-radius: 50%;
+    background-image: url('/assets/icons/flecha-derecha.svg');
+    background-position: center;
+    background-size: 24px;
+    box-shadow: var(--sombra-boton-pequeno);
+}
+
+.btn-n-dark {
+    width: 335px;
+    height: 61px;
+    font-family: 'Monsenrrat', sans-serif;
+    font-size: var(--lg);
+    font-weight: 500;
+    background-color: #242B4C;
+    color: var(--verde);
+    border-radius: 12px;
+    box-shadow: var(--sombra-boton);
+}
+
+.btn-n-white {
+    width: 335px;
+    height: 61px;
+    margin-bottom: 8px;
+    font-family: 'Monsenrrat', sans-serif;
+    font-size: var(--lg);
+    font-weight: 500;
+    background-color: var(--blanco);
+    border-radius: 12px;
+    box-shadow: var(--sombra-boton);
+}
+
+.btn-n-white::placeholder,
+.btn-n-white::-webkit-input-placeholder,
+.btn-n-white::-moz-placeholder {
+    color: var(--azul);
+}
+
+.point-location {
+    position: fixed;
+    width: 32px;
+    height: 54px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.point-location::before {
     content: '';
-    width: 30px;
-    height: 30px;
-    margin-left: 2px;
-    background-image: url(/assets/icons/feather-map-pin.svg);
+    width: 32px;
+    height: 36px;
+    display: block;
+    background-image: url('/assets/icons/punto-globo-ubicacion.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 20px;
+    background-size: contain;
+}
+
+.point-location::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    display: block;
+    background-image: url('/assets/icons/punto-ubicacion.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
