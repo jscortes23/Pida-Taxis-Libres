@@ -48,70 +48,82 @@
             <input type="radio" name="eleccion" class="home__input-radio" id="para-mi" checked>
             <label class="home__btn" for="para-otros">Para otr@s</label>
             <div class="home__box-functions">
-                <label class="home__box__container__btn" data-eleccion="otros">
+                <label class="home__box__container__btn" data-section="nombre" data-eleccion="otros">
                     <input class="home__input-radio" type="radio" name="seccion">
                     <span class="icon icon-user"></span>
-                    <button class="btn-n home__box__btn">Nombre</button>
+                    <button class="btn-n home__box__btn">Nombre
+                        <span class="icon icon-right-arrow"></span>
+                    </button>
                 </label>
-                <label class="home__box__container__btn" data-eleccion="otros">
+                <label class="home__box__container__btn" data-section="celular" data-eleccion="otros">
                     <input class="home__input-radio" type="radio" name="seccion">
                     <span class="icon icon-phone"></span>
-                    <button class="btn-n home__box__btn">Celular</button>
+                    <button class="btn-n home__box__btn">Celular
+                        <span class="icon icon-right-arrow"></span>
+                    </button>
                 </label>
-                <label class="home__box__container__btn">
+                <label class="home__box__container__btn" data-section="origen">
                     <input class="home__input-radio" type="radio" name="seccion">
                     <span class="icon icon-origin"></span>
-                    <button class="btn-n home__box__btn">Origen</button>
+                    <button class="btn-n home__box__btn">Origen
+                        <span class="icon icon-right-arrow"></span>
+                    </button>
                 </label>
                 <div class="home__box__content home__box--hidden">
-                    <h5 class="home__title__md">Aquí me recoje</h5>
-                    <div class="home__container__row">
-                        <span class="icon icon-origin"></span>
-                        <p class="home__description">Kr 70b...</p>
+                    <div class="home__box--show">
+                        <h5 class="home__title__md">Aquí me recoje</h5>
+                        <div class="home__container__row">
+                            <span class="icon icon-origin"></span>
+                            <p class="home__description">Kr 70b...</p>
+                        </div>
                     </div>
-                        <ul class="home__box__content-scroll">
-                            <li class="item__ubication">
-                                <div class="box__ubication ubication__suggestied">Kr 70 b # 80 - 20</div>
-                            </li>
-                            <li class="item__ubication">
-                                <div class="box__ubication ubication__suggestied">Kr 70 b # 40</div> 
-                            </li>
-                            <li class="item__ubication">
-                                <div class="box__ubication ubication__suggestied">Kr 70 b # 70</div> 
-                            </li>
-                            <li class="item__ubication">
-                                <div class="box__ubication ubication__suggestied">Salitre plaza</div>
-                            </li>
-                            <li class="item__ubication">
-                                <div class="box__ubication ubication__suggestied">Salitre plaza</div>
-                            </li>
-                            <li class="item__ubication">
-                                <div class="box__ubication ubication__suggestied">Salitre plaza</div>
-                            </li>
-                        </ul>
-                        <div class="box__ubication box__ubication__fixed">Fijar la ubicación en el mapa</div>
+                        <div class="home__box--show">
+                            <ul class="home__box__content-scroll">
+                                <li class="item__ubication">
+                                    <div class="box__ubication ubication__suggestied">Kr 70 b # 80 - 20</div>
+                                </li>
+                                <li class="item__ubication">
+                                    <div class="box__ubication ubication__suggestied">Kr 70 b # 40</div>
+                                </li>
+                                <li class="item__ubication">
+                                    <div class="box__ubication ubication__suggestied">Kr 70 b # 70</div>
+                                </li>
+                                <li class="item__ubication">
+                                    <div class="box__ubication ubication__suggestied">Salitre plaza</div>
+                                </li>
+                                <li class="item__ubication">
+                                    <div class="box__ubication ubication__suggestied">Salitre plaza</div>
+                                </li>
+                                <li class="item__ubication">
+                                    <div class="box__ubication ubication__suggestied">Salitre plaza</div>
+                                </li>
+                            </ul>
+                            <div class="box__ubication box__ubication__fixed">Fijar la ubicación en el mapa</div>
+                        </div>
                 </div>
-                <div class="home__box__container__btn">
+                <div class="home__box__container__btn" data-section="destino">
                     <input class="home__input-radio" type="radio" name="seccion">
                     <span class="icon icon-destiny"></span>
-                    <button class="btn-n home__box__btn">Destino</button>
+                    <button class="btn-n home__box__btn">Destino
+                        <span class="icon icon-right-arrow"></span>
+                    </button>
                 </div>
-                <div class="home__box__container__btn">
+                <div class="home__box__container__btn" data-section="tipoTaxi">
                     <input class="home__input-radio" type="radio" name="seccion">
                     <span class="icon icon-taxi icon-bill"></span>
-                    <button class="btn-n home__box__btn--inactive">Tipo de taxi</button>
+                    <button class="btn-n home__box__btn">Tipo de taxi</button>
                 </div>
-                <div class="home__box__container__btn">
+                <div class="home__box__container__btn" data-section="formaPago">
                     <input class="home__input-radio" type="radio" name="seccion">
                     <span class="icon icon-bill"></span>
-                    <button class="btn-n home__box__btn--inactive">Forma de pago</button>
+                    <button class="btn-n home__box__btn">Forma de pago</button>
                 </div>
                 <button class="btn-n btn-n-primary-small" disabled>Pedir taxi</button>
             </div>
         </div>
         <div class="container__current-location home__box--hidden">
             <button class="btn-n btn-n-circle icon icon-right-arrow"></button>
-            <input class="btn-n btn-n-white" type="text" name="" id="" placeholder="Kr 70 B # 80 - 20" readonly>
+            <p class="btn-n btn-n-white">Kr 70 B # 80 - 20</p>
             <button class="btn-n btn-n-dark">¡Aquí me recoge!</button>
             <div class="point-location"></div>
         </div>

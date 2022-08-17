@@ -61,7 +61,7 @@ if (btnMenuOpen && btnMenuClose) {
 }
 
 /* For continue the process */
-const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
+const btnsBoxHome = document.querySelectorAll('.home__box__container__btn[data-section="origen"]');
 const contentBox = document.querySelector('.home__box__container__btn + .home__box__content');
 
 if (btnsBoxHome) {
@@ -76,19 +76,35 @@ if (btnsBoxHome) {
 const contentHome = document.querySelector('.content__home');
 const btnFixedLocation = document.querySelector('.box__ubication__fixed');
 const btnBackHome = document.querySelector('.container__current-location > .icon-right-arrow')
+const btnPickMeUpHere = document.querySelector('.container__current-location > .btn-n-dark');
 const viewCurrentLocation = document.querySelector('.container__current-location');
+const menuDropdownOrigin = document.querySelector('.home__box__content');
+const sectionsOrigin = document.querySelectorAll('.home__box__content > .home__box--show');
+const btnDropdownOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
+const btnCloseSetion = document.createElement('span');
+const sectionMenuHome = document.querySelector('.home__container__row');
+
+function backHome() {
+    contentHome.classList.toggle('home__box--hidden')
+    viewCurrentLocation.classList.toggle('home__box--hidden')
+}
+
 
 if (contentHome) {
-    btnFixedLocation.addEventListener('click', () => {
-        contentHome.classList.toggle('home__box--hidden')
-        viewCurrentLocation.classList.toggle('home__box--hidden')
-    });
+    btnFixedLocation.addEventListener('click', () => {backHome()});
 
-    btnBackHome.addEventListener('click', () => {
-        contentHome.classList.toggle('home__box--hidden')
-        viewCurrentLocation.classList.toggle('home__box--hidden')
-    })
+    btnBackHome.addEventListener('click', () => {backHome()});
+
+    btnPickMeUpHere.addEventListener('click' , () => {
+        sectionMenuHome.appendChild(btnCloseSetion).classList.add('icon', 'icon-close');
+        sectionsOrigin[1].classList.replace('home__box--show', 'home__box--hidden');
+        menuDropdownOrigin.classList.add('home__box__container__btn');
+        btnDropdownOrigin.classList.add('home__box--hidden');
+        backHome();
+    });
 }
+
+
 
 
 /* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');

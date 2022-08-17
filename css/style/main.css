@@ -455,6 +455,7 @@ img, picture {
     align-items: center;
     grid-template-columns: min-content auto;
     column-gap: 20px;
+    cursor: pointer;
     border-bottom: 1.5px solid var(--gris-claro);
 }
 
@@ -469,21 +470,18 @@ img, picture {
     background-color: inherit;
 }
 
-.home__box__btn::after {
-    content: '';
-    width: 10px;
-    height: 14px;
-    background-image: url('/assets/icons/flecha.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
 .icon {
     width: 22px;
     height: 27px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.icon-right-arrow {
+    width: 10px;
+    height: 14px;
+    background-image: url('/assets/icons/flecha.svg');
 }
 
 .icon-origin {
@@ -558,13 +556,18 @@ img, picture {
     cursor: pointer;
 }
 
-.home__box__btn--inactive {
+.icon-close {
+    background-image: url('/assets/icons/cerrar.svg');
+    cursor: pointer;
+}
+
+/* .home__box__btn--inactive {
     height: 60px;
     font-size: var(--x-lg);
     color: var(--azul);
     text-align: left;
     background-color: inherit;
-}
+} */
 
 .home__box__container__btn:nth-last-child(2) {
     border: none;
@@ -623,7 +626,7 @@ img, picture {
     width: 100%;
     display: grid;
     align-items: center;
-    grid-template-columns: min-content auto;
+    grid-template-columns: min-content auto min-content;
     column-gap: 20px;
 }
 
@@ -637,7 +640,8 @@ img, picture {
 }
 
 .home__title__md {
-    margin-bottom: 16px;
+    margin-top: 12px;
+    margin-bottom: 8px;
     font-size: var(--md);
     font-weight: 700;
 }
@@ -740,6 +744,9 @@ img, picture {
 }
 
 .btn-n-white {
+    display: flex;
+    place-items: center;
+    place-content: center;
     width: 335px;
     height: 61px;
     margin-bottom: 8px;
@@ -747,14 +754,10 @@ img, picture {
     font-size: var(--lg);
     font-weight: 500;
     background-color: var(--blanco);
+    color: var(--azul);
     border-radius: 12px;
     box-shadow: var(--sombra-boton);
-}
-
-.btn-n-white::placeholder,
-.btn-n-white::-webkit-input-placeholder,
-.btn-n-white::-moz-placeholder {
-    color: var(--azul);
+    cursor: text;
 }
 
 .point-location {
