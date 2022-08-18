@@ -51,61 +51,77 @@ const btnMenuClose = document.querySelector('.btn-n-menu__close');
 const homeMenu = document.querySelector('.home__menu__side');
 
 if (btnMenuOpen && btnMenuClose) {
-    btnMenuOpen.addEventListener('click', () => {
-        homeMenu.classList.add('home__box--show')
-    });
+    btnMenuOpen.addEventListener('click', () => {showSection(homeMenu)});
     
-    btnMenuClose.addEventListener('click', () => {
-        homeMenu.classList.remove('home__box--show');
-    });
+    btnMenuClose.addEventListener('click', () => {showSection(homeMenu)});
 }
 
 /* For continue the process */
-const btnsBoxHome = document.querySelectorAll('.home__box__container__btn[data-section="origen"]');
-const contentBox = document.querySelector('.home__box__container__btn + .home__box__content');
+const allBtnsBoxHome = document.querySelectorAll('.home__box__container__btn')
+const btnBoxHomeOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
+const btnBoxHomeDestiny = document.querySelector('.home__box__container__btn[data-section="destino"]');
+const contentBoxOrigin = document.querySelector('.home__box__container__btn[data-section="origen"] + .home__box__content');
+const contentBoxDestiny = document.querySelector('.home__box__container__btn[data-section="destino"] + .home__box__content');
 
-if (btnsBoxHome) {
-    btnsBoxHome.forEach((btnBoxHome) => {
-        btnBoxHome.addEventListener('click', () => {
-            contentBox.classList.toggle('home__box--show')
-        })
-    });
+function showSection(section) {
+    section.classList.toggle('home__box--show')
+}
+
+if (allBtnsBoxHome) {
+    btnBoxHomeOrigin.addEventListener('click', () => {showSection(contentBoxOrigin)});
+    btnBoxHomeDestiny.addEventListener('click', () => {showSection(contentBoxDestiny)});
 }
 
 /* Show my current location */
 const contentHome = document.querySelector('.content__home');
-const btnFixedLocation = document.querySelector('.box__ubication__fixed');
-const btnBackHome = document.querySelector('.container__current-location > .icon-right-arrow')
-const btnPickMeUpHere = document.querySelector('.container__current-location > .btn-n-dark');
-const viewCurrentLocation = document.querySelector('.container__current-location');
-const menuDropdownOrigin = document.querySelector('.home__box__content');
-const sectionsOrigin = document.querySelectorAll('.home__box__content > .home__box--show');
+const btnFixedLocationStrat = document.querySelector('.box__ubication__fixed[data-section="origen"]');
+const btnBackHome = document.querySelectorAll('.btn-n-back');
+const btnHere = document.querySelectorAll('.btn-n-dark');
+const viewPickMeUpHere = document.querySelector('[data-screen="aqui-me-recoge"]');
+const menuDropdown = document.querySelectorAll('.home__box__content');
+const sectionsOrigin = document.querySelectorAll('.home__box__content[data-section="origen"] > .home__box--show');
 const btnDropdownOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
-const btnCloseSetion = document.createElement('span');
-const sectionMenuHome = document.querySelector('.home__container__row');
+const btnCloseSetion = '<span class="icon icon-close"></span>';
+const sectionMenuHome = document.querySelectorAll('.home__container__row');
 
-function backHome() {
-    contentHome.classList.toggle('home__box--hidden')
-    viewCurrentLocation.classList.toggle('home__box--hidden')
+function backHome(view) {
+    contentHome.classList.toggle('home__box--hidden');
+    view.classList.toggle('home__box--hidden');
 }
-
 
 if (contentHome) {
-    btnFixedLocation.addEventListener('click', () => {backHome()});
+    /* (Aqui me recoge) */
+    btnFixedLocationStrat.addEventListener('click', () => {backHome(viewPickMeUpHere)});
+    btnBackHome[0].addEventListener('click', () => {backHome(viewPickMeUpHere)});
 
-    btnBackHome.addEventListener('click', () => {backHome()});
-
-    btnPickMeUpHere.addEventListener('click' , () => {
-        sectionMenuHome.appendChild(btnCloseSetion).classList.add('icon', 'icon-close');
+    btnHere[0].addEventListener('click', () => {
+        sectionMenuHome[0].insertAdjacentHTML('beforeend', btnCloseSetion);
         sectionsOrigin[1].classList.replace('home__box--show', 'home__box--hidden');
-        menuDropdownOrigin.classList.add('home__box__container__btn');
+        menuDropdown[0].classList.add('home__box__container__btn');
         btnDropdownOrigin.classList.add('home__box--hidden');
-        backHome();
-    });
+        backHome(viewPickMeUpHere);
+    });    
 }
 
+/* Show my current location */
+const btnFixedLocationEnd = document.querySelector('.box__ubication[data-section="destino"]');
+const viewGoingThere = document.querySelector('[data-screen="para-alla-voy"]');
+const sectionsDestiny = document.querySelector('.home__box__content[data-section="destino"] > .home__box--show');
+const btnDropdownDestiny = document.querySelector('.home__box__container__btn[data-section="destino"]');
 
+if (contentHome) {
+    /* (para alla voy) */
+    btnFixedLocationEnd.addEventListener('click', () => {backHome(viewGoingThere)});
+    btnBackHome[1].addEventListener('click', () => {backHome(viewGoingThere)});
 
+    btnHere[1].addEventListener('click', () => {
+        sectionMenuHome[1].insertAdjacentHTML('beforeend', btnCloseSetion);
+        sectionsDestiny.classList.replace('home__box--show', 'home__box--hidden');
+        menuDropdown[1].classList.add('home__box__container__btn');
+        btnDropdownDestiny.classList.add('home__box--hidden');
+        backHome(viewGoingThere);
+    });  
+}
 
 /* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
 const inputsSectionMenu = document.querySelectorAll('.home__input-radio[name=seccion]');

@@ -274,18 +274,22 @@ img, picture {
 
 /* Section Home */
 
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/imgs/Mapsicle-Map.png');
+    background-size: 100%;
+}
+
 .container__home {
     position: relative;
     width: 100%;
-    height: 100vh;
-    background-image: url('/assets/imgs/Mapsicle-Map.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 100%;
 }
 
 /* Menu */
 .btn-n-menu {
-    position: absolute;
+    position: fixed;
     top: 40px;
     right: 40px;
     width: 60px;
@@ -320,7 +324,7 @@ img, picture {
 }
 
 .home__menu__side {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 294px;
@@ -362,7 +366,7 @@ img, picture {
 /* Section zoom */
 
 .container__zoom {
-    position: absolute;
+    position: fixed;
     bottom: 32px;
     right: 48px;
     width: 44px;
@@ -463,6 +467,8 @@ img, picture {
     width: 100%;
     display: flex;
     align-items: center;
+    font-family: 'Monsenrrat', sans-serif;
+    font-weight: 500;
     justify-content: space-between;
     height: 66px;
     justify-self: start;
@@ -489,7 +495,7 @@ img, picture {
 }
 
 .icon-destiny {
-    background-image: url('/assets/icons/banderas.svg');
+    background-image: url('/assets/icons/bandera.svg');
 }
 
 .icon-bill {
@@ -552,7 +558,7 @@ img, picture {
     display: none;
     width: 26px;
     height: 18px;
-    background-image: url('/assets/icons/salvavidas.svg');
+    background-image: url('/assets/icons/ojo-tachado.png');
     cursor: pointer;
 }
 
@@ -561,13 +567,23 @@ img, picture {
     cursor: pointer;
 }
 
-/* .home__box__btn--inactive {
-    height: 60px;
-    font-size: var(--x-lg);
-    color: var(--azul);
-    text-align: left;
-    background-color: inherit;
-} */
+.icon-pin-map-green {
+    width: 36px;
+    height: 36px;
+    background-image: url('/assets/icons/feather-map-pin.svg');
+    background-color: var(--verde);
+    background-size: 20px;
+    border-radius: 50%;
+}
+
+.icon-pin-map-blue {
+    width: 36px;
+    height: 36px;
+    background-image: url('/assets/icons/feather-map-pin.svg');
+    background-color: #6D80C5;
+    background-size: 20px;
+    border-radius: 50%;
+}
 
 .home__box__container__btn:nth-last-child(2) {
     border: none;
@@ -622,16 +638,19 @@ img, picture {
     font-weight: 700;
 }
 
+.box__text__sm {
+    font-size: var(--md);
+    line-height: 1.829rem;
+    font-weight: 500;
+}
+
 .home__container__row{
     width: 100%;
     display: grid;
+    margin-bottom: 16px;
     align-items: center;
     grid-template-columns: min-content auto min-content;
     column-gap: 20px;
-}
-
-.home__container__row:nth-child(2) {
-    margin-bottom: 12px;
 }
 
 .home__description {
@@ -650,8 +669,7 @@ img, picture {
 
 .home__box__content-scroll {
     height: 100px;
-    margin-bottom: 4px;
-    font-size: var(--md);
+    margin-bottom: 16px;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     overflow-y: scroll;
@@ -683,26 +701,14 @@ img, picture {
     display: flex;
     align-items: center;
     column-gap: 20px;
+    cursor: pointer;
 }
 
 .box__ubication__fixed {
-    height: 66px;
-    font-size: var(--md);
-    font-weight: 500;
+    margin-top: 12px;
+    padding-bottom: 16px;
     cursor: pointer;
     border-bottom: 1.5px solid var(--gris-claro);
-}
-
-.box__ubication__fixed::before {
-    content: '';
-    width: 36px;
-    height: 36px;
-    background-color: var(--verde);
-    background-image: url(/assets/icons/feather-map-pin.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 20px;
-    border-radius: 50%;
 }
 
 .ubication__suggestied {
@@ -711,13 +717,13 @@ img, picture {
 
 
 /* Section my current location */
-.container__current-location {
-    position: absolute;
+.container__bottom-center {
+    position: fixed;
     bottom: 40px;
     left:  calc(50% - 167.5px);
 }
 
-.btn-n-circle {
+.btn-n-back {
     position: fixed;
     top: 40px;
     left: 40px;
@@ -725,7 +731,7 @@ img, picture {
     height: 60px;
     background-color: var(--blanco);
     border-radius: 50%;
-    background-image: url('/assets/icons/flecha-derecha.svg');
+    background-image: url('/assets/icons/flecha-izuiqerda.svg');
     background-position: center;
     background-size: 24px;
     box-shadow: var(--sombra-boton-pequeno);
@@ -734,6 +740,7 @@ img, picture {
 .btn-n-dark {
     width: 335px;
     height: 61px;
+    margin-bottom: 8px;
     font-family: 'Monsenrrat', sans-serif;
     font-size: var(--lg);
     font-weight: 500;
@@ -758,6 +765,18 @@ img, picture {
     border-radius: 12px;
     box-shadow: var(--sombra-boton);
     cursor: text;
+}
+
+.btn-n-ligth-blue {
+    width: 335px;
+    height: 61px;
+    font-family: 'Monsenrrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: #889CD3;
+    color: var(--azul);
+    border-radius: 12px;
+    box-shadow: var(--sombra-boton);
 }
 
 .point-location {
