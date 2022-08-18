@@ -177,6 +177,16 @@ img, picture {
     background-color: var(--gris);
 }
 
+.login__input::placeholder {
+    color: #343433;
+}
+
+.login__input::-moz-placeholder,
+.login__input::-webkit-input-placeholder 
+{
+    color: #343433;
+}
+
 .login__input[type="number"] {
     -moz-appearance: textfield;
 }
