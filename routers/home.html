@@ -139,16 +139,56 @@
                         </div>
                     </div>
                 </div>
-                <div class="home__box__container__btn" for="tipoTaxi" data-section="tipoTaxi">
+                <label class="home__box__container__btn" for="tipoTaxi" data-section="tipoTaxi">
                     <input class="home__input-radio" id="tipoTaxi" type="radio" name="seccion">
                     <span class="icon icon-taxi icon-bill"></span>
                     <button class="btn-n home__box__btn">Tipo de taxi</button>
+                </label>
+                <div class="home__box__content home__box--hidden" data-section="tipoTaxi">
+                    <ul class="list-type-taxis">
+                        <li class="item-list-type-taxi">
+                            <button class="btn-n btn-n-type-taxi">
+                                <span class="icon icon-type-taxi icon-taxi-normal"></span>
+                                <p class="text-type-taxi">Normal</p>
+                                <p class="text-price-taxi">$13.500-17.500</p>
+                            </button>
+                        </li>
+                        <li class="item-list-type-taxi">
+                            <button class="btn-n btn-n-type-taxi">
+                                <span class="icon icon-type-taxi icon-taxi-luxury"></span>
+                                <p class="text-type-taxi">Lujo</p>
+                                <p class="text-price-taxi">$18.500-24.500</p>
+                            </button>
+                        </li>
+                        <li class="item-list-type-taxi">
+                            <button class="btn-n btn-n-type-taxi">
+                                <span class="icon icon-type-taxi icon-taxi-icontec"></span>
+                                <p class="text-type-taxi">Icontec</p>
+                                <p class="text-price-taxi">$13.500-17.500</p>
+                            </button>
+                        </li>
+                        <li class="item-list-type-taxi">
+                            <button class="btn-n btn-n-type-taxi">
+                                <span class="icon icon-type-taxi icon-taxi-gender-equality"></span>
+                                <p class="text-type-taxi">Equidad de género</p>
+                                <p class="text-price-taxi">$13.500-17.500</p>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-                <div class="home__box__container__btn" for="formaPago" data-section="formaPago">
+                <div class="container__taxi__chosen home__box--hidden">
+                    <p class="home__title__md">Tipo de taxi</p>
+                    <div class="content__taxi__chosen">
+                        <span class="icon icon-type-taxi"></span>
+                        <p class="text-type-taxi"></p>
+                        <p class="text-price-taxi"></p>
+                    </div>
+                </div>
+                <label class="home__box__container__btn" for="formaPago" data-section="formaPago">
                     <input class="home__input-radio" id="formaPago" type="radio" name="seccion">
                     <span class="icon icon-bill"></span>
                     <button class="btn-n home__box__btn">Forma de pago</button>
-                </div>
+                </label>
                 <button class="btn-n btn-n-primary-small" disabled>Pedir taxi</button>
             </div>
         </div>

@@ -60,8 +60,10 @@ if (btnMenuOpen && btnMenuClose) {
 const allBtnsBoxHome = document.querySelectorAll('.home__box__container__btn')
 const btnBoxHomeOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
 const btnBoxHomeDestiny = document.querySelector('.home__box__container__btn[data-section="destino"]');
+const btnBoxHomeTypeTaxi = document.querySelector('.home__box__container__btn[data-section="tipoTaxi"]');
 const contentBoxOrigin = document.querySelector('.home__box__container__btn[data-section="origen"] + .home__box__content');
 const contentBoxDestiny = document.querySelector('.home__box__container__btn[data-section="destino"] + .home__box__content');
+const contentBoxTypeTaxi = document.querySelector('.home__box__container__btn[data-section="tipoTaxi"] + .home__box__content');
 
 function showSection(section) {
     section.classList.toggle('home__box--show')
@@ -70,6 +72,7 @@ function showSection(section) {
 if (allBtnsBoxHome) {
     btnBoxHomeOrigin.addEventListener('click', () => {showSection(contentBoxOrigin)});
     btnBoxHomeDestiny.addEventListener('click', () => {showSection(contentBoxDestiny)});
+    btnBoxHomeTypeTaxi.addEventListener('click', () => {showSection(contentBoxTypeTaxi)});
 }
 
 /* Show my current location */
@@ -123,6 +126,24 @@ if (contentHome) {
     });  
 }
 
+/* Choose type of taxi */
+const allTypeTaxis = document.querySelectorAll('.btn-n-type-taxi');
+const sectionsTypeTaxi = document.querySelector('.home__box__content[data-section="tipoTaxi"]');
+const showTaxiChosen = document.querySelector('.container__taxi__chosen');
+const taxi = document.querySelector('.content__taxi__chosen');
+
+if (allTypeTaxis) {
+    allTypeTaxis.forEach( (typeTaxi) => {
+        typeTaxi.addEventListener('click', () => {
+            btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
+            sectionsTypeTaxi.classList.replace('home__box--show', 'home__box--hidden');
+            taxi.children[0].classList.add(typeTaxi.children[0].classList[2]);
+            taxi.children[1].innerText = typeTaxi.children[1].textContent;
+            taxi.children[2].innerText = typeTaxi.children[2].textContent;
+            showTaxiChosen.classList.replace('home__box--hidden', 'home__box--show');
+        })
+    })
+}
 /* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
 const inputsSectionMenu = document.querySelectorAll('.home__input-radio[name=seccion]');
 
