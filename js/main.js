@@ -131,6 +131,7 @@ const allTypeTaxis = document.querySelectorAll('.btn-n-type-taxi');
 const sectionsTypeTaxi = document.querySelector('.home__box__content[data-section="tipoTaxi"]');
 const showTaxiChosen = document.querySelector('.container__taxi__chosen');
 const taxi = document.querySelector('.content__taxi__chosen');
+const sectionCharacteristics = document.querySelector('.container__characteristics__taxi');
 
 if (allTypeTaxis) {
     allTypeTaxis.forEach( (typeTaxi) => {
@@ -141,9 +142,32 @@ if (allTypeTaxis) {
             taxi.children[1].innerText = typeTaxi.children[1].textContent;
             taxi.children[2].innerText = typeTaxi.children[2].textContent;
             showTaxiChosen.classList.replace('home__box--hidden', 'home__box--show');
+            sectionCharacteristics.classList.replace('home__box--hidden', 'home__box--show');
         })
     })
 }
+
+/* Choose characterstics of the taxi */
+const containerCheckboxsCharacteristics = document.querySelectorAll('.container__btn-checkbox');
+const checkboxsCharacteristics = document.querySelectorAll('.container__characteristics__taxi input');
+const agreeCharacteristics = document.querySelector('.container__characteristics__taxi .btn-n-primary-small');
+
+var check = 0;
+checkboxsCharacteristics.forEach( (checkbox) => {
+    checkbox.addEventListener('click', () => {
+        checkbox.checked ? check++ : check--;
+        check > 0 ? agreeCharacteristics.disabled = false : agreeCharacteristics.disabled = true;
+    })
+});
+
+agreeCharacteristics.addEventListener('click', () => {
+    containerCheckboxsCharacteristics.forEach( (checkbox) => {
+        !checkbox.firstElementChild.checked ? checkbox.style.display = 'none' : checkbox.children[1].style.display = 'none';
+        agreeCharacteristics.style.display = 'none';
+        checkbox.style.cursor = 'text'
+    });
+});
+
 /* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
 const inputsSectionMenu = document.querySelectorAll('.home__input-radio[name=seccion]');
 

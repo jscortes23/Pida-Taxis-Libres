@@ -494,6 +494,10 @@ body {
     background-size: contain;
 }
 
+.icon-md {
+    width: 28px;
+}
+
 .icon-type-taxi {
     width: 60px;
     height: 40px;
@@ -582,6 +586,10 @@ body {
     cursor: pointer;
 }
 
+.icon-close-circle {
+    background-image: url('/assets/icons/close.svg');
+}
+
 .icon-pin-map-green {
     width: 36px;
     height: 36px;
@@ -614,6 +622,26 @@ body {
 
 .icon-taxi-gender-equality {
     background-image: url('/assets/icons/taxi-equidad-genero.svg');
+}
+
+.icon-bike {
+    background-image: url('/assets/icons/cicla.svg');
+}
+
+.icon-wifi {
+    background-image: url('/assets/icons/wifi.svg');
+}
+
+.icon-battery {
+    background-image: url('/assets/icons/bateria.svg');
+}
+
+.icon-card {
+    background-image: url('/assets/icons/tarjeta.svg');
+}
+
+.icon-ac {
+    background-image: url('/assets/icons/aire-aconidcionado.svg');
 }
 
 .home__box__container__btn:nth-last-child(2) {
@@ -845,13 +873,17 @@ body {
 }
 
 /* Section choose taxi */
-.list-type-taxis {
+.list {
     width: 100%;
     height: auto;
     list-style: none;
 }
 
-.item-list-type-taxi {
+.item-list-sm {
+    margin: 16px 0;
+}
+
+.item-list {
     margin: 26px 0;
 }
 
@@ -895,4 +927,42 @@ body {
 
 .text-price-taxi {
     justify-self: end;
+}
+
+/* Section characteristics */
+.container__characteristics__taxi {
+    width: 334px;
+    border-bottom: 1.5px solid var(--gris-claro);
+}
+
+.container__btn-checkbox {
+    display: grid;
+    font-family: 'Monsenrrat', sans-serif;
+    font-size: var(--lg);
+    font-weight: 500;
+    justify-content: start;
+    align-items: center;
+    column-gap: 24px;
+    grid-template-columns: min-content auto auto;
+    cursor: pointer;
+}
+
+.btn-checkbox {
+    width: 32px;
+    height: 32px;
+    display: block;
+    background-color: var(--gris-claro);
+    border-radius: 8px;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox:checked + .btn-checkbox {
+    background-image: url('/assets/icons/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    background-color: var(--verde);
 }
