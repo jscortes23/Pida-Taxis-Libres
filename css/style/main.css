@@ -644,6 +644,16 @@ body {
     background-image: url('/assets/icons/aire-aconidcionado.svg');
 }
 
+.icon-voucher {
+    width: 44px;
+    background-image: url('/assets/icons/vales.svg');
+}
+
+.icon-qr {
+    width: 44px;
+    background-image: url('/assets/icons/qrcode.svg');
+}
+
 .home__box__container__btn:nth-last-child(2) {
     border: none;
 }

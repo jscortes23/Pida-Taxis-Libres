@@ -148,7 +148,7 @@ if (allTypeTaxis) {
 }
 
 /* Choose characterstics of the taxi */
-const containerCheckboxsCharacteristics = document.querySelectorAll('.container__btn-checkbox');
+const containerCheckboxsCharacteristics = document.querySelectorAll('.container__characteristics__taxi .container__btn-checkbox');
 const checkboxsCharacteristics = document.querySelectorAll('.container__characteristics__taxi input');
 const agreeCharacteristics = document.querySelector('.container__characteristics__taxi .btn-n-primary-small');
 
@@ -167,6 +167,21 @@ agreeCharacteristics.addEventListener('click', () => {
         checkbox.style.cursor = 'text'
     });
 });
+
+/* Choosen payment methods */
+const btnPaymentMethods = document.querySelector('.home__box__container__btn[data-section="formaPago"]')
+const containerPaymenMethods = document.querySelector('.container__payment__methods');
+const containerCheckboxsPaymenMethods = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
+
+btnPaymentMethods.addEventListener('click', () => {
+    containerPaymenMethods.classList.toggle('home__box--hidden')
+})
+
+containerCheckboxsPaymenMethods.forEach( (checkbox) => {
+    checkbox.addEventListener('click', () => {
+    })
+})
+
 
 /* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
 const inputsSectionMenu = document.querySelectorAll('.home__input-radio[name=seccion]');
