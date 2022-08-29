@@ -494,6 +494,32 @@ body {
     background-size: contain;
 }
 
+.home__input {
+    font-family: 'Monsenrrat', sans-serif;
+    height: 58px;
+    width: inherit;
+    padding: 0 41px;
+    padding-left: 58px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: var(--lg);
+    border-radius: 4px;
+    border: none;
+    background-color: #F9F8FE;
+}
+
+.home__box__content .login__link {
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.pos-icon-input {
+    position: absolute;
+    top: 40%;
+    left: 16px;
+    transform: translateY(-50%);
+}
+
 .icon-md {
     width: 28px;
 }
@@ -652,6 +678,14 @@ body {
 .icon-qr {
     width: 44px;
     background-image: url('/assets/icons/qrcode.svg');
+}
+
+.icon-id-card {
+    background-image: url('/assets/icons/cedula.svg');
+}
+
+.icon-padlock {
+    background-image: url('/assets/icons/candado.svg');
 }
 
 .home__box__container__btn:nth-last-child(2) {

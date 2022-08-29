@@ -61,9 +61,11 @@ const allBtnsBoxHome = document.querySelectorAll('.home__box__container__btn')
 const btnBoxHomeOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
 const btnBoxHomeDestiny = document.querySelector('.home__box__container__btn[data-section="destino"]');
 const btnBoxHomeTypeTaxi = document.querySelector('.home__box__container__btn[data-section="tipoTaxi"]');
+const btnBoxHomePaymentMethods = document.querySelector('.home__box__container__btn[data-section="formaPago"]')
 const contentBoxOrigin = document.querySelector('.home__box__container__btn[data-section="origen"] + .home__box__content');
 const contentBoxDestiny = document.querySelector('.home__box__container__btn[data-section="destino"] + .home__box__content');
 const contentBoxTypeTaxi = document.querySelector('.home__box__container__btn[data-section="tipoTaxi"] + .home__box__content');
+const contentBoxPaymentMethods = document.querySelector('.home__box__container__btn[data-section="formaPago"] + .home__box__content');
 
 function showSection(section) {
     section.classList.toggle('home__box--show')
@@ -73,6 +75,7 @@ if (allBtnsBoxHome) {
     btnBoxHomeOrigin.addEventListener('click', () => {showSection(contentBoxOrigin)});
     btnBoxHomeDestiny.addEventListener('click', () => {showSection(contentBoxDestiny)});
     btnBoxHomeTypeTaxi.addEventListener('click', () => {showSection(contentBoxTypeTaxi)});
+    btnBoxHomePaymentMethods.addEventListener('click', () => {showSection(contentBoxPaymentMethods)});
 }
 
 /* Show my current location */
@@ -169,17 +172,43 @@ agreeCharacteristics.addEventListener('click', () => {
 });
 
 /* Choosen payment methods */
-const btnPaymentMethods = document.querySelector('.home__box__container__btn[data-section="formaPago"]')
-const containerPaymenMethods = document.querySelector('.container__payment__methods');
 const containerCheckboxsPaymenMethods = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
+const agreePaymenMethods = document.querySelector('.container__payment__methods .home__box__content + .btn-n-primary-small');
+const containerDataVoucher = document.querySelector('.container__payment__methods .home__box__content')
+const enterVoucher = document.querySelector('.container__payment__methods .home__box__content .btn-n-primary-small')
+const numberVoucher =  document.querySelector('.home__input[type="number"]')
+const passwordVoucher =  document.querySelector('.home__input[type="password"]')
 
-btnPaymentMethods.addEventListener('click', () => {
-    containerPaymenMethods.classList.toggle('home__box--hidden')
-})
 
 containerCheckboxsPaymenMethods.forEach( (checkbox) => {
     checkbox.addEventListener('click', () => {
+        agreePaymenMethods.disabled = false
     })
+})
+
+agreePaymenMethods.addEventListener('click', () => {
+    containerCheckboxsPaymenMethods.forEach( (checkbox) => {
+        if (!checkbox.firstElementChild.checked) {
+            checkbox.style.display = 'none'
+        }
+        if (containerCheckboxsPaymenMethods[0].firstElementChild.checked) {
+            containerDataVoucher.classList.toggle('home__box--hidden')
+        }
+        agreePaymenMethods.classList.toggle('home__box--hidden')
+    })
+})
+
+numberVoucher.addEventListener('input', () => {
+    numberVoucher.value ? enterVoucher.disabled = false : enterVoucher.disabled = true
+})
+
+passwordVoucher.addEventListener('input', () => {
+    passwordVoucher.value ? enterVoucher.disabled = false : enterVoucher.disabled = true
+})
+
+enterVoucher.addEventListener('click', () => {
+    containerCheckboxsPaymenMethods[0].childNodes[6].textContent = `Vale Digital / ${numberVoucher.value}`
+    containerDataVoucher.classList.toggle('home__box--hidden')
 })
 
 
