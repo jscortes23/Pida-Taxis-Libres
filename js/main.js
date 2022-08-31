@@ -124,6 +124,7 @@ const btnDropdownDestiny = document.querySelector('.home__box__container__btn[da
 const showDestinyLocation = document.querySelector('.container__bottom-center[data-screen="para-alla-voy"] .btn-n-white');
 const textDestinyLocation = document.querySelectorAll('[data-section="destino"] .home__container__row .home__description');
 const route = document.querySelector('.route')
+const digitalVoucher = document.querySelector('.container__payment__methods .item-list-sm');
 
 function showLocation(msg) {
     textDestinyLocation[0].classList.toggle('home__box--hidden');
@@ -140,7 +141,9 @@ if (contentHome) {
     btnFixedLocationEnd.addEventListener('click', () => {backHome(viewGoingThere)});
     btnBackHome[1].addEventListener('click', () => {backHome(viewGoingThere)});
 
+    /* (Sin destino) */
     btnFixedWithoutLocation.addEventListener('click', () => {
+        digitalVoucher.classList.toggle('home__box--hidden');
         pointsMap[0].classList.toggle('home__box--hidden');
         showLocation('Diré el destino al conductor');
     })
