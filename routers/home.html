@@ -47,7 +47,7 @@
             <label class="home__btn" for="para-mi">Para mi</label>
             <input type="radio" name="eleccion" class="home__input-radio" id="para-mi" checked>
             <label class="home__btn" for="para-otros">Para otr@s</label>
-            <div class="home__box-functions">
+            <div class="home__box-functions" id="formPidaTaxi"> <!-- poner etique from -->
                 <label class="home__box__container__btn" for="nombre" data-section="nombre" data-eleccion="otros">
                     <input class="home__input-radio" id="nombre" type="radio" name="seccion">
                     <span class="icon icon-user"></span>
@@ -74,7 +74,8 @@
                         <h5 class="home__title__md">Aquí me recoje</h5>
                         <div class="home__container__row">
                             <span class="icon icon-origin"></span>
-                            <p class="home__description">Kr 70b...</p>
+                            <input class="home__description" type="text" name="origin" id="origin" placeholder="¿Dónde estas?">
+                            <p class="home__description home__box--hidden"></p>
                         </div>
                     </div>
                         <div class="home__box--show">
@@ -115,7 +116,8 @@
                     <h5 class="home__title__md">Para allá voy</h5>
                     <div class="home__container__row">
                         <span class="icon icon-destiny"></span>
-                        <p class="home__description">Salitr...</p>
+                        <input class="home__description" type="text" name="destiny" id="destiny" placeholder="¿Adónde quieres ir?">
+                        <p class="home__description home__box--hidden"></p>
                     </div>
                     <div class="home__box--show">
                         <ul class="home__box__content-scroll box__text__sm">
@@ -285,8 +287,8 @@
                     </div>
                     <button class="btn-n btn-n-primary-small" disabled>Siguiente</button>
                 </div>
-                <button class="btn-n btn-n-primary-small" disabled>Pedir taxi</button>
-            </div>
+                <input class="btn-n btn-n-primary-small" type="submit" value="Pedir taxi" disabled>
+            </div> <!-- poner etique from -->
         </div>
         <section class="container__bottom-center home__box--hidden" data-screen="aqui-me-recoge">
             <button class="btn-n btn-n-back icon"></button>
@@ -301,6 +303,12 @@
             <button class="btn-n btn-n-ligth-blue">Indicaré el destino cuando me suba al taxi</button>
             <div class="point-location"></div>
         </section>
+        <div class="point-map test-center home__box--hidden" data-location="Origen"></div>
+        <div class="route home__box--hidden">
+            <div class="point-map route-l" data-location="Origen"></div>
+            <div class="line route-c"></div>
+            <div class="point-map route-r" data-location="Destino"></div>
+        </div>
     </main>
 </body>
 </html>

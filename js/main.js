@@ -81,6 +81,7 @@ if (allBtnsBoxHome) {
 /* Show my current location */
 const contentHome = document.querySelector('.content__home');
 const btnFixedLocationStrat = document.querySelector('.box__ubication__fixed[data-section="origen"]');
+const btnFixedWithoutLocation = document.querySelector('.box__ubication__fixed:not([data-section="origen"])');
 const btnBackHome = document.querySelectorAll('.btn-n-back');
 const btnHere = document.querySelectorAll('.btn-n-dark');
 const viewPickMeUpHere = document.querySelector('[data-screen="aqui-me-recoge"]');
@@ -89,6 +90,9 @@ const sectionsOrigin = document.querySelectorAll('.home__box__content[data-secti
 const btnDropdownOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
 const btnCloseSetion = '<span class="icon icon-close"></span>';
 const sectionMenuHome = document.querySelectorAll('.home__container__row');
+const showOriginLocation = document.querySelector('.container__bottom-center[data-screen="aqui-me-recoge"] .btn-n-white');
+const textOriginLocation = document.querySelectorAll('[data-section="origen"] .home__container__row .home__description');
+const pointsMap = document.querySelectorAll('.point-map');
 
 function backHome(view) {
     contentHome.classList.toggle('home__box--hidden');
@@ -101,6 +105,9 @@ if (contentHome) {
     btnBackHome[0].addEventListener('click', () => {backHome(viewPickMeUpHere)});
 
     btnHere[0].addEventListener('click', () => {
+        textOriginLocation[0].classList.toggle('home__box--hidden');
+        textOriginLocation[1].classList.toggle('home__box--hidden');
+        textOriginLocation[1].textContent = showOriginLocation.textContent;
         sectionMenuHome[0].insertAdjacentHTML('beforeend', btnCloseSetion);
         sectionsOrigin[1].classList.replace('home__box--show', 'home__box--hidden');
         menuDropdown[0].classList.add('home__box__container__btn');
@@ -114,19 +121,37 @@ const btnFixedLocationEnd = document.querySelector('.box__ubication[data-section
 const viewGoingThere = document.querySelector('[data-screen="para-alla-voy"]');
 const sectionsDestiny = document.querySelector('.home__box__content[data-section="destino"] > .home__box--show');
 const btnDropdownDestiny = document.querySelector('.home__box__container__btn[data-section="destino"]');
+const showDestinyLocation = document.querySelector('.container__bottom-center[data-screen="para-alla-voy"] .btn-n-white');
+const textDestinyLocation = document.querySelectorAll('[data-section="destino"] .home__container__row .home__description');
+const route = document.querySelector('.route')
+
+function showLocation(msg) {
+    textDestinyLocation[0].classList.toggle('home__box--hidden');
+    textDestinyLocation[1].classList.toggle('home__box--hidden');
+    textDestinyLocation[1].textContent = msg;
+    sectionMenuHome[1].insertAdjacentHTML('beforeend', btnCloseSetion);
+    sectionsDestiny.classList.replace('home__box--show', 'home__box--hidden');
+    menuDropdown[1].classList.add('home__box__container__btn');
+    btnDropdownDestiny.classList.add('home__box--hidden');
+}
 
 if (contentHome) {
     /* (para alla voy) */
     btnFixedLocationEnd.addEventListener('click', () => {backHome(viewGoingThere)});
     btnBackHome[1].addEventListener('click', () => {backHome(viewGoingThere)});
 
+    btnFixedWithoutLocation.addEventListener('click', () => {
+        pointsMap[0].classList.toggle('home__box--hidden');
+        showLocation('Diré el destino al conductor');
+    })
+
     btnHere[1].addEventListener('click', () => {
-        sectionMenuHome[1].insertAdjacentHTML('beforeend', btnCloseSetion);
-        sectionsDestiny.classList.replace('home__box--show', 'home__box--hidden');
-        menuDropdown[1].classList.add('home__box__container__btn');
-        btnDropdownDestiny.classList.add('home__box--hidden');
+        showLocation(showDestinyLocation.textContent);
+        if (textOriginLocation[0].value != '' & textDestinyLocation[0].value != '') {
+            route.classList.toggle('home__box--hidden')
+        }
         backHome(viewGoingThere);
-    });  
+    });
 }
 
 /* Choose type of taxi */
@@ -210,17 +235,3 @@ enterVoucher.addEventListener('click', () => {
     containerCheckboxsPaymenMethods[0].childNodes[6].textContent = `Vale Digital / ${numberVoucher.value}`
     containerDataVoucher.classList.toggle('home__box--hidden')
 })
-
-
-/* const btnsBoxHome = document.querySelectorAll('.home__box__container__btn');
-const inputsSectionMenu = document.querySelectorAll('.home__input-radio[name=seccion]');
-
-function checkActiveSection(input) {
-    if (input.checked) {
-        alert("asdas")
-    }
-}
-
-btnsBoxHome.forEach( (btnBoxHome) => {
-    btnBoxHome.addEventListener('click', checkActiveSection())
-}); */
