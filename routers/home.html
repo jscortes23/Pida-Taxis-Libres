@@ -11,7 +11,7 @@
 </head>
 <body>
     <main class="container__home">
-        <button class="btn-n btn-n-menu"></button>
+        <button class="btn-n btn-n-menu" aria-label="abrir menu lateral"></button>
         <ul class="home__menu__side home__box--hidden">
             <button class="btn-n btn-n-menu__close">X</button>
             <h3 class="home__menu__side__title">Ana Luna</h3>
@@ -38,9 +38,9 @@
             </li>
         </ul>
         <div class="container__zoom">
-            <button class="btn-n btn-zoom btn-location"></button>
-            <button class="btn-n btn-zoom zoom-in"></button>
-            <button class="btn-n btn-zoom zoom-off"></button>
+            <button class="btn-n btn-zoom btn-location" aria-label="ubicarte"></button>
+            <button class="btn-n btn-zoom zoom-in" aria-label="acercar mapa"></button>
+            <button class="btn-n btn-zoom zoom-off" aria-label="alejar mapa"></button>
         </div>
         <div class="content__home">
             <input type="radio" name="eleccion" class="home__input-radio" id="para-otros">
@@ -288,6 +288,11 @@
                     <button class="btn-n btn-n-primary-small" disabled>Siguiente</button>
                 </div>
                 <input class="btn-n btn-n-primary-small" type="submit" value="Pedir taxi" disabled>
+                <button class="btn-n btn-n-taxi-go btn--lower-box">
+                    <div class="spinner"></div>
+                    <p class="fs-16 fw-600">4 taxis van en camino</p>
+                    <span class="icon icon-right-arrow"></span>
+                </button>
             </div> <!-- poner etique from -->
         </div>
         <section class="container__bottom-center home__box--hidden" data-screen="aqui-me-recoge">
@@ -309,6 +314,127 @@
             <div class="line route-c"></div>
             <div class="point-map route-r" data-location="Destino"></div>
         </div>
+
+        <section class="container-request route-l">
+            <ul class="details-request">
+                <li class="detail-section fs-17">
+                    <p class="fw-600">Taxi:</p>
+                    <p class="">Para mi</p>
+                </li>
+                <li class="detail-section fs-17">
+                    <p class="fw-600">Celular:</p>
+                    <p class="">3225661175</p>
+                </li>
+                <li class="detail-section fs-17">
+                    <p class="fw-600">Origen:</p>
+                    <p class="">Kr 70 B # 80 - 20</p>
+                </li>
+                <li class="detail-section fs-17">
+                    <p class="fw-600">Destino: </p>
+                    <p class="">Salitre mágico</p>
+                </li>
+                <li class="detail-section grid-detail fs-17">
+                    <p class="fw-600">Tipo de taxi:</p>
+                    <p class="">Normal</p>
+                    <span class="icon icon-md-detail grid-detail-icon"></span>
+                </li>
+                <li class="detail-section grid-detail fs-17">
+                    <p class="fw-600">Forma de pago:</p>
+                    <p class=""></p>
+                    <span class="icon icon-md-detail grid-detail-icon"></span>
+                </li>
+                <li class="detail-section fs-17">
+                    <p class="fw-600">Características:</p>
+                </li>
+                <li class="detail-section fs-17">
+                    <p class="fw-600">Valor</p>
+                    <p class="">13.500-17.500</p>
+                </li>
+            </ul>
+            <div class="container-waiting-driver">
+                <p class="fs-17 fw-600">Buscando un taxi seguro para ti...</p>
+                <progress class="progress-bar" value="50" max="100"></progress>
+                <p class="fw-600">00:28</p>
+                <button class="btn-n btn-n-cancel fs-17 fw-600">Cancelar solicitud</button>
+            </div>
+        </section>
+
+        <section class="container__driver-assigned content__home home__box--hidden">
+            <div class="driver-assigned__info">
+                <img src="/assets/imgs/foto-federico.png" alt="foto del conductor" class="driver-assigned__photo">
+                <div class="">
+                    <p class="fs-20 fw-500"><span class="icon icon-star"></span>4,8</p>
+                    <p class="fs-20 fw-500">Federico Hernández</p>
+                </div>
+            </div>
+            <div class="driver-assigned__car">
+                <span class="icon icon-taxi"></span>
+                <div class="">
+                    <p class="fs-15 fw-500 color-light-blue">Tipo de taxi</p>
+                    <p class="fs-18 fw-500">Normal</p>
+                </div>
+                <div class="">
+                    <p class="fs-15 fw-500 color-light-blue">Placa</p>
+                    <p class="fs-18 fw-500">SHD211 - Chevrolet</p>
+                </div>
+            </div>
+            <div class="driver-assigned__price">
+                <span class="fs-17 fw-500 color-light-blue">Valor aproximado</span>
+                <span class="fs-18 fw-500">$ 13.500 - 16.500</span>
+                <span class="icon icon-right-arrow"></span>
+            </div>
+            <div class="driver-assigned__pay">
+                <div class="driver-assigned__pay-with">
+                    <span class="icon icon-qr"></span>
+                    <div class="">
+                        <p class="fs-17 fw-500 color-light-blue ws-no-warp">Pagas con</p>
+                        <p class="fs-18 fw-500">Efectivo</p>
+                    </div>
+                </div>
+                <div class="driver-assigned__pay-password">
+                    <span class="icon icon-padlock-blue"></span>
+                    <div class="">
+                        <p class="fs-17 fw-500 color-light-blue">Clave</p>
+                        <p class="fs-18 fw-500">50</p>
+                    </div>
+                </div>
+            </div>
+            <div class="driver-assigned__contact">
+                <button class="btn-n btn-n-small" aria-label="cerrar información conductor"><span class="icon icon-close"></span></button>
+                <button class="btn-n btn-n-small" aria-label="compartir información conductor"><span class="icon icon-share"></span></button>
+                <button class="btn-n btn-n-md fw-500 fs-18">
+                    <span class="icon icon-contact"></span>Contactar
+                </button>
+            </div>
+            <button class="btn-n btn-n-lg btn--lower-box fs-18 fw-500"><span class="icon icon-left-arrow"></span>Pedir otro taxi</button>
+        </section>
+
+        <section class="container__confirmed-taxis content__home home__box--hidden">
+            <h3 class="fs-30 fw-700">Taxis <br> confrimados</h3>
+                <ul class="list list-confirmed-taxis">
+                    <li class="item-taxi">
+                        <span class="spinner item-taxi__icon"></span>
+                        <p class="fs-16 fw-700">SUL725</p>
+                        <p class="fw-600">en 6 min.</p>
+                    </li>
+                    <li class="item-taxi">
+                        <span class="spinner item-taxi__icon"></span>
+                        <p class="fs-16 fw-700">YBS762</p>
+                        <p class="fw-600">Va al destino</p>
+                    </li>
+                    <li class="item-taxi">
+                        <span class="spinner item-taxi__icon"></span>
+                        <p class="fs-16 fw-700">TVA172</p>
+                        <p class="fw-600">en 12 min.</p>
+                    </li>
+                    <li class="item-taxi">
+                        <span class="spinner item-taxi__icon"></span>
+                        <p class="fs-16 fw-700">RLV253</p>
+                        <p class="fw-600">en 6 min.</p>
+                    </li>
+                </ul>
+                <button class="btn-n btn-n-primary-small">Pedir otro taxi</button>
+        </section>
     </main>
 </body>
 </html>

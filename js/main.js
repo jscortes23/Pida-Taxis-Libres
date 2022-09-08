@@ -191,11 +191,15 @@ checkboxsCharacteristics.forEach( (checkbox) => {
     })
 });
 
+const choosenCharacteristics = []
 agreeCharacteristics.addEventListener('click', () => {
     containerCheckboxsCharacteristics.forEach( (checkbox) => {
         !checkbox.firstElementChild.checked ? checkbox.style.display = 'none' : checkbox.children[1].style.display = 'none';
         agreeCharacteristics.style.display = 'none';
         checkbox.style.cursor = 'text'
+        if (checkbox.firstElementChild.checked) {
+            choosenCharacteristics.push(checkbox)
+        }
     });
 });
 
@@ -223,6 +227,7 @@ agreePaymenMethods.addEventListener('click', () => {
             containerDataVoucher.classList.toggle('home__box--hidden')
         }
         agreePaymenMethods.classList.toggle('home__box--hidden')
+        btnBoxHomePaymentMethods.classList.toggle('home__box--hidden')
     })
 })
 
@@ -237,4 +242,81 @@ passwordVoucher.addEventListener('input', () => {
 enterVoucher.addEventListener('click', () => {
     containerCheckboxsPaymenMethods[0].childNodes[6].textContent = `Vale Digital / ${numberVoucher.value}`
     containerDataVoucher.classList.toggle('home__box--hidden')
+    // orderTaxi.disabled = false
+})
+
+/* detail of the request */
+const containerDetailRequest = document.querySelector('.container-request')
+const details = document.querySelectorAll('.detail-section > p:not(.fw-600)')
+const detailsIcon = document.querySelectorAll('.detail-section > span')
+const orderTaxi = document.querySelector('.btn-n-primary-small[type="submit"]')
+const choosenPaymenMethod = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
+
+
+const ForWhoOrderTaxi = document.querySelectorAll('input[name="eleccion"]')
+const LabelForWhoOrderTaxi = document.querySelectorAll('label[class="home__btn"]')
+orderTaxi.disabled = false
+containerDetailRequest.style.display = 'none'
+
+const detailCharacteristics = document.querySelector('.detail-section:nth-child(7)')
+
+orderTaxi.addEventListener('click', () => {
+    containerDetailRequest.style.display = 'flex'
+    /* Taxi */
+    ForWhoOrderTaxi.forEach( (who) => {
+        if (who.checked) {
+            who.id === 'para-mi' ? details[0].textContent = LabelForWhoOrderTaxi[0].textContent : details[0].textContent = LabelForWhoOrderTaxi[1].textContent
+        }
+    })
+    /* Origin */
+    details[2].textContent = textOriginLocation[0].value
+
+    /* Destiny */
+    details[3].textContent = textDestinyLocation[0].value
+
+    /* Type of taxi */
+    details[4].textContent = taxi.children[1].textContent
+    detailsIcon[0].classList.add(taxi.children[0].classList[2])
+
+    /* Payment methods */
+    choosenPaymenMethod.forEach( (choosen) => {
+        if (choosen.firstElementChild.checked) {
+            details[5].textContent = choosen.innerText
+            detailsIcon[1].classList.add(choosen.children[2].classList[2])
+        }
+    })
+
+    /* characteristics of the taxi */
+    choosenCharacteristics.forEach( (characteristics) => {
+        const icon = characteristics.children[2].classList[2]
+        const IconCharacteristics = `<span class="icon icon-sm-detail ${icon}"></span>`
+        detailCharacteristics.insertAdjacentHTML('beforeend', IconCharacteristics)
+    })
+
+    /* Price */
+    details[6].textContent = taxi.children[2].textContent
+})
+
+/* order another taxi */
+const conatinerDriverAssigned = document.querySelector('.container__driver-assigned')
+const btnOrderAnotherTaxi = document.querySelector('.container__driver-assigned .btn-n-lg')
+const mainMenu = document.querySelector('.content__home')
+
+btnOrderAnotherTaxi.addEventListener('click', () => {
+    alert("SDASs")
+})
+
+/* show confirmed taxis */
+const btnShowConfirmedTaxis = document.querySelector('.content__home .btn-n-taxi-go')
+const containerOrderTaxis = document.querySelector('.container__confirmed-taxis')
+const btnBack = document.querySelector('.container__confirmed-taxis .btn-n-primary-small')
+
+btnShowConfirmedTaxis.addEventListener('click', () => {
+    mainMenu.classList.toggle('home__box--hidden')
+    containerOrderTaxis.classList.toggle('home__box--hidden')
+})
+
+btnBack.addEventListener('click', () => {
+    mainMenu.classList.toggle('home__box--hidden')
+    containerOrderTaxis.classList.toggle('home__box--hidden')
 })
