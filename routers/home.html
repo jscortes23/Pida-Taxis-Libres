@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear cuenta | Pida un taxi</title>
     <link rel="stylesheet" href="/css/style/main.css">
-    <meta name="description" content="asdasdaz">
+    <meta name="description" content="Pida taxi">
     <script defer src="/js/main.js"></script>
+    <!-- <script defer src="/js/test.js"></script> -->
 </head>
-<body>
+<body class="bckg-map">
     <main class="container__home">
         <button class="btn-n btn-n-menu" aria-label="abrir menu lateral"></button>
-        <ul class="home__menu__side home__box--hidden">
+        <ul class="home__menu__side">
             <button class="btn-n btn-n-menu__close">X</button>
             <h3 class="home__menu__side__title">Ana Luna</h3>
             <li class="home__menu__side__item">
@@ -50,23 +51,26 @@
             <div class="home__box-functions" id="formPidaTaxi"> <!-- poner etique from -->
                 <label class="home__box__container__btn" for="nombre" data-section="nombre" data-eleccion="otros">
                     <input class="home__input-radio" id="nombre" type="radio" name="seccion">
-                    <span class="icon icon-user"></span>
-                    <button class="btn-n home__box__btn">Nombre
-                        <span class="icon icon-right-arrow"></span>
+                    <button class="btn-n home__box__btn">
+                        <span class="icon icon-user"></span>
+                        Nombre
+                        <span class="icon icon-right-arrow justify-end"></span>
                     </button>
                 </label>
                 <label class="home__box__container__btn" for="celular" data-section="celular" data-eleccion="otros">
                     <input class="home__input-radio" id="celular" type="radio" name="seccion">
-                    <span class="icon icon-phone"></span>
-                    <button class="btn-n home__box__btn">Celular
-                        <span class="icon icon-right-arrow"></span>
+                    <button class="btn-n home__box__btn">
+                        <span class="icon icon-phone"></span>
+                        Celular
+                        <span class="icon icon-right-arrow justify-end"></span>
                     </button>
                 </label>
                 <label class="home__box__container__btn" for="origen" data-section="origen">
                     <input class="home__input-radio" id="origen" type="radio" name="seccion">
-                    <span class="icon icon-origin"></span>
-                    <button class="btn-n home__box__btn">Origen
-                        <span class="icon icon-right-arrow"></span>
+                    <button class="btn-n home__box__btn">
+                        <span class="icon icon-origin"></span>
+                        Origen
+                        <span class="icon icon-right-arrow justify-end"></span>
                     </button>
                 </label>
                 <div class="home__box__content home__box--hidden" data-section="origen">
@@ -79,7 +83,7 @@
                         </div>
                     </div>
                         <div class="home__box--show">
-                            <ul class="home__box__content-scroll box__text__sm">
+                            <ul class="home__box__content-scroll h-100 box__text__sm">
                                 <li class="item__ubication">
                                     <div class="box__ubication ubication__suggestied">Kr 70 b # 80 - 20</div>
                                 </li>
@@ -107,9 +111,10 @@
                 </div>
                 <label class="home__box__container__btn" for="destino" data-section="destino">
                     <input class="home__input-radio" id="destino" type="radio" name="seccion">
-                    <span class="icon icon-destiny"></span>
-                    <button class="btn-n home__box__btn">Destino
-                        <span class="icon icon-right-arrow"></span>
+                    <button class="btn-n home__box__btn">
+                        <span class="icon icon-destiny"></span>
+                        Destino
+                        <span class="icon icon-right-arrow justify-end"></span>
                     </button>
                 </label>
                 <div class="home__box__content home__box--hidden" data-section="destino">
@@ -120,7 +125,7 @@
                         <p class="home__description home__box--hidden"></p>
                     </div>
                     <div class="home__box--show">
-                        <ul class="home__box__content-scroll box__text__sm">
+                        <ul class="home__box__content-scroll h-100 box__text__sm">
                             <li class="item__ubication">
                                 <div class="box__ubication ubication__suggestied">Salitre mágico</div>
                             </li>
@@ -143,8 +148,10 @@
                 </div>
                 <label class="home__box__container__btn" for="tipoTaxi" data-section="tipoTaxi">
                     <input class="home__input-radio" id="tipoTaxi" type="radio" name="seccion">
-                    <span class="icon icon-taxi icon-bill"></span>
-                    <button class="btn-n home__box__btn">Tipo de taxi</button>
+                    <button class="btn-n home__box__btn">
+                        <span class="icon icon-taxi icon-bill"></span>
+                        Tipo de taxi
+                    </button>
                 </label>
                 <div class="home__box__content home__box--hidden" data-section="tipoTaxi">
                     <ul class="list">
@@ -162,20 +169,6 @@
                                 <p class="text-price-taxi">$18.500-24.500</p>
                             </button>
                         </li>
-                        <li class="item-list">
-                            <button class="btn-n btn-n-type-taxi">
-                                <span class="icon icon-type-taxi icon-taxi-icontec"></span>
-                                <p class="text-type-taxi">Icontec</p>
-                                <p class="text-price-taxi">$13.500-17.500</p>
-                            </button>
-                        </li>
-                        <li class="item-list">
-                            <button class="btn-n btn-n-type-taxi">
-                                <span class="icon icon-type-taxi icon-taxi-gender-equality"></span>
-                                <p class="text-type-taxi">Equidad de género</p>
-                                <p class="text-price-taxi">$13.500-17.500</p>
-                            </button>
-                        </li>
                     </ul>
                 </div>
                 <div class="container__taxi__chosen home__box--hidden">
@@ -186,9 +179,33 @@
                         <p class="text-price-taxi"></p>
                     </div>
                 </div>
-                <div class="home__box__content container__characteristics__taxi home__box--hidden">
-                    <p class="home__title__md">Características</p>
-                    <ul class="list">
+                <div class="container__characteristics__taxi home__box--hidden">
+                    <p class="home__title__md">Preferencia de mi viaje</p>
+                    <div class="characteristics__taxi__container-select">
+                        <span class="icon icon-right-arrow icon-arrow-select--right"></span>
+                        <select name="prefer" id="prefer" class="characteristics__taxi__select">
+                            <option value="">--Seleccionar--</option>
+                            <optgroup label="Personalizar mi viaje con:">
+                                <option value="mascotas">Mascotas</option>
+                                <option value="cargadorCelular">Cargador para el cel</option>
+                                <option value="aireAcondicionado">Aire acondicionado</option>
+                                <option value="wifi">Wifi</option>
+                                <option value="cargadorBici">Cargador o parrilla para bicis</option>
+                                <option value="panelProtector">Panel protector</option>
+                                <option value="datafono">Datáfono</option>
+                            </optgroup>
+                            <optgroup label="Conductor certificado en:">
+                                <option value="equidadGenero">Equidad de genero</option>
+                                <option value="primerosAuxilios">Primeros auxilios</option>
+                                <option value="ingles">Inglés</option>
+                                <option value="turismo">Turismo</option>
+                                <option value="icontec">ICONTEC</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="container-selected-option home__box__content-scroll">
+                    </div>
+                    <!-- <ul class="list">
                         <li class="item-list-sm">
                             <label for="ninguna" class="container__btn-checkbox">
                                 <input type="checkbox" name="ninguna" id="ninguna" class="checkbox">
@@ -237,19 +254,21 @@
                                 Aire acondicionado
                             </label>
                         </li>
-                    </ul>
+                    </ul> -->
                     <button class="btn-n btn-n-primary-small" disabled>Siguiente</button>
                 </div>
                 <label class="home__box__container__btn" for="formaPago" data-section="formaPago">
                     <input class="home__input-radio" id="formaPago" type="radio" name="seccion">
-                    <span class="icon icon-bill"></span>
-                    <button class="btn-n home__box__btn">Forma de pago</button>
+                    <button class="btn-n home__box__btn">
+                        <span class="icon icon-bill"></span>
+                        Forma de pago
+                    </button>
                 </label>
                 <div class="home__box__content container__payment__methods home__box--hidden">
                     <p class="home__title__md">Forma de pago</p>
                     <ul class="list">
                         <li class="item-list-sm">
-                            <label for="valeDigital" class="container__btn-checkbox">
+                            <label for="valeDigital" class="container__btn-checkbox fs-16">
                                 <input type="radio" name="paymentMethods" id="valeDigital" class="checkbox">
                                 <span class="btn-checkbox"></span>
                                 <span class="icon icon-md icon-voucher"></span>
@@ -257,7 +276,7 @@
                             </label>
                         </li>
                         <li class="item-list-sm">
-                            <label for="efectivo" class="container__btn-checkbox">
+                            <label for="efectivo" class="container__btn-checkbox fs-16">
                                 <input type="radio" name="paymentMethods" id="efectivo" class="checkbox">
                                 <span class="btn-checkbox"></span>
                                 <span class="icon icon-md icon-bill"></span>
@@ -265,7 +284,7 @@
                             </label>
                         </li>
                         <li class="item-list-sm">
-                            <label for="qr" class="container__btn-checkbox">
+                            <label for="qr" class="container__btn-checkbox fs-16">
                                 <input type="radio" name="paymentMethods" id="qr" class="checkbox">
                                 <span class="btn-checkbox"></span>
                                 <span class="icon icon-md icon-qr"></span>
@@ -288,7 +307,7 @@
                     <button class="btn-n btn-n-primary-small" disabled>Siguiente</button>
                 </div>
                 <input class="btn-n btn-n-primary-small" type="submit" value="Pedir taxi" disabled>
-                <button class="btn-n btn-n-taxi-go btn--lower-box">
+                <button class="btn-n btn-n-taxi-go btn--lower-box"style="visibility: hidden">
                     <div class="spinner"></div>
                     <p class="fs-16 fw-600">4 taxis van en camino</p>
                     <span class="icon icon-right-arrow"></span>

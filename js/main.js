@@ -1,6 +1,8 @@
+const $ = (element) => document.querySelector(element);
+
 /* Close and open pop-up */
 const btnsClose = document.querySelectorAll('.pop-up .btn-n');
-const popUp = document.querySelector('.pop-up');
+const popUp = $('.pop-up');
 
 btnsClose.forEach((btnClose) => {
     btnClose.addEventListener('click', () => {
@@ -9,27 +11,27 @@ btnsClose.forEach((btnClose) => {
 });
 
 /* Continue with login  */
-const btnNextLogin = document.querySelector('.login__part-one > .btn-n-primary');
-const btnBackLogin = document.querySelector('.login__part-two > .btn-n-secondary');
-const partOneLogin = document.querySelector('.login__part-one');
-const partTwoLogin = document.querySelector('.login__part-two');
+const btnNextLogin = $('.login__part-one > .btn-n-primary');
+const btnBackLogin = $('.login__part-two > .btn-n-secondary');
+const partOneLogin = $('.login__part-one');
+const partTwoLogin = $('.login__part-two');
 
 if (partOneLogin && partTwoLogin) {
     btnNextLogin.addEventListener('click' , () => {
-        partOneLogin.style.display = "none";
-        partTwoLogin.style.display = "initial";
+        partOneLogin.style.display = 'none'
+        partTwoLogin.style.display = 'flex'
     });
     
     btnBackLogin.addEventListener('click' , () => {
-        partOneLogin.style.display = "initial";
-        partTwoLogin.style.display = "none";
+        partOneLogin.style.display = 'flex'
+        partTwoLogin.style.display = 'none'
     });    
 }
 
 /* Show password */
-const btnShowPassword = document.querySelector('.icon-eye');
-const btnHiddenPassword = document.querySelector('.icon-eye-block');
-const fieldPassword = document.querySelector('.login__input[type="password"]');
+const btnShowPassword = $('.icon-eye');
+const btnHiddenPassword = $('.icon-eye-block');
+const fieldPassword = $('.login__input[type="password"]');
 
 if (btnShowPassword && btnHiddenPassword) {
     btnShowPassword.addEventListener('click', () => {
@@ -46,51 +48,109 @@ if (btnShowPassword && btnHiddenPassword) {
 }
 
 /* Close and open menu*/
-const btnMenuOpen = document.querySelector('.btn-n-menu');
-const btnMenuClose = document.querySelector('.btn-n-menu__close');
-const homeMenu = document.querySelector('.home__menu__side');
+const btnMenuOpen = $('.btn-n-menu');
+const btnMenuClose = $('.btn-n-menu__close');
+const homeMenu = $('.home__menu__side');
 
 if (btnMenuOpen && btnMenuClose) {
-    btnMenuOpen.addEventListener('click', () => {showSection(homeMenu)});
-    
-    btnMenuClose.addEventListener('click', () => {showSection(homeMenu)});
+    btnMenuOpen.addEventListener('click', () => {homeMenu.style.transform = 'translateX(0)'});
+    btnMenuClose.addEventListener('click', () => {homeMenu.style.transform = 'translateX(2000%)'});
 }
 
-/* For continue the process */
-const allBtnsBoxHome = document.querySelectorAll('.home__box__container__btn')
-const btnBoxHomeOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
-const btnBoxHomeDestiny = document.querySelector('.home__box__container__btn[data-section="destino"]');
-const btnBoxHomeTypeTaxi = document.querySelector('.home__box__container__btn[data-section="tipoTaxi"]');
-const btnBoxHomePaymentMethods = document.querySelector('.home__box__container__btn[data-section="formaPago"]')
-const contentBoxOrigin = document.querySelector('.home__box__container__btn[data-section="origen"] + .home__box__content');
-const contentBoxDestiny = document.querySelector('.home__box__container__btn[data-section="destino"] + .home__box__content');
-const contentBoxTypeTaxi = document.querySelector('.home__box__container__btn[data-section="tipoTaxi"] + .home__box__content');
-const contentBoxPaymentMethods = document.querySelector('.home__box__container__btn[data-section="formaPago"] + .home__box__content');
+/* Open and close options of the menu */
+const btnsDropdown = document.querySelectorAll(".home__box__container__btn");
+const optionsMenu = document.querySelectorAll(".home__box__content");
+
+function hideAllMenus(btnPressed) {
+  const allMenu = document.querySelectorAll(
+    ".home__box__container__btn[data-section] + .home__box__content"
+  );
+  console.log(allMenu);
+  const menuActive = $(
+    `.home__box__container__btn[data-section="${btnPressed}"]`
+  );
+  allMenu.forEach((menu) => {
+    if (btnPressed) {
+      menu.classList.add("home__box--hidden");
+    }
+  });
+}
+
+function stateBtns(btnMenu, btnPressed) {
+  btnMenu.forEach((btn) => {
+    const optionMenu = $(
+      `.home__box__container__btn[data-section="${btnPressed}"] + .home__box__content`
+    );
+    if (btnPressed === btn.dataset.section) {
+      optionMenu.classList.toggle("home__box--hidden");
+      optionMenu.classList.toggle("home__box__content--open");
+      if (!["tipoTaxi", "formaPago"].includes(btnPressed)) {
+        var iconArrow = btn.children[1].children[1];
+        iconArrow.classList.toggle("icon--rotate-90");
+      }
+    } else {
+      try {
+        btn.children[1].children[1].classList.remove("icon--rotate-90");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  });
+}
+
+const btnCloseMenu = document.querySelectorAll('.home__container__row .icon.icon-close')
+
+
+btnsDropdown.forEach((btn) => {
+  btn.addEventListener("mouseup", () => {
+    let btnPressed = btn.dataset.section;
+    // hideAllMenus();
+    stateBtns(btnsDropdown, btnPressed);
+  });
+});
+
+// const allBtnsBoxHome = document.querySelectorAll('.home__box__container__btn')
+/* const contentBoxes = document.querySelectorAll('.home__box__container__btn[data-section] + .home__box__content');
 
 function showSection(section) {
     section.classList.toggle('home__box--show')
 }
 
-if (allBtnsBoxHome) {
-    btnBoxHomeOrigin.addEventListener('click', () => {showSection(contentBoxOrigin)});
-    btnBoxHomeDestiny.addEventListener('click', () => {showSection(contentBoxDestiny)});
-    btnBoxHomeTypeTaxi.addEventListener('click', () => {showSection(contentBoxTypeTaxi)});
-    btnBoxHomePaymentMethods.addEventListener('click', () => {showSection(contentBoxPaymentMethods)});
+function hiddenSection() {
+    contentBoxes.forEach( (contentBox) => {
+        contentBox.classList.replace('home__box--show','home__box--hidden')
+    })
 }
 
+if (allBtnsBoxHome) {
+    allBtnsBoxHome.forEach( (btnHome) => {
+        btnHome.addEventListener('click', () => {
+            hiddenSection()
+            btnHome.firstElementChild.checked = 'true'
+            allBtnsBoxHome.forEach((btnHome) => {
+                if (btnHome.firstElementChild.checked) {
+                    const contentBox = $(`.home__box__container__btn[data-section="${btnHome.htmlFor}"] + .home__box__content`)
+                    showSection(contentBox)
+                }
+            })
+        })
+    })
+} */
+
 /* Show my current location */
-const contentHome = document.querySelector('.content__home');
-const btnFixedLocationStrat = document.querySelector('.box__ubication__fixed[data-section="origen"]');
-const btnFixedWithoutLocation = document.querySelector('.box__ubication__fixed:not([data-section="origen"])');
+const contentHome = $('.content__home');
+const btnFixedLocationStrat = $('.box__ubication__fixed[data-section="origen"]');
+const btnFixedWithoutLocation = $('.box__ubication__fixed:not([data-section="origen"])');
 const btnBackHome = document.querySelectorAll('.btn-n-back');
 const btnHere = document.querySelectorAll('.btn-n-dark');
-const viewPickMeUpHere = document.querySelector('[data-screen="aqui-me-recoge"]');
+const viewPickMeUpHere = $('[data-screen="aqui-me-recoge"]');
 const menuDropdown = document.querySelectorAll('.home__box__content');
 const sectionsOrigin = document.querySelectorAll('.home__box__content[data-section="origen"] > .home__box--show');
-const btnDropdownOrigin = document.querySelector('.home__box__container__btn[data-section="origen"]');
-const btnCloseSetion = '<span class="icon icon-close"></span>';
+const btnDropdownOrigin = $('.home__box__container__btn[data-section="origen"]');
+const btnCloseSetion = document.createElement('span');
+btnCloseSetion.classList.add('icon','icon-close')
 const sectionMenuHome = document.querySelectorAll('.home__container__row');
-const showOriginLocation = document.querySelector('.container__bottom-center[data-screen="aqui-me-recoge"] .btn-n-white');
+const showOriginLocation = $('.container__bottom-center[data-screen="aqui-me-recoge"] .btn-n-white');
 const textOriginLocation = document.querySelectorAll('[data-section="origen"] .home__container__row .home__description');
 const pointsMap = document.querySelectorAll('.point-map');
 
@@ -105,10 +165,19 @@ if (contentHome) {
     btnBackHome[0].addEventListener('click', () => {backHome(viewPickMeUpHere)});
 
     btnHere[0].addEventListener('click', () => {
-        textOriginLocation[0].classList.toggle('home__box--hidden');
+        textOriginLocation[0].classList.add('home__box--hidden');
         textOriginLocation[1].classList.toggle('home__box--hidden');
         textOriginLocation[1].textContent = showOriginLocation.textContent;
-        sectionMenuHome[0].insertAdjacentHTML('beforeend', btnCloseSetion);
+        sectionMenuHome[0].insertAdjacentElement('beforeend', btnCloseSetion);
+        btnCloseSetion.classList.remove('home__box--hidden')
+        btnCloseSetion.addEventListener('click', () => {
+            sectionMenuHome[0].children[2].classList.add('home__box--hidden')
+            sectionMenuHome[0].children[3].classList.add('home__box--hidden')
+            textOriginLocation[0].classList.remove('home__box--hidden');
+            btnDropdownOrigin.classList.remove('home__box--hidden');
+            sectionsOrigin[1].classList.replace('home__box--hidden', 'home__box--show');
+            menuDropdown[0].classList.remove('home__box__container__btn');
+        })
         sectionsOrigin[1].classList.replace('home__box--show', 'home__box--hidden');
         menuDropdown[0].classList.add('home__box__container__btn');
         btnDropdownOrigin.classList.add('home__box--hidden');
@@ -117,20 +186,29 @@ if (contentHome) {
 }
 
 /* Show my current location */
-const btnFixedLocationEnd = document.querySelector('.box__ubication[data-section="destino"]');
-const viewGoingThere = document.querySelector('[data-screen="para-alla-voy"]');
-const sectionsDestiny = document.querySelector('.home__box__content[data-section="destino"] > .home__box--show');
-const btnDropdownDestiny = document.querySelector('.home__box__container__btn[data-section="destino"]');
-const showDestinyLocation = document.querySelector('.container__bottom-center[data-screen="para-alla-voy"] .btn-n-white');
+const btnFixedLocationEnd = $('.box__ubication[data-section="destino"]');
+const viewGoingThere = $('[data-screen="para-alla-voy"]');
+const sectionsDestiny = $('.home__box__content[data-section="destino"] > .home__box--show');
+const btnDropdownDestiny = $('.home__box__container__btn[data-section="destino"]');
+const showDestinyLocation = $('.container__bottom-center[data-screen="para-alla-voy"] .btn-n-white');
 const textDestinyLocation = document.querySelectorAll('[data-section="destino"] .home__container__row .home__description');
-const route = document.querySelector('.route')
-const digitalVoucher = document.querySelector('.container__payment__methods .item-list-sm');
+const route = $('.route')
+const digitalVoucher = $('.container__payment__methods .item-list-sm');
 
 function showLocation(msg) {
     textDestinyLocation[0].classList.toggle('home__box--hidden');
     textDestinyLocation[1].classList.toggle('home__box--hidden');
     textDestinyLocation[1].textContent = msg;
-    sectionMenuHome[1].insertAdjacentHTML('beforeend', btnCloseSetion);
+    sectionMenuHome[1].insertAdjacentElement('beforeend', btnCloseSetion);
+    sectionMenuHome[1].children[3].classList.remove('home__box--hidden')
+    btnCloseSetion.addEventListener('click', () => {
+        sectionMenuHome[1].children[3].classList.add('home__box--hidden')
+        textDestinyLocation[0].classList.remove('home__box--hidden');
+        textDestinyLocation[1].classList.add('home__box--hidden');    
+        menuDropdown[1].classList.toggle('home__box__container__btn');
+        sectionsDestiny.classList.replace('home__box--hidden', 'home__box--show');
+        btnDropdownDestiny.classList.toggle('home__box--hidden');
+    })
     sectionsDestiny.classList.replace('home__box--show', 'home__box--hidden');
     menuDropdown[1].classList.add('home__box__container__btn');
     btnDropdownDestiny.classList.add('home__box--hidden');
@@ -159,16 +237,17 @@ if (contentHome) {
 
 /* Choose type of taxi */
 const allTypeTaxis = document.querySelectorAll('.btn-n-type-taxi');
-const sectionsTypeTaxi = document.querySelector('.home__box__content[data-section="tipoTaxi"]');
-const showTaxiChosen = document.querySelector('.container__taxi__chosen');
-const taxi = document.querySelector('.content__taxi__chosen');
-const sectionCharacteristics = document.querySelector('.container__characteristics__taxi');
+const sectionsTypeTaxi = $('.home__box__content[data-section="tipoTaxi"]');
+const showTaxiChosen = $('.container__taxi__chosen');
+const taxi = $('.content__taxi__chosen');
+const sectionCharacteristics = $('.container__characteristics__taxi');
+const btnBoxHomeTypeTaxi = $('.home__box__container__btn[data-section="tipoTaxi"]');
 
 if (allTypeTaxis) {
     allTypeTaxis.forEach( (typeTaxi) => {
         typeTaxi.addEventListener('click', () => {
             btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
-            sectionsTypeTaxi.classList.replace('home__box--show', 'home__box--hidden');
+            sectionsTypeTaxi.classList.add('home__box--hidden');
             taxi.children[0].classList.add(typeTaxi.children[0].classList[2]);
             taxi.children[1].innerText = typeTaxi.children[1].textContent;
             taxi.children[2].innerText = typeTaxi.children[2].textContent;
@@ -179,9 +258,12 @@ if (allTypeTaxis) {
 }
 
 /* Choose characterstics of the taxi */
+/* ********************************* */
+/* En caso de usar checkbox          */
+/* ********************************* */
 const containerCheckboxsCharacteristics = document.querySelectorAll('.container__characteristics__taxi .container__btn-checkbox');
 const checkboxsCharacteristics = document.querySelectorAll('.container__characteristics__taxi input');
-const agreeCharacteristics = document.querySelector('.container__characteristics__taxi .btn-n-primary-small');
+const agreeCharacteristics = $('.container__characteristics__taxi .btn-n-primary-small');
 
 var check = 0;
 checkboxsCharacteristics.forEach( (checkbox) => {
@@ -205,11 +287,11 @@ agreeCharacteristics.addEventListener('click', () => {
 
 /* Choosen payment methods */
 const containerCheckboxsPaymenMethods = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
-const agreePaymenMethods = document.querySelector('.container__payment__methods .home__box__content + .btn-n-primary-small');
-const containerDataVoucher = document.querySelector('.container__payment__methods .home__box__content')
-const enterVoucher = document.querySelector('.container__payment__methods .home__box__content .btn-n-primary-small')
-const numberVoucher =  document.querySelector('.home__input[type="number"]')
-const passwordVoucher =  document.querySelector('.home__input[type="password"]')
+const agreePaymenMethods = $('.container__payment__methods .home__box__content + .btn-n-primary-small');
+const containerDataVoucher = $('.container__payment__methods .home__box__content')
+const enterVoucher = $('.container__payment__methods .home__box__content .btn-n-primary-small')
+const numberVoucher =  $('.home__input[type="number"]')
+const passwordVoucher =  $('.home__input[type="password"]')
 
 
 containerCheckboxsPaymenMethods.forEach( (checkbox) => {
@@ -246,10 +328,10 @@ enterVoucher.addEventListener('click', () => {
 })
 
 /* detail of the request */
-const containerDetailRequest = document.querySelector('.container-request')
+const containerDetailRequest = $('.container-request')
 const details = document.querySelectorAll('.detail-section > p:not(.fw-600)')
 const detailsIcon = document.querySelectorAll('.detail-section > span')
-const orderTaxi = document.querySelector('.btn-n-primary-small[type="submit"]')
+const orderTaxi = $('.btn-n-primary-small[type="submit"]')
 const choosenPaymenMethod = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
 
 
@@ -258,7 +340,7 @@ const LabelForWhoOrderTaxi = document.querySelectorAll('label[class="home__btn"]
 orderTaxi.disabled = false
 containerDetailRequest.style.display = 'none'
 
-const detailCharacteristics = document.querySelector('.detail-section:nth-child(7)')
+const detailCharacteristics = $('.detail-section:nth-child(7)')
 
 orderTaxi.addEventListener('click', () => {
     containerDetailRequest.style.display = 'flex'
@@ -298,18 +380,18 @@ orderTaxi.addEventListener('click', () => {
 })
 
 /* order another taxi */
-const conatinerDriverAssigned = document.querySelector('.container__driver-assigned')
-const btnOrderAnotherTaxi = document.querySelector('.container__driver-assigned .btn-n-lg')
-const mainMenu = document.querySelector('.content__home')
+const conatinerDriverAssigned = $('.container__driver-assigned')
+const btnOrderAnotherTaxi = $('.container__driver-assigned .btn-n-lg')
+const mainMenu = $('.content__home')
 
 btnOrderAnotherTaxi.addEventListener('click', () => {
     alert("SDASs")
 })
 
 /* show confirmed taxis */
-const btnShowConfirmedTaxis = document.querySelector('.content__home .btn-n-taxi-go')
-const containerOrderTaxis = document.querySelector('.container__confirmed-taxis')
-const btnBack = document.querySelector('.container__confirmed-taxis .btn-n-primary-small')
+const btnShowConfirmedTaxis = $('.content__home .btn-n-taxi-go')
+const containerOrderTaxis = $('.container__confirmed-taxis')
+const btnBack = $('.container__confirmed-taxis .btn-n-primary-small')
 
 btnShowConfirmedTaxis.addEventListener('click', () => {
     mainMenu.classList.toggle('home__box--hidden')
@@ -320,3 +402,14 @@ btnBack.addEventListener('click', () => {
     mainMenu.classList.toggle('home__box--hidden')
     containerOrderTaxis.classList.toggle('home__box--hidden')
 })
+
+/* Select preferences */
+const preference = $('.characteristics__taxi__select')
+const containerOption = $('.container-selected-option')
+preference.addEventListener('change', ()=> {
+    const selectedOption = preference.options[preference.selectedIndex].textContent;
+    const option = `<div class="selected-option"><p>${selectedOption}</p><span class="icon icon-close icon-sm-close"></span></div>`
+    containerOption.insertAdjacentHTML('beforeend', option)
+    console.log(selectedOption);
+})
+
