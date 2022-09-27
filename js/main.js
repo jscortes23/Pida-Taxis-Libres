@@ -147,8 +147,6 @@ const viewPickMeUpHere = $('[data-screen="aqui-me-recoge"]');
 const menuDropdown = document.querySelectorAll('.home__box__content');
 const sectionsOrigin = document.querySelectorAll('.home__box__content[data-section="origen"] > .home__box--show');
 const btnDropdownOrigin = $('.home__box__container__btn[data-section="origen"]');
-const btnCloseSetion = document.createElement('span');
-btnCloseSetion.classList.add('icon','icon-close')
 const sectionMenuHome = document.querySelectorAll('.home__container__row');
 const showOriginLocation = $('.container__bottom-center[data-screen="aqui-me-recoge"] .btn-n-white');
 const textOriginLocation = document.querySelectorAll('[data-section="origen"] .home__container__row .home__description');
@@ -168,10 +166,10 @@ if (contentHome) {
         textOriginLocation[0].classList.add('home__box--hidden');
         textOriginLocation[1].classList.toggle('home__box--hidden');
         textOriginLocation[1].textContent = showOriginLocation.textContent;
-        sectionMenuHome[0].insertAdjacentElement('beforeend', btnCloseSetion);
-        btnCloseSetion.classList.remove('home__box--hidden')
-        btnCloseSetion.addEventListener('click', () => {
+        sectionMenuHome[0].children[3].classList.remove('home__box--hidden')
+        sectionMenuHome[0].children[3].addEventListener('click', () => {
             sectionMenuHome[0].children[2].classList.add('home__box--hidden')
+            sectionMenuHome[0].children[3].classList.add('home__box--hidden')
             sectionMenuHome[0].children[3].classList.add('home__box--hidden')
             textOriginLocation[0].classList.remove('home__box--hidden');
             btnDropdownOrigin.classList.remove('home__box--hidden');
@@ -199,9 +197,9 @@ function showLocation(msg) {
     textDestinyLocation[0].classList.toggle('home__box--hidden');
     textDestinyLocation[1].classList.toggle('home__box--hidden');
     textDestinyLocation[1].textContent = msg;
-    sectionMenuHome[1].insertAdjacentElement('beforeend', btnCloseSetion);
     sectionMenuHome[1].children[3].classList.remove('home__box--hidden')
-    btnCloseSetion.addEventListener('click', () => {
+    sectionMenuHome[1].children[3].addEventListener('click', () => {
+        
         sectionMenuHome[1].children[3].classList.add('home__box--hidden')
         textDestinyLocation[0].classList.remove('home__box--hidden');
         textDestinyLocation[1].classList.add('home__box--hidden');    
@@ -242,6 +240,7 @@ const showTaxiChosen = $('.container__taxi__chosen');
 const taxi = $('.content__taxi__chosen');
 const sectionCharacteristics = $('.container__characteristics__taxi');
 const btnBoxHomeTypeTaxi = $('.home__box__container__btn[data-section="tipoTaxi"]');
+const btnCloseTaxiChosen = $('.container__taxi__chosen .icon.icon-close');
 
 if (allTypeTaxis) {
     allTypeTaxis.forEach( (typeTaxi) => {
@@ -255,7 +254,40 @@ if (allTypeTaxis) {
             sectionCharacteristics.classList.replace('home__box--hidden', 'home__box--show');
         })
     })
+    btnCloseTaxiChosen.addEventListener('click', () => {
+        btnBoxHomeTypeTaxi.classList.remove('home__box--hidden');
+        sectionsTypeTaxi.classList.remove('home__box--hidden');
+        taxi.children[0].classList.remove(taxi.firstElementChild.classList[2]);
+        showTaxiChosen.classList.replace('home__box--show', 'home__box--hidden');
+        sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden');
+    })
 }
+
+/* Select preferences */
+const preference = $('.characteristics__taxi__select')
+const menuDropdownpreference = $('.characteristics__taxi__container-select')
+const containerOption = $('.container-selected-option')
+const choosenCharacteristics = []
+
+menuDropdownpreference.addEventListener('mousedown', () => {
+    menuDropdownpreference.firstElementChild.classList.add('icon--rotate-90')
+})
+
+preference.addEventListener('change', () => {
+    menuDropdownpreference.firstElementChild.classList.remove('icon--rotate-90')
+    if (preference.selectedIndex) {
+        const selectedOption = preference.options[preference.selectedIndex].textContent;
+        const option = document.createElement('div')
+        option.classList.add('selected-option')
+        option.appendChild(document.createElement('p')).textContent = selectedOption
+        option.appendChild(document.createElement('span')).classList.add('icon', 'icon-close', 'icon-sm-close')
+        option.lastChild.addEventListener('click', () => {
+            containerOption.removeChild(option)
+        })
+        containerOption.insertAdjacentElement('beforeend', option)
+    }
+})
+
 
 /* Choose characterstics of the taxi */
 /* ********************************* */
@@ -273,7 +305,7 @@ checkboxsCharacteristics.forEach( (checkbox) => {
     })
 });
 
-const choosenCharacteristics = []
+
 agreeCharacteristics.addEventListener('click', () => {
     containerCheckboxsCharacteristics.forEach( (checkbox) => {
         !checkbox.firstElementChild.checked ? checkbox.style.display = 'none' : checkbox.children[1].style.display = 'none';
@@ -403,13 +435,5 @@ btnBack.addEventListener('click', () => {
     containerOrderTaxis.classList.toggle('home__box--hidden')
 })
 
-/* Select preferences */
-const preference = $('.characteristics__taxi__select')
-const containerOption = $('.container-selected-option')
-preference.addEventListener('change', ()=> {
-    const selectedOption = preference.options[preference.selectedIndex].textContent;
-    const option = `<div class="selected-option"><p>${selectedOption}</p><span class="icon icon-close icon-sm-close"></span></div>`
-    containerOption.insertAdjacentHTML('beforeend', option)
-    console.log(selectedOption);
-})
+
 

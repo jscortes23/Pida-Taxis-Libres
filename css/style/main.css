@@ -998,6 +998,12 @@ img, picture {
     border-bottom: 1.5px solid var(--gris-claro);
 }
 
+.container__title__taxi__chosen {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .content__taxi__chosen {
     width: 100%;
     padding: 19px 12px;
