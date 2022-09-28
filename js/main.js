@@ -276,15 +276,19 @@ menuDropdownpreference.addEventListener('mousedown', () => {
 preference.addEventListener('change', () => {
     menuDropdownpreference.firstElementChild.classList.remove('icon--rotate-90')
     if (preference.selectedIndex) {
-        const selectedOption = preference.options[preference.selectedIndex].textContent;
-        const option = document.createElement('div')
-        option.classList.add('selected-option')
-        option.appendChild(document.createElement('p')).textContent = selectedOption
-        option.appendChild(document.createElement('span')).classList.add('icon', 'icon-close', 'icon-sm-close')
-        option.lastChild.addEventListener('click', () => {
-            containerOption.removeChild(option)
-        })
-        containerOption.insertAdjacentElement('beforeend', option)
+        const selectedOption = preference.options[preference.selectedIndex];
+        const optionExist = document.getElementById(selectedOption.textContent)
+        if (!optionExist) {
+            const option = document.createElement('div')
+            option.id = selectedOption.textContent
+            option.classList.add('selected-option')
+            option.appendChild(document.createElement('p')).textContent = selectedOption.textContent
+            option.appendChild(document.createElement('span')).classList.add('icon', 'icon-close', 'icon-sm-close')
+            containerOption.insertAdjacentElement('beforeend', option)
+            option.lastChild.addEventListener('click', () => {
+                containerOption.removeChild(option)
+            })
+        }
     }
 })
 
@@ -304,7 +308,6 @@ checkboxsCharacteristics.forEach( (checkbox) => {
         check > 0 ? agreeCharacteristics.disabled = false : agreeCharacteristics.disabled = true;
     })
 });
-
 
 agreeCharacteristics.addEventListener('click', () => {
     containerCheckboxsCharacteristics.forEach( (checkbox) => {
