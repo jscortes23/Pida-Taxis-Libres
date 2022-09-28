@@ -331,8 +331,9 @@ containerCheckboxsPaymenMethods.forEach( (checkbox) => {
         agreePaymenMethods.disabled = false
     })
 })
-
+// home__box__content--open
 agreePaymenMethods.addEventListener('click', () => {
+    containerDataVoucher.classList.add('home__box__content--open')
     containerCheckboxsPaymenMethods.forEach( (checkbox) => {
         if (!checkbox.firstElementChild.checked) {
             checkbox.style.display = 'none'
@@ -341,7 +342,7 @@ agreePaymenMethods.addEventListener('click', () => {
             containerDataVoucher.classList.toggle('home__box--hidden')
         }
         agreePaymenMethods.classList.toggle('home__box--hidden')
-        btnBoxHomePaymentMethods.classList.toggle('home__box--hidden')
+        // btnBoxHomePaymentMethods.classList.toggle('home__box--hidden')
     })
 })
 
