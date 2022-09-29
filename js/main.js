@@ -284,6 +284,7 @@ preference.addEventListener('change', () => {
             option.classList.add('selected-option')
             option.appendChild(document.createElement('p')).textContent = selectedOption.textContent
             option.appendChild(document.createElement('span')).classList.add('icon', 'icon-close', 'icon-sm-close')
+            choosenCharacteristics.push(selectedOption.textContent)
             containerOption.insertAdjacentElement('beforeend', option)
             option.lastChild.addEventListener('click', () => {
                 containerOption.removeChild(option)
@@ -291,7 +292,6 @@ preference.addEventListener('change', () => {
         }
     }
 })
-
 
 /* Choose characterstics of the taxi */
 /* ********************************* */
@@ -310,14 +310,15 @@ checkboxsCharacteristics.forEach( (checkbox) => {
 });
 
 agreeCharacteristics.addEventListener('click', () => {
-    containerCheckboxsCharacteristics.forEach( (checkbox) => {
+    sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden')
+    /* containerCheckboxsCharacteristics.forEach( (checkbox) => {
         !checkbox.firstElementChild.checked ? checkbox.style.display = 'none' : checkbox.children[1].style.display = 'none';
         agreeCharacteristics.style.display = 'none';
         checkbox.style.cursor = 'text'
         if (checkbox.firstElementChild.checked) {
             choosenCharacteristics.push(checkbox)
         }
-    });
+    }); */
 });
 
 /* Choosen payment methods */
@@ -405,9 +406,10 @@ orderTaxi.addEventListener('click', () => {
     })
 
     /* characteristics of the taxi */
+    /* With checkbox */
     choosenCharacteristics.forEach( (characteristics) => {
-        const icon = characteristics.children[2].classList[2]
-        const IconCharacteristics = `<span class="icon icon-sm-detail ${icon}"></span>`
+        // const icon = characteristics.children[2].classList[2]
+        const IconCharacteristics = `<p class="fs-18">${characteristics}</p>`
         detailCharacteristics.insertAdjacentHTML('beforeend', IconCharacteristics)
     })
 

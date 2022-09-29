@@ -868,7 +868,6 @@ img, picture {
     margin-left: 32px;
 }
 
-
 /* Section my current location */
 .container__bottom-center {
     position: fixed;
@@ -1100,7 +1099,7 @@ img, picture {
 .details-request {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4, min-content);
     list-style: none;
 }
 
