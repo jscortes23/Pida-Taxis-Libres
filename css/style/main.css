@@ -1206,20 +1206,25 @@ img, picture {
     width: 270px;
     height: 8px;
     border-radius: 8px;
-    border-radius: 8px;
-    appearance: none;
-    -webkit-appearance: none;
     background-color: var(--gris-claro);
+    overflow: hidden;
 }
 
-.progress-bar::-webkit-progress-bar {
-    border-radius: 8px;
-    background-color: var(--gris-claro);
-}
-
-.progress-bar::-webkit-progress-value {
+.percentege {
+    height: inherit;
+    width: 100%;
     border-radius: 8px;
     background-color: var(--morado);
+    animation: 2s load infinite ease-in-out;
+}
+
+@keyframes load {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 /* Section driver assigned */
