@@ -172,7 +172,7 @@ if (contentHome) {
             sectionMenuHome[0].children[3].classList.add('home__box--hidden')
             sectionMenuHome[0].children[3].classList.add('home__box--hidden')
             textOriginLocation[0].classList.remove('home__box--hidden');
-            btnDropdownOrigin.classList.remove('home__box--hidden');
+            btnDropdownOrigin.classList.add('home__box--hidden');
             sectionsOrigin[1].classList.replace('home__box--hidden', 'home__box--show');
             menuDropdown[0].classList.remove('home__box__container__btn');
         })
@@ -199,13 +199,14 @@ function showLocation(msg) {
     textDestinyLocation[1].textContent = msg;
     sectionMenuHome[1].children[3].classList.remove('home__box--hidden')
     sectionMenuHome[1].children[3].addEventListener('click', () => {
-        
         sectionMenuHome[1].children[3].classList.add('home__box--hidden')
         textDestinyLocation[0].classList.remove('home__box--hidden');
         textDestinyLocation[1].classList.add('home__box--hidden');    
         menuDropdown[1].classList.toggle('home__box__container__btn');
         sectionsDestiny.classList.replace('home__box--hidden', 'home__box--show');
-        btnDropdownDestiny.classList.toggle('home__box--hidden');
+        btnDropdownDestiny.classList.add('home__box--hidden');
+        pointsMap[0].classList.add('home__box--hidden');
+        pointsMap[1].classList.add('home__box--hidden');
     })
     sectionsDestiny.classList.replace('home__box--show', 'home__box--hidden');
     menuDropdown[1].classList.add('home__box__container__btn');
@@ -242,9 +243,17 @@ const sectionCharacteristics = $('.container__characteristics__taxi');
 const btnBoxHomeTypeTaxi = $('.home__box__container__btn[data-section="tipoTaxi"]');
 const btnCloseTaxiChosen = $('.container__taxi__chosen .icon.icon-close');
 
+function removeAlloption() {
+    const options = [...containerOption.children]
+    options.forEach( (option) => {
+        option.remove()
+    })
+}
+
 if (allTypeTaxis) {
     allTypeTaxis.forEach( (typeTaxi) => {
         typeTaxi.addEventListener('click', () => {
+            orderTaxi.classList.add('home__box--hidden');
             btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
             sectionsTypeTaxi.classList.add('home__box--hidden');
             taxi.children[0].classList.add(typeTaxi.children[0].classList[2]);
@@ -252,14 +261,19 @@ if (allTypeTaxis) {
             taxi.children[2].innerText = typeTaxi.children[2].textContent;
             showTaxiChosen.classList.replace('home__box--hidden', 'home__box--show');
             sectionCharacteristics.classList.replace('home__box--hidden', 'home__box--show');
+            btnsDropdown[5].classList.add('home__box--hidden')
         })
     })
     btnCloseTaxiChosen.addEventListener('click', () => {
-        btnBoxHomeTypeTaxi.classList.remove('home__box--hidden');
+        btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
         sectionsTypeTaxi.classList.remove('home__box--hidden');
         taxi.children[0].classList.remove(taxi.firstElementChild.classList[2]);
         showTaxiChosen.classList.replace('home__box--show', 'home__box--hidden');
         sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden');
+        sectionCharacteristics.children[1].classList.remove('home__box--hidden')
+        sectionCharacteristics.children[3].classList.remove('home__box--hidden')
+        orderTaxi.classList.remove('home__box--hidden');
+        removeAlloption();
     })
 }
 
@@ -297,6 +311,7 @@ preference.addEventListener('change', () => {
 /* ********************************* */
 /* En caso de usar checkbox          */
 /* ********************************* */
+const containerPaymentMethods = $('.container__payment__methods');
 const containerCheckboxsCharacteristics = document.querySelectorAll('.container__characteristics__taxi .container__btn-checkbox');
 const checkboxsCharacteristics = document.querySelectorAll('.container__characteristics__taxi input');
 const agreeCharacteristics = $('.container__characteristics__taxi .btn-n-primary-small');
@@ -310,7 +325,13 @@ checkboxsCharacteristics.forEach( (checkbox) => {
 });
 
 agreeCharacteristics.addEventListener('click', () => {
-    sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden')
+    // sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden')
+    orderTaxi.classList.remove('home__box--hidden');
+    btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
+    sectionCharacteristics.children[1].classList.add('home__box--hidden')
+    sectionCharacteristics.children[3].classList.add('home__box--hidden')
+    containerPaymentMethods.classList.remove('home__box--hidden')
+    containerPaymentMethods.classList.add('home__box__content--open')
     /* containerCheckboxsCharacteristics.forEach( (checkbox) => {
         !checkbox.firstElementChild.checked ? checkbox.style.display = 'none' : checkbox.children[1].style.display = 'none';
         agreeCharacteristics.style.display = 'none';
@@ -322,32 +343,27 @@ agreeCharacteristics.addEventListener('click', () => {
 });
 
 /* Choosen payment methods */
-const containerCheckboxsPaymenMethods = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
-const agreePaymenMethods = $('.container__payment__methods .home__box__content + .btn-n-primary-small');
+const containerCheckboxsPaymentMethods = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
+const agreePaymentMethods = $('.container__payment__methods .home__box__content + .btn-n-primary-small');
 const containerDataVoucher = $('.container__payment__methods .home__box__content')
 const enterVoucher = $('.container__payment__methods .home__box__content .btn-n-primary-small')
 const numberVoucher =  $('.home__input[type="number"]')
 const passwordVoucher =  $('.home__input[type="password"]')
+const containerCheckboxPaymentMethods = $('.container__payment__methods .list');
 
-
-containerCheckboxsPaymenMethods.forEach( (checkbox) => {
-    checkbox.addEventListener('click', () => {
-        agreePaymenMethods.disabled = false
-    })
-})
-// home__box__content--open
-agreePaymenMethods.addEventListener('click', () => {
-    containerDataVoucher.classList.add('home__box__content--open')
-    containerCheckboxsPaymenMethods.forEach( (checkbox) => {
-        if (!checkbox.firstElementChild.checked) {
+function hiddenCheckbox() {
+    containerCheckboxsPaymentMethods.forEach( (checkbox) => {
+        const checked = $('.container__payment__methods .checkbox:checked')
+        if (checked != null && !checkbox.firstElementChild.checked) {
             checkbox.style.display = 'none'
+        } else {
+            checkbox.style.display = 'grid'
         }
-        if (containerCheckboxsPaymenMethods[0].firstElementChild.checked) {
-            containerDataVoucher.classList.toggle('home__box--hidden')
-        }
-        agreePaymenMethods.classList.toggle('home__box--hidden')
-        // btnBoxHomePaymentMethods.classList.toggle('home__box--hidden')
     })
+}
+
+containerCheckboxPaymentMethods.addEventListener('click', () => {
+    hiddenCheckbox()
 })
 
 numberVoucher.addEventListener('input', () => {
@@ -359,7 +375,7 @@ passwordVoucher.addEventListener('input', () => {
 })
 
 enterVoucher.addEventListener('click', () => {
-    containerCheckboxsPaymenMethods[0].childNodes[6].textContent = `Vale Digital / ${numberVoucher.value}`
+    containerCheckboxsPaymentMethods[0].childNodes[6].textContent = `Vale Digital / ${numberVoucher.value}`
     containerDataVoucher.classList.toggle('home__box--hidden')
     // orderTaxi.disabled = false
 })
@@ -369,8 +385,7 @@ const containerDetailRequest = $('.container-request')
 const details = document.querySelectorAll('.detail-section > p:not(.fw-600)')
 const detailsIcon = document.querySelectorAll('.detail-section > span')
 const orderTaxi = $('.btn-n-primary-small[type="submit"]')
-const choosenPaymenMethod = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
-
+const choosenPaymentMethod = document.querySelectorAll('.container__payment__methods .container__btn-checkbox');
 
 const ForWhoOrderTaxi = document.querySelectorAll('input[name="eleccion"]')
 const LabelForWhoOrderTaxi = document.querySelectorAll('label[class="home__btn"]')
@@ -397,8 +412,8 @@ orderTaxi.addEventListener('click', () => {
     details[4].textContent = taxi.children[1].textContent
     detailsIcon[0].classList.add(taxi.children[0].classList[2])
 
-    /* Payment methods */
-    choosenPaymenMethod.forEach( (choosen) => {
+    /* Paymentt methods */
+    choosenPaymentMethod.forEach( (choosen) => {
         if (choosen.firstElementChild.checked) {
             details[5].textContent = choosen.innerText
             detailsIcon[1].classList.add(choosen.children[2].classList[2])

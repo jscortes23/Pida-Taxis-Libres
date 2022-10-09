@@ -3,6 +3,7 @@ const $ = (element) => document.querySelector(element);
 /* Open and close options of the menu */
 const btnsDropdown = document.querySelectorAll(".home__box__container__btn");
 const optionsMenu = document.querySelectorAll(".home__box__content");
+const menu = document.querySelector(".home__box-functions");
 
 function hideAllMenus(btnPressed) {
   const allMenu = document.querySelectorAll(
