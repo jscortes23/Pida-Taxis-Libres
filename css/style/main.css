@@ -206,7 +206,9 @@ img, picture {
 }
 
 .login__input[type="number"]::-webkit-inner-spin-button,
-.login__input[type="number"]::-webkit-outer-spin-button
+.home__description[type="number"]::-webkit-inner-spin-button,
+.login__input[type="number"]::-webkit-outer-spin-button,
+.home__description[type="number"]::-webkit-outer-spin-button
 {
     -webkit-appearance: none;
     margin: 0;
@@ -848,6 +850,11 @@ img, picture {
     font-weight: 500;
     margin-bottom: 16px;
     cursor: pointer;
+}
+
+.txt-input {
+    width: 200px;
+    text-align: left;
 }
 
 .box__ubication{

@@ -78,10 +78,11 @@ function hideAllMenus(btnPressed) {
 
 function stateBtns(btnMenu, btnPressed) {
   btnMenu.forEach((btn) => {
+    console.log(btnPressed);
     const optionMenu = $(
       `.home__box__container__btn[data-section="${btnPressed}"] + .home__box__content`
     );
-    if (btnPressed === btn.dataset.section) {
+    if (btnPressed === btn.dataset.section && btnPressed !== 'celular' && btnPressed !== 'nombre') {
       optionMenu.classList.toggle("home__box--hidden");
       optionMenu.classList.toggle("home__box__content--open");
       if (!["tipoTaxi", "formaPago"].includes(btnPressed)) {
@@ -98,8 +99,42 @@ function stateBtns(btnMenu, btnPressed) {
   });
 }
 
-const btnCloseMenu = document.querySelectorAll('.home__container__row .icon.icon-close')
+const btnCloseMenu = document.querySelectorAll('.home__box__container__btn .icon.icon-close')
+const btnMenuNombre = $('.home__box__container__btn[data-section="nombre"]')
+const btnMenuCelular = $('.home__box__container__btn[data-section="celular"]')
 
+function enterValue(btn) {
+    const enterName = btn.children[1].children[1].value
+    btn.children[1].children[1].classList.add('home__box--hidden')
+    btn.children[1].children[2].textContent = enterName
+    btn.children[1].children[3].classList.remove('home__box--hidden')
+}
+
+function deleteValue(btn) {
+    btn.children[1].children[1].classList.remove('home__box--hidden')
+    btn.children[1].children[2].textContent = ''
+    btn.children[1].children[3].classList.add('home__box--hidden')
+}
+
+btnCloseMenu[0].addEventListener('click', () => {
+    deleteValue(btnMenuNombre)
+})
+
+btnCloseMenu[1].addEventListener('click', () => {
+    deleteValue(btnMenuCelular)
+})
+
+btnMenuNombre.addEventListener('keyup', (e) => {
+    if (e.key == 'Enter') {
+        enterValue(btnMenuNombre)
+    }
+})
+
+btnMenuCelular.addEventListener('keyup', (e) => {
+    if (e.key == 'Enter') {
+        enterValue(btnMenuCelular)
+    }
+})
 
 btnsDropdown.forEach((btn) => {
   btn.addEventListener("mouseup", () => {
@@ -358,6 +393,13 @@ function hiddenCheckbox() {
             checkbox.style.display = 'none'
         } else {
             checkbox.style.display = 'grid'
+        }
+        if (containerCheckboxsPaymentMethods[0].firstElementChild.checked) {
+            containerDataVoucher.classList.remove('home__box--hidden')
+            containerDataVoucher.classList.add('home__box__content--open')
+        } else {
+            containerDataVoucher.classList.add('home__box--hidden')
+            containerDataVoucher.classList.remove('home__box__content--open')
         }
     })
 }
