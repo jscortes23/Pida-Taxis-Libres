@@ -265,7 +265,7 @@
                 </div>
                 <label class="home__box__container__btn" for="formaPago" data-section="formaPago">
                     <input class="home__input-radio" id="formaPago" type="radio" name="seccion">
-                    <button class="btn-n home__box__btn">
+                    <button class="btn-n home__box__btn" disabled>
                         <span class="icon icon-bill"></span>
                         Forma de pago
                     </button>
@@ -310,10 +310,9 @@
                         <a class="login__link btn-n" href="#" target="_blank" rel="noopener noreferrer">Olvidé la contraseña</a>
                         <button class="btn-n btn-n-primary-small" disabled>Ingresar Vale Digital</button>
                     </div>
-                    <!-- <button class="btn-n btn-n-primary-small" disabled>Siguiente</button> -->
                 </div>
                 <input class="btn-n btn-n-primary-small" type="submit" value="Pedir taxi" disabled>
-                <button class="btn-n btn-n-taxi-go btn--lower-box"style="visibility: hidden">
+                <button class="btn-n btn-n-taxi-go btn--lower-box" style="visibility: hidden">
                     <div class="spinner"></div>
                     <p class="fs-16 fw-600">4 taxis van en camino</p>
                     <span class="icon icon-right-arrow"></span>
@@ -340,32 +339,32 @@
             <div class="point-map route-r" data-location="Destino"></div>
         </div>
 
-        <section class="container-request route-l">
+        <section class="container-request content__home">
             <ul class="details-request">
                 <li class="detail-section fs-17">
                     <p class="fw-600">Taxi:</p>
-                    <p class="">Para mi</p>
+                    <p>Para mi</p>
                 </li>
                 <li class="detail-section fs-17">
                     <p class="fw-600">Celular:</p>
-                    <p class="">3225661175</p>
+                    <p>3225661175</p>
                 </li>
                 <li class="detail-section fs-17">
                     <p class="fw-600">Origen:</p>
-                    <p class="">Kr 70 B # 80 - 20</p>
+                    <p>Kr 70 B # 80 - 20</p>
                 </li>
                 <li class="detail-section fs-17">
                     <p class="fw-600">Destino: </p>
-                    <p class="">Salitre mágico</p>
+                    <p>Salitre mágico</p>
                 </li>
                 <li class="detail-section grid-detail fs-17">
                     <p class="fw-600">Tipo de taxi:</p>
-                    <p class="">Normal</p>
+                    <p>Normal</p>
                     <span class="icon icon-md-detail grid-detail-icon"></span>
                 </li>
                 <li class="detail-section grid-detail fs-17">
                     <p class="fw-600">Forma de pago:</p>
-                    <p class=""></p>
+                    <p></p>
                     <span class="icon icon-md-detail grid-detail-icon"></span>
                 </li>
                 <li class="detail-section fs-17">
@@ -373,7 +372,7 @@
                 </li>
                 <li class="detail-section fs-17">
                     <p class="fw-600">Valor</p>
-                    <p class="">13.500-17.500</p>
+                    <p>13.500-17.500</p>
                 </li>
             </ul>
             <div class="container-waiting-driver">
@@ -381,7 +380,7 @@
                 <div class="progress-bar">
                     <div class="percentege"></div>
                 </div>
-                <p class="fw-600">00:28</p>
+                <p class="fw-600">00:00</p>
                 <button class="btn-n btn-n-cancel fs-17 fw-600">Cancelar solicitud</button>
             </div>
         </section>
@@ -389,20 +388,20 @@
         <section class="container__driver-assigned content__home home__box--hidden">
             <div class="driver-assigned__info">
                 <img src="/assets/imgs/foto-federico.png" alt="foto del conductor" class="driver-assigned__photo">
-                <div class="">
-                    <p class="fs-20 fw-500"><span class="icon icon-star"></span>4,8</p>
-                    <p class="fs-20 fw-500">Federico Hernández</p>
+                <div class="fs-20 fw-500">
+                    <p class="driver-assigned__score"><span class="icon icon-star"></span>4,8</p>
+                    <p>Federico Hernández</p>
                 </div>
             </div>
             <div class="driver-assigned__car">
                 <span class="icon icon-taxi"></span>
-                <div class="">
-                    <p class="fs-15 fw-500 color-light-blue">Tipo de taxi</p>
-                    <p class="fs-18 fw-500">Normal</p>
+                <div class="fw-500">
+                    <p class="fs-15 color-light-blue">Tipo de taxi</p>
+                    <p class="fs-18">Normal</p>
                 </div>
-                <div class="">
-                    <p class="fs-15 fw-500 color-light-blue">Placa</p>
-                    <p class="fs-18 fw-500">SHD211 - Chevrolet</p>
+                <div class="fw-500">
+                    <p class="fs-15 color-light-blue">Placa</p>
+                    <p class="fs-18">SHD211 - Chevrolet</p>
                 </div>
             </div>
             <div class="driver-assigned__price">
@@ -413,16 +412,16 @@
             <div class="driver-assigned__pay">
                 <div class="driver-assigned__pay-with">
                     <span class="icon icon-qr"></span>
-                    <div class="">
-                        <p class="fs-17 fw-500 color-light-blue ws-no-warp">Pagas con</p>
-                        <p class="fs-18 fw-500">Efectivo</p>
+                    <div class="fw-500">
+                        <p class="fs-17 color-light-blue ws-no-warp">Pagas con</p>
+                        <p class="fs-18">Efectivo</p>
                     </div>
                 </div>
                 <div class="driver-assigned__pay-password">
                     <span class="icon icon-padlock-blue"></span>
-                    <div class="">
-                        <p class="fs-17 fw-500 color-light-blue">Clave</p>
-                        <p class="fs-18 fw-500">50</p>
+                    <div class="fw-500">
+                        <p class="fs-17 color-light-blue">Clave</p>
+                        <p class="fs-18">50</p>
                     </div>
                 </div>
             </div>

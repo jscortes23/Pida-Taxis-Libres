@@ -70,15 +70,14 @@ function hideAllMenus(btnPressed) {
     `.home__box__container__btn[data-section="${btnPressed}"]`
   );
   allMenu.forEach((menu) => {
-    if (btnPressed) {
+    // if (btnPressed) {
       menu.classList.add("home__box--hidden");
-    }
+    // }
   });
 }
 
 function stateBtns(btnMenu, btnPressed) {
   btnMenu.forEach((btn) => {
-    console.log(btnPressed);
     const optionMenu = $(
       `.home__box__container__btn[data-section="${btnPressed}"] + .home__box__content`
     );
@@ -192,6 +191,16 @@ function backHome(view) {
     view.classList.toggle('home__box--hidden');
 }
 
+function resetFieldOrigin() {
+    sectionMenuHome[0].children[2].classList.add('home__box--hidden')
+    sectionMenuHome[0].children[3].classList.add('home__box--hidden')
+    sectionMenuHome[0].children[3].classList.add('home__box--hidden')
+    textOriginLocation[0].classList.remove('home__box--hidden');
+    btnDropdownOrigin.classList.add('home__box--hidden');
+    sectionsOrigin[1].classList.replace('home__box--hidden', 'home__box--show');
+    menuDropdown[0].classList.remove('home__box__container__btn');
+}
+
 if (contentHome) {
     /* (Aqui me recoge) */
     btnFixedLocationStrat.addEventListener('click', () => {backHome(viewPickMeUpHere)});
@@ -203,13 +212,7 @@ if (contentHome) {
         textOriginLocation[1].textContent = showOriginLocation.textContent;
         sectionMenuHome[0].children[3].classList.remove('home__box--hidden')
         sectionMenuHome[0].children[3].addEventListener('click', () => {
-            sectionMenuHome[0].children[2].classList.add('home__box--hidden')
-            sectionMenuHome[0].children[3].classList.add('home__box--hidden')
-            sectionMenuHome[0].children[3].classList.add('home__box--hidden')
-            textOriginLocation[0].classList.remove('home__box--hidden');
-            btnDropdownOrigin.classList.add('home__box--hidden');
-            sectionsOrigin[1].classList.replace('home__box--hidden', 'home__box--show');
-            menuDropdown[0].classList.remove('home__box__container__btn');
+            resetFieldOrigin()
         })
         sectionsOrigin[1].classList.replace('home__box--show', 'home__box--hidden');
         menuDropdown[0].classList.add('home__box__container__btn');
@@ -385,6 +388,7 @@ const enterVoucher = $('.container__payment__methods .home__box__content .btn-n-
 const numberVoucher =  $('.home__input[type="number"]')
 const passwordVoucher =  $('.home__input[type="password"]')
 const containerCheckboxPaymentMethods = $('.container__payment__methods .list');
+const conatinerDriverAssigned = $('.container__driver-assigned')
 
 function hiddenCheckbox() {
     containerCheckboxsPaymentMethods.forEach( (checkbox) => {
@@ -432,11 +436,15 @@ const choosenPaymentMethod = document.querySelectorAll('.container__payment__met
 const ForWhoOrderTaxi = document.querySelectorAll('input[name="eleccion"]')
 const LabelForWhoOrderTaxi = document.querySelectorAll('label[class="home__btn"]')
 orderTaxi.disabled = false
-containerDetailRequest.style.display = 'none'
 
+const mainMenu = $('.content__home')
 const detailCharacteristics = $('.detail-section:nth-child(7)')
+const waitTime = $('.container-waiting-driver p:not(.fs-17).fw-600')
+let time = 8
+waitTime.textContent = `00:${time}`
 
 orderTaxi.addEventListener('click', () => {
+    mainMenu.classList.add('home__box--hidden')
     containerDetailRequest.style.display = 'flex'
     /* Taxi */
     ForWhoOrderTaxi.forEach( (who) => {
@@ -472,15 +480,28 @@ orderTaxi.addEventListener('click', () => {
 
     /* Price */
     details[6].textContent = taxi.children[2].textContent
+
+    /* counterdown */
+    time = 8
+    const timmer = setInterval(() => {
+        waitTime.textContent = `00:${time}`
+        time--
+        if (time < 0) {
+            clearInterval(timmer)
+            conatinerDriverAssigned.classList.remove('home__box--hidden')
+            containerDetailRequest.style.display = 'none'
+            route.classList.add('home__box--hidden')
+            btnShowConfirmedTaxis.style.visibility = 'visible'
+        }
+    }, 1000);
 })
 
 /* order another taxi */
-const conatinerDriverAssigned = $('.container__driver-assigned')
 const btnOrderAnotherTaxi = $('.container__driver-assigned .btn-n-lg')
-const mainMenu = $('.content__home')
 
 btnOrderAnotherTaxi.addEventListener('click', () => {
-    alert("SDASs")
+    mainMenu.classList.remove('home__box--hidden')
+    conatinerDriverAssigned.classList.add('home__box--hidden')
 })
 
 /* show confirmed taxis */

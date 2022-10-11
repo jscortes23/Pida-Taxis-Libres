@@ -726,6 +726,10 @@ img, picture {
     background-image: url('/assets/icons/flecha-izquierda.svg');
 }
 
+.icon-car-small {
+    background-image: url('/assets/icons/carro-pequeno.svg');
+}
+
 .home__box__container__btn:nth-last-child(4) {
     border: none;
 }
@@ -1093,10 +1097,10 @@ img, picture {
 }
 
 .container-request {
-    width: 462px;
+    min-width: 462px;
     height: 484px;
     padding: 28px;
-    display: flex;
+    display: none;
     flex-direction: column;
     background-color: var(--blanco);
     box-shadow: var(--sombra-boton-pequeno);
@@ -1237,6 +1241,7 @@ img, picture {
 /* Section driver assigned */
 
 .container__driver-assigned {
+    min-width: 400px;
     height: auto;
     padding: 17px 21px 21px;
     border-radius: 20px;
@@ -1248,6 +1253,12 @@ img, picture {
     width: 106px;
     aspect-ratio: 1/1;
     border-radius: 4px;
+}
+
+.driver-assigned__score {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
 }
 
 .driver-assigned__info {
@@ -1315,7 +1326,7 @@ img, picture {
     width: 100%;
     display: flex;
     align-items: stretch;
-    column-gap: 12px;
+    justify-content: space-between;
 }
 
 .btn-n-small {
