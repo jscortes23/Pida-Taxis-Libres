@@ -143,33 +143,6 @@ btnsDropdown.forEach((btn) => {
   });
 });
 
-// const allBtnsBoxHome = document.querySelectorAll('.home__box__container__btn')
-/* const contentBoxes = document.querySelectorAll('.home__box__container__btn[data-section] + .home__box__content');
-
-function showSection(section) {
-    section.classList.toggle('home__box--show')
-}
-
-function hiddenSection() {
-    contentBoxes.forEach( (contentBox) => {
-        contentBox.classList.replace('home__box--show','home__box--hidden')
-    })
-}
-
-if (allBtnsBoxHome) {
-    allBtnsBoxHome.forEach( (btnHome) => {
-        btnHome.addEventListener('click', () => {
-            hiddenSection()
-            btnHome.firstElementChild.checked = 'true'
-            allBtnsBoxHome.forEach((btnHome) => {
-                if (btnHome.firstElementChild.checked) {
-                    const contentBox = $(`.home__box__container__btn[data-section="${btnHome.htmlFor}"] + .home__box__content`)
-                    showSection(contentBox)
-                }
-            })
-        })
-    })
-} */
 
 /* Show my current location */
 const contentHome = $('.content__home');
@@ -231,20 +204,24 @@ const textDestinyLocation = document.querySelectorAll('[data-section="destino"] 
 const route = $('.route')
 const digitalVoucher = $('.container__payment__methods .item-list-sm');
 
+function resetFieldDestiny() {
+    sectionMenuHome[1].children[3].classList.add('home__box--hidden')
+    textDestinyLocation[0].classList.remove('home__box--hidden');
+    textDestinyLocation[1].classList.add('home__box--hidden');    
+    menuDropdown[1].classList.toggle('home__box__container__btn');
+    sectionsDestiny.classList.replace('home__box--hidden', 'home__box--show');
+    btnDropdownDestiny.classList.add('home__box--hidden');
+    pointsMap[0].classList.add('home__box--hidden');
+    pointsMap[1].classList.add('home__box--hidden');
+}
+
 function showLocation(msg) {
     textDestinyLocation[0].classList.toggle('home__box--hidden');
     textDestinyLocation[1].classList.toggle('home__box--hidden');
     textDestinyLocation[1].textContent = msg;
     sectionMenuHome[1].children[3].classList.remove('home__box--hidden')
     sectionMenuHome[1].children[3].addEventListener('click', () => {
-        sectionMenuHome[1].children[3].classList.add('home__box--hidden')
-        textDestinyLocation[0].classList.remove('home__box--hidden');
-        textDestinyLocation[1].classList.add('home__box--hidden');    
-        menuDropdown[1].classList.toggle('home__box__container__btn');
-        sectionsDestiny.classList.replace('home__box--hidden', 'home__box--show');
-        btnDropdownDestiny.classList.add('home__box--hidden');
-        pointsMap[0].classList.add('home__box--hidden');
-        pointsMap[1].classList.add('home__box--hidden');
+        resetFieldDestiny()
     })
     sectionsDestiny.classList.replace('home__box--show', 'home__box--hidden');
     menuDropdown[1].classList.add('home__box__container__btn');
@@ -288,6 +265,24 @@ function removeAlloption() {
     })
 }
 
+function resetFieldTypeTaxi() {
+    btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
+    sectionsTypeTaxi.classList.remove('home__box--hidden');
+    taxi.children[0].classList.remove(taxi.firstElementChild.classList[2]);
+    showTaxiChosen.classList.replace('home__box--show', 'home__box--hidden');
+    sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden');
+    sectionCharacteristics.children[1].classList.remove('home__box--hidden')
+    sectionCharacteristics.children[3].classList.remove('home__box--hidden')
+    orderTaxi.classList.remove('home__box--hidden');
+    removeAlloption();
+    containerPaymentMethods.classList.add('home__box--hidden')
+    containerPaymentMethods.classList.remove('home__box__content--open')
+    containerCheckboxsPaymentMethods.forEach( (checkbox) => {
+        checkbox.firstElementChild.checked = false
+        checkbox.style.display = 'grid'
+    })
+}
+
 if (allTypeTaxis) {
     allTypeTaxis.forEach( (typeTaxi) => {
         typeTaxi.addEventListener('click', () => {
@@ -303,15 +298,7 @@ if (allTypeTaxis) {
         })
     })
     btnCloseTaxiChosen.addEventListener('click', () => {
-        btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
-        sectionsTypeTaxi.classList.remove('home__box--hidden');
-        taxi.children[0].classList.remove(taxi.firstElementChild.classList[2]);
-        showTaxiChosen.classList.replace('home__box--show', 'home__box--hidden');
-        sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden');
-        sectionCharacteristics.children[1].classList.remove('home__box--hidden')
-        sectionCharacteristics.children[3].classList.remove('home__box--hidden')
-        orderTaxi.classList.remove('home__box--hidden');
-        removeAlloption();
+        resetFieldTypeTaxi()
     })
 }
 
@@ -363,21 +350,12 @@ checkboxsCharacteristics.forEach( (checkbox) => {
 });
 
 agreeCharacteristics.addEventListener('click', () => {
-    // sectionCharacteristics.classList.replace('home__box--show', 'home__box--hidden')
     orderTaxi.classList.remove('home__box--hidden');
     btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
     sectionCharacteristics.children[1].classList.add('home__box--hidden')
     sectionCharacteristics.children[3].classList.add('home__box--hidden')
     containerPaymentMethods.classList.remove('home__box--hidden')
     containerPaymentMethods.classList.add('home__box__content--open')
-    /* containerCheckboxsCharacteristics.forEach( (checkbox) => {
-        !checkbox.firstElementChild.checked ? checkbox.style.display = 'none' : checkbox.children[1].style.display = 'none';
-        agreeCharacteristics.style.display = 'none';
-        checkbox.style.cursor = 'text'
-        if (checkbox.firstElementChild.checked) {
-            choosenCharacteristics.push(checkbox)
-        }
-    }); */
 });
 
 /* Choosen payment methods */
@@ -423,7 +401,6 @@ passwordVoucher.addEventListener('input', () => {
 enterVoucher.addEventListener('click', () => {
     containerCheckboxsPaymentMethods[0].childNodes[6].textContent = `Vale Digital / ${numberVoucher.value}`
     containerDataVoucher.classList.toggle('home__box--hidden')
-    // orderTaxi.disabled = false
 })
 
 /* detail of the request */
@@ -518,6 +495,3 @@ btnBack.addEventListener('click', () => {
     mainMenu.classList.toggle('home__box--hidden')
     containerOrderTaxis.classList.toggle('home__box--hidden')
 })
-
-
-
