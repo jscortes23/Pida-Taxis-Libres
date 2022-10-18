@@ -13,31 +13,57 @@
 <body class="bckg-map">
     <main class="container__home">
         <button class="btn-n btn-n-menu" aria-label="abrir menu lateral"></button>
-        <ul class="home__menu__side">
+        <div class="home__menu__side">
             <button class="btn-n btn-n-menu__close">X</button>
-            <h3 class="home__menu__side__title">Ana Luna</h3>
-            <li class="home__menu__side__item">
-                <span class="icon icon-user"></span> <a class="side__item__text" href="#">Perfil</a>
-            </li>
-            <li class="home__menu__side__item">
-                <span class="icon icon-reloj"></span> <a class="side__item__text" href="#">Viajes</a>
-            </li>
-            <li class="home__menu__side__item">
-                <span class="icon icon-life-jacket"></span> <a class="side__item__text" href="#">Centro de ayuda</a>
-            </li>
-            <li class="home__menu__side__item">
-                <span class="icon icon-reservation"></span> <a class="side__item__text" href="#">Reserva viajes</a>
-            </li>
-            <li class="home__menu__side__item">
-                <span class="icon icon-phone"></span> <a class="side__item__text" href="#">Habla con nosotros</a>
+            <ul class="home__menu__side__list">
+                <h3 class="home__menu__side__title">Ana Luna</h3>
+                <li class="home__menu__side__item">
+                    <button class="btn-n btn-n-menu__side side__item__text">
+                        <span class="icon icon-user"></span>Perfil
+                    </button>
                 </li>
-            <li class="home__menu__side__item">
-                <span class="icon icon-book"></span> <a class="side__item__text" href="#">Centro de conocimiento</a>
-            </li>
-            <li class="home__menu__side__item">
-                <span class="icon icon-exclamation-mark"></span> <a class="side__item__text" href="#">Novedades</a>
-            </li>
-        </ul>
+                <li class="home__menu__side__item">
+                    <button class="btn-n btn-n-menu__side side__item__text">
+                        <span class="icon icon-reloj"></span>Viajes
+                    </button>
+                </li>
+                <li class="home__menu__side__item">
+                    <span class="icon icon-life-jacket"></span> <a class="side__item__text" href="#">Centro de ayuda</a>
+                </li>
+                <li class="home__menu__side__item">
+                    <span class="icon icon-reservation"></span> <a class="side__item__text" href="#">Reserva viajes</a>
+                </li>
+                <li class="home__menu__side__item">
+                    <span class="icon icon-phone"></span> <a class="side__item__text" href="#">Habla con nosotros</a>
+                    </li>
+                <li class="home__menu__side__item">
+                    <span class="icon icon-book"></span> <a class="side__item__text" href="#">Centro de conocimiento</a>
+                </li>
+                <li class="home__menu__side__item">
+                    <span class="icon icon-exclamation-mark"></span> <a class="side__item__text" href="#">Novedades</a>
+                </li>
+            </ul>
+            <section class="container-profile home__box--hidden">
+                <button class="btn-n"><span class="icon icon-left-arrow"></span></button>
+                <h3 class="fs-20 fw-700">Perfil</h3>
+                <div class="container-profile-section">
+                    <span class="icon icon-user-dark"></span>
+                    <p class="fw-700">Nombre</p>
+                    <p>Nombre Apellido</p>
+                </div>
+                <div class="container-profile-section">
+                    <span class="icon icon-email-dark"></span>
+                    <p class="fw-700">Correo</p>
+                    <p>correo@gmail.com</p>
+                </div>
+                <div class="container-profile-section">
+                    <span class="icon icon-phone-dark"></span>
+                    <p class="fw-700">Celular</p>
+                    <p>+57 313 1234567</p>
+                </div>
+                <button class="btn-n btn-n-primary btn-n-menu-side">Cerrar sesión</button>
+            </section>
+        </div>
         <div class="container__zoom">
             <button class="btn-n btn-zoom btn-location" aria-label="ubicarte"></button>
             <button class="btn-n btn-zoom zoom-in" aria-label="acercar mapa"></button>

@@ -50,11 +50,11 @@ if (btnShowPassword && btnHiddenPassword) {
 /* Close and open menu*/
 const btnMenuOpen = $('.btn-n-menu');
 const btnMenuClose = $('.btn-n-menu__close');
-const homeMenu = $('.home__menu__side');
+const homeMenuSide = $('.home__menu__side');
 
 if (btnMenuOpen && btnMenuClose) {
-    btnMenuOpen.addEventListener('click', () => {homeMenu.style.transform = 'translateX(0)'});
-    btnMenuClose.addEventListener('click', () => {homeMenu.style.transform = 'translateX(2000%)'});
+    btnMenuOpen.addEventListener('click', () => {homeMenuSide.style.transform = 'translateX(0)'});
+    btnMenuClose.addEventListener('click', () => {homeMenuSide.style.transform = 'translateX(110vw)'});
 }
 
 /* Open and close options of the menu */
@@ -418,7 +418,7 @@ const mainMenu = $('.content__home')
 const detailCharacteristics = $('.detail-section:nth-child(7)')
 const waitTime = $('.container-waiting-driver p:not(.fs-17).fw-600')
 let time = 8
-waitTime.textContent = `00:${time}`
+waitTime.textContent = `00:${('0'+time).slice(-2)}`
 
 orderTaxi.addEventListener('click', () => {
     mainMenu.classList.add('home__box--hidden')
@@ -461,7 +461,7 @@ orderTaxi.addEventListener('click', () => {
     /* counterdown */
     time = 8
     const timmer = setInterval(() => {
-        waitTime.textContent = `00:${time}`
+        waitTime.textContent = `00:${('0'+time).slice(-2)}`
         time--
         if (time < 0) {
             clearInterval(timmer)
@@ -479,6 +479,10 @@ const btnOrderAnotherTaxi = $('.container__driver-assigned .btn-n-lg')
 btnOrderAnotherTaxi.addEventListener('click', () => {
     mainMenu.classList.remove('home__box--hidden')
     conatinerDriverAssigned.classList.add('home__box--hidden')
+    btnDropdownOrigin.classList.remove('home__box--hidden');
+    sectionsOrigin[0].classList.replace('home__box--show', 'home__box--hidden')
+    menuDropdown[0].classList.add('home__box__container__btn');
+    menuDropdown[0].classList.remove('home__box__container__btn');
 })
 
 /* show confirmed taxis */
@@ -494,4 +498,27 @@ btnShowConfirmedTaxis.addEventListener('click', () => {
 btnBack.addEventListener('click', () => {
     mainMenu.classList.toggle('home__box--hidden')
     containerOrderTaxis.classList.toggle('home__box--hidden')
+})
+
+
+/************************************
+ Functions menu side
+ ************************************/
+
+const btnsMenuSide = document.querySelectorAll('.btn-n-menu__side')
+const listMenuSide = $('.home__menu__side__list')
+const profileMenuSide = $('.container-profile')
+const backMenuSide = $('.container-profile > .btn-n:first-child')
+
+/* Profile */
+btnsMenuSide[0].addEventListener('click', () => {
+    btnMenuClose.textContent = '';
+    listMenuSide.classList.add('home__box--hidden')
+    profileMenuSide.classList.replace('home__box--hidden', 'home__box--show')
+})
+
+backMenuSide.addEventListener('click', () => {
+    profileMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+    listMenuSide.classList.remove('home__box--hidden')
+    btnMenuClose.textContent = 'X';
 })

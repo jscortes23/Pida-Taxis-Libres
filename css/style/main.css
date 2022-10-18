@@ -24,6 +24,7 @@ html {
     --link: #2A79FF;
     --gris: #EFEFFC;
     --gris-claro: #D0D0D0;
+    --fondo-gris: #EFEFFC;
     --alerta: #F55D5D;
     --azul: #1B1F3B;
     --gris-texto: rgba(0, 0, 0, 0.3);
@@ -361,7 +362,6 @@ img, picture {
     z-index: 2;
     font-weight: 500;
     font-size: var(--md);
-    list-style: none;
     background-color: var(--blanco);
     background-image: url(/assets/imgs/logo-taxis-libres.png);
     background-repeat: no-repeat;
@@ -390,6 +390,12 @@ img, picture {
     font-weight: 500;
     text-decoration: none;
     color: black;
+}
+
+.btn-n-menu__side {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
 }
 
 /* Section zoom */
@@ -728,6 +734,18 @@ img, picture {
 
 .icon-car-small {
     background-image: url('/assets/icons/carro-pequeno.svg');
+}
+
+.icon-user-dark {
+    background-image: url('/assets/icons/perfil-negro.svg');
+}
+
+.icon-email-dark {
+    background-image: url('/assets/icons/mensaje-negro.svg');
+}
+
+.icon-phone-dark {
+    background-image: url('/assets/icons/telefono-negro.svg');
 }
 
 .home__box__container__btn:nth-last-child(4) {
@@ -1541,4 +1559,50 @@ img, picture {
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+/* section perfil - menu side */
+section > .btn-n:first-child {
+    margin-bottom: 52px;
+}
+
+section > .fs-20 {
+    margin-bottom: 26px;
+}
+
+.container-profile-section {
+    display: grid;
+    grid-template-areas: 
+        "logo title"
+        "logo txt";
+    align-items: center;
+    grid-template-columns: min-content;
+    column-gap: 14px;
+    background-color: var(--fondo-gris);
+    font-size: var(--md);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+}
+
+.container-profile-section > span {
+    grid-area: logo;
+}
+
+.container-profile-section > p {
+    grid-area: title;
+}
+
+.container-profile-section > p:last-child {
+    grid-area: txt;
+}
+
+.btn-n-menu-side {
+    padding: 14px 0;
+}
+
+.icon-menu-side {
+    width: 20px;
+    height: 20px;
 }

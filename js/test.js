@@ -5,7 +5,7 @@ const btnsDropdown = document.querySelectorAll(".home__box__container__btn");
 const optionsMenu = document.querySelectorAll(".home__box__content");
 const menu = document.querySelector(".home__box-functions");
 
-function hideAllMenus(btnPressed) {
+/* function hideAllMenus(btnPressed) {
   const allMenu = document.querySelectorAll(
     ".home__box__container__btn[data-section] + .home__box__content"
   );
@@ -18,7 +18,7 @@ function hideAllMenus(btnPressed) {
       menu.classList.add("home__box--hidden");
     }
   });
-}
+} */
 
 function stateBtns(btnMenu, btnPressed) {
   btnMenu.forEach((btn) => {
@@ -43,7 +43,14 @@ function stateBtns(btnMenu, btnPressed) {
 }
 
 btnsDropdown.forEach((btn) => {
-  btn.addEventListener("mouseup", () => {
+  btn.addEventListener("click", () => {
+    const btnCheck = $('.home__box__container__btn   .home__input-radio:checked')
+    // const btnNoCheck = document.querySelectorAll('.home__input-radio:not(:checked)')
+    if(btnCheck){
+
+      console.log(btnCheck);
+    }
+
     let btnPressed = btn.dataset.section;
     // hideAllMenus();
     stateBtns(btnsDropdown, btnPressed);
