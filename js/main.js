@@ -508,7 +508,9 @@ btnBack.addEventListener('click', () => {
 const btnsMenuSide = document.querySelectorAll('.btn-n-menu__side')
 const listMenuSide = $('.home__menu__side__list')
 const profileMenuSide = $('.container-profile')
-const backMenuSide = $('.container-profile > .btn-n:first-child')
+const tripsMenuSide = $('.container-done-trips')
+const exitProfileMenu = $('.container-profile > .btn-n:first-child')
+const exitTripsMenu = $('.container-done-trips > .btn-n')
 
 
 function hiddenMenuSide() {
@@ -527,7 +529,7 @@ btnsMenuSide[0].addEventListener('click', () => {
     profileMenuSide.classList.replace('home__box--hidden', 'home__box--show')
 })
 
-backMenuSide.addEventListener('click', () => {
+exitProfileMenu.addEventListener('click', () => {
     showMenuSide()
     profileMenuSide.classList.replace('home__box--show', 'home__box--hidden')
 })
@@ -535,5 +537,10 @@ backMenuSide.addEventListener('click', () => {
 /* Trips */
 btnsMenuSide[1].addEventListener('click', () => {
     hiddenMenuSide()
-    
+    tripsMenuSide.classList.replace('home__box--hidden', 'home__box--show')
+})
+
+exitTripsMenu.addEventListener('click', () => {
+    showMenuSide()
+    tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
 })

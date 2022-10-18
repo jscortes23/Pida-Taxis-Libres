@@ -204,6 +204,7 @@ img, picture {
 
 .login__input[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .login__input[type="number"]::-webkit-inner-spin-button,
@@ -212,6 +213,7 @@ img, picture {
 .home__description[type="number"]::-webkit-outer-spin-button
 {
     -webkit-appearance: none;
+    appearance: none;
     margin: 0;
 }
 
