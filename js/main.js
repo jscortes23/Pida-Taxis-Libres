@@ -510,15 +510,30 @@ const listMenuSide = $('.home__menu__side__list')
 const profileMenuSide = $('.container-profile')
 const backMenuSide = $('.container-profile > .btn-n:first-child')
 
-/* Profile */
-btnsMenuSide[0].addEventListener('click', () => {
+
+function hiddenMenuSide() {
     btnMenuClose.textContent = '';
     listMenuSide.classList.add('home__box--hidden')
+}
+
+function showMenuSide() {
+    btnMenuClose.textContent = 'X';
+    listMenuSide.classList.remove('home__box--hidden')
+}
+
+/* Profile */
+btnsMenuSide[0].addEventListener('click', () => {
+    hiddenMenuSide()
     profileMenuSide.classList.replace('home__box--hidden', 'home__box--show')
 })
 
 backMenuSide.addEventListener('click', () => {
+    showMenuSide()
     profileMenuSide.classList.replace('home__box--show', 'home__box--hidden')
-    listMenuSide.classList.remove('home__box--hidden')
-    btnMenuClose.textContent = 'X';
+})
+
+/* Trips */
+btnsMenuSide[1].addEventListener('click', () => {
+    hiddenMenuSide()
+    
 })

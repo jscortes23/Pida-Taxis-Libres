@@ -855,16 +855,19 @@ img, picture {
     scrollbar-color: var(--azul) var(--blanco);
 }
 
-.home__box__content-scroll::-webkit-scrollbar {
+.home__box__content-scroll::-webkit-scrollbar,
+.container-done-trips--scroll::-webkit-scrollbar {
     width: 4px;
 }
 
-.home__box__content-scroll::-webkit-scrollbar-thumb {
+.home__box__content-scroll::-webkit-scrollbar-thumb,
+.container-done-trips--scroll::-webkit-scrollbar-thumb {
     background-color: var(--azul);
     border-radius: 4px;
 }
 
-.home__box__content-scroll::-webkit-scrollbar-thumb:hover {
+.home__box__content-scroll::-webkit-scrollbar-thumb:hover,
+.container-done-trips--scroll::-webkit-scrollbar-thumb:hover {
     background-color: #474762;
 }
 
@@ -1605,4 +1608,137 @@ section > .fs-20 {
 .icon-menu-side {
     width: 20px;
     height: 20px;
+}
+
+/* section trips - menu side */
+.content-done-trip {
+    max-width: 230px;
+    margin: 0 auto;
+    font-size: var(--sm);
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0px 0px 4px 0px #00000040;
+    border-radius: 6px;
+    scroll-snap-align: center;
+}
+
+.done-trip__date {
+    color: #5D5D5D;
+}
+
+.done-trip--complete {
+    font-weight: 800;
+    color: var(--verde);
+}
+
+.done-trip--canceled {
+    font-weight: 800;
+    color: var(--alerta);
+}
+
+.done-trip__origin {
+    position: relative;
+    display: flex;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.done-trip__origin::before {
+    margin-left: 2px;
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: var(--verde);
+    border-radius: 50%;
+}
+
+.done-trip__origin::after {
+    position: absolute;
+    top: 90%;
+    left: 4px;
+    content: '';
+    width: 0px;
+    height: 18px;
+    border-left: 2px dashed var(--verde);
+}
+
+.done-trip__destiny {
+    margin-bottom: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.done-trip__destiny::after {
+    position: absolute;
+    right: 0;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-image: url('/assets/icons/flecha.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.overflow-ellipsis {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.done-trip__destiny::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: var(--verde);
+    border-radius: 50%;
+}
+
+.done-trip__container-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+}
+
+.done-trip__price {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+}
+
+.done-trip__price::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-image: url('/assets/icons/signo-peso.svg');
+    background-repeat: no-repeat;
+}
+
+.done-trip--approximate {
+    margin-left: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5D5D5D;
+}
+
+/* Scroll */
+
+.container-done-trips--scroll {
+    width: 240px;
+    height: 60vh;
+    padding-top: 12px;
+    overflow-x: over;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul) var(--blanco);
 }
