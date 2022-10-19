@@ -544,3 +544,20 @@ exitTripsMenu.addEventListener('click', () => {
     showMenuSide()
     tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
 })
+
+/* resume trip */
+const doneTrip = document.querySelectorAll('.content-done-trip')
+const resumeTripMenuSide = $('.container-resume-trip')
+const exitResumtripMenu = $('.container-resume-trip .btn-n')
+
+doneTrip.forEach( (trip) => {
+    trip.addEventListener('click', () => {
+        tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+        resumeTripMenuSide.classList.replace('home__box--hidden', 'home__box--show')
+    })
+})
+
+exitResumtripMenu.addEventListener('click', () => {
+    tripsMenuSide.classList.replace('home__box--hidden','home__box--show')
+    resumeTripMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+})

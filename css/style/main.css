@@ -749,6 +749,9 @@ img, picture {
 .icon-phone-dark {
     background-image: url('/assets/icons/telefono-negro.svg');
 }
+.icon-warning-dark {
+    background-image: url('/assets/icons/advertencia.svg');
+}
 
 .home__box__container__btn:nth-last-child(4) {
     border: none;
@@ -1622,6 +1625,7 @@ section > .fs-20 {
     box-shadow: 0px 0px 4px 0px #00000040;
     border-radius: 6px;
     scroll-snap-align: center;
+    cursor: pointer;
 }
 
 .done-trip__date {
@@ -1690,7 +1694,7 @@ section > .fs-20 {
 }
 
 .overflow-ellipsis {
-    width: 100%;
+    width: 84%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -1743,4 +1747,106 @@ section > .fs-20 {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--azul) var(--blanco);
+}
+
+/* Section resume trip - menu side  */
+
+.resume-trip__title {
+    margin-bottom: 8px;
+    font-size: var(--md);
+    font-weight: 700;
+}
+
+.resume-trip__container-info {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1.3px solid #E5E5E5;
+}
+
+.resume-trip__origin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    column-gap: 10px;
+    font-weight: 600;
+    font-size: var(--md);
+}
+
+.resume-trip__origin::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 2.4px solid var(--verde);
+    border-radius: 50%;
+}
+
+.resume-trip__origin::after {
+    position: absolute;
+    top: 90%;
+    left: 5px;
+    content: '';
+    width: 0px;
+    height: 36px;
+    border-right: 2px dashed var(--verde);
+}
+
+.resume-trip__destiny {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    column-gap: 10px;
+    font-weight: 600;
+    font-size: var(--md);
+}
+
+.resume-trip__destiny::before {
+    content: '';
+    width: 11.4px;
+    height: 11.4px;
+    background-color: var(--verde);
+    border-radius: 50%;
+}
+
+.resume-trip__id {
+    margin-bottom: 16px;
+}
+
+.resume-trip__origin-time {
+    margin-bottom: 8px;
+    margin-left: 22px;
+}
+
+.resume-trip__destiny-time {
+    margin-left: 22px;
+}
+
+.p-sm-13 {
+    font-size: var(--sm);
+    font-weight: 500;
+}
+
+.resume-trip__content {
+    display: grid;
+    row-gap: 4px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.resume-trip__content > p:nth-child(even) {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.scroll-size {
+    height: 50vh;
+}
+
+.btn-n-comment {
+    display: flex;
+    margin-top: 20px;
+    padding: 8px 15px;
+    align-items: center;
+    justify-content: space-evenly;
+    column-gap: 15px;
+    width: 103%;
 }
