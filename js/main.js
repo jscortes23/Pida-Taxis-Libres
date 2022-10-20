@@ -460,7 +460,7 @@ orderTaxi.addEventListener('click', () => {
 
     /* counterdown */
     time = 8
-    const timmer = setInterval(() => {
+    var timmer = setInterval(() => {
         waitTime.textContent = `00:${('0'+time).slice(-2)}`
         time--
         if (time < 0) {
@@ -511,16 +511,19 @@ const profileMenuSide = $('.container-profile')
 const tripsMenuSide = $('.container-done-trips')
 const exitProfileMenu = $('.container-profile > .btn-n:first-child')
 const exitTripsMenu = $('.container-done-trips > .btn-n')
+const nameProfile = $('.home__menu__side__title')
 
 
 function hiddenMenuSide() {
     btnMenuClose.textContent = '';
     listMenuSide.classList.add('home__box--hidden')
+    nameProfile.classList.add('home__box--hidden')
 }
 
 function showMenuSide() {
     btnMenuClose.textContent = 'X';
     listMenuSide.classList.remove('home__box--hidden')
+    nameProfile.classList.remove('home__box--hidden')
 }
 
 /* Profile */
@@ -560,4 +563,23 @@ doneTrip.forEach( (trip) => {
 exitResumtripMenu.addEventListener('click', () => {
     tripsMenuSide.classList.replace('home__box--hidden','home__box--show')
     resumeTripMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+})
+
+/* cancel trip */
+const containerCancelTrip = $('.container-cancel-trip')
+const btnCancelTrip = $('.container-request .btn-n-cancel')
+const cancelTrip = $('.container-cancel-trip > .btn-n')
+const optionsCancelTrip = document.querySelectorAll('.container__btn-checkbox-cancel-trip')
+
+btnCancelTrip.addEventListener('click', () => {
+    conatinerDriverAssigned.classList.add('home__box--hidden')
+    containerCancelTrip.classList.replace('home__box--hidden', 'home__box--show')
+    containerDetailRequest.style.display = 'none'
+    time = 1000
+})
+
+optionsCancelTrip.forEach( (option) => {
+    option.addEventListener('click', () => {
+        cancelTrip.disabled = false
+    })
 })

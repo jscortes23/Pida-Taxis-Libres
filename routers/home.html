@@ -15,8 +15,8 @@
         <button class="btn-n btn-n-menu" aria-label="abrir menu lateral"></button>
         <div class="home__menu__side">
             <button class="btn-n btn-n-menu__close">X</button>
+            <h3 class="home__menu__side__title">Ana Luna</h3>
             <ul class="home__menu__side__list">
-                <h3 class="home__menu__side__title">Ana Luna</h3>
                 <li class="home__menu__side__item">
                     <button class="btn-n btn-n-menu__side side__item__text">
                         <span class="icon icon-user"></span>Perfil
@@ -580,6 +580,80 @@
                     </li>
                 </ul>
                 <button class="btn-n btn-n-primary-small">Pedir otro taxi</button>
+        </section>
+        <section class="content__home container-cancel-trip home__box--hidden">
+            <h3 class="cancel-trip__title">¿Vas a cancelar el viaje?</h3>
+            <h4 class="fs-18 fw-600 cancel-trip__subtitle">¿Qué pasó?</h4>
+            <p class="cancel-trip__text">Selecciona una opción</p>
+            <div class="home__box__content-scroll container-cancel-trips--scroll">
+                <label for="demora" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-chronometer"></span>
+                    <p class="">El vehículo se demoró</p>
+                    <input type="radio" name="cancelar" id="demora" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="otroTaxi" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-change-place"></span>
+                    <p class="">Tomé otro taxi</p>
+                    <input type="radio" name="cancelar" id="otroTaxi" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="placaDiferente" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-warning"></span>
+                    <p class="">La placa no corresponde</p>
+                    <input type="radio" name="cancelar" id="placaDiferente" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="noNecesito" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-deny"></span>
+                    <p class="">Ya no necesito el taxi</p>
+                    <input type="radio" name="cancelar" id="noNecesito" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="noPremium" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-double-star"></span>
+                    <p class="">El taxi no es premium</p>
+                    <input type="radio" name="cancelar" id="noPremium" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="inapropiada" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-miscommunication"></span>
+                    <p class="">Comunicación inapropiada del conductor</p>
+                    <input type="radio" name="cancelar" id="inapropiada" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="noCoincidia" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-person-no-match"></span>
+                    <p class="">El conductor no coincidía con el de la foto</p>
+                    <input type="radio" name="cancelar" id="noCoincidia" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="noRespondio" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-message-question"></span>
+                    <p class="">El conductor no respondió la llamada o SMS</p>
+                    <input type="radio" name="cancelar" id="noRespondio" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="pidoCancelar" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-person-talk"></span>
+                    <p class="">El conductor me pidió cancelar el viaje</p>
+                    <input type="radio" name="cancelar" id="pidoCancelar" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="noAcepta" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-sign-peso"></span>
+                    <p class="">El conductor no acepta el método de pago</p>
+                    <input type="radio" name="cancelar" id="noAcepta" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+                <label for="desactualizado" class="container__btn-checkbox container__btn-checkbox-cancel-trip">
+                    <span class="icon icon-md icon-smartphone"></span>
+                    <p class="">El celular del conductor está desactualizado</p>
+                    <input type="radio" name="cancelar" id="desactualizado" class="checkbox">
+                    <span class="btn-checkbox"></span>
+                </label>
+            </div>
+            <button class="btn-n btn-n-primary" disabled>Cancelar viaje</button>
         </section>
     </main>
 </body>
