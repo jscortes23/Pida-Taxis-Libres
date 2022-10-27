@@ -1969,3 +1969,109 @@ section > .fs-20 {
     margin: 0 auto;
     width: 90%;
 }
+
+/* section incentives */
+
+.container-incentives {
+    width: min-content;
+    padding: 24px 30px;
+    background-color: var(--blanco);
+    box-shadow: var(--sombra-boton-pequeno);
+    border-radius: 20px;
+}
+
+.incentives__title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.incentives__text {
+    font-size: var(--sm);
+    font-weight: 500;
+    margin-bottom: 20px;  
+}
+
+.container-incentives-donation {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 24px 40px;
+}
+
+.container-incentives-donation {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1.3px solid #E5E5E5;
+}
+
+.incentives-donation__title {
+    margin-bottom: 20px;
+}
+
+.container-incentives-donation > .incentive-amount {
+    width: 78px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #787878;
+    border: 1px solid #787878;
+    border-radius: 9px;
+}
+
+input[name="amountAmount"]:checked + .incentive-amount {
+    background-color: var(--verde);
+    border: none;
+    color: black;
+}
+
+.incentives-personalize-trip {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    font-size: 1.3rem;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.3px solid #E5E5E5;
+}
+
+.incentives__info-pay {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;
+    border-bottom: 1.3px solid #E5E5E5;
+}
+
+.incentives__info-pay > p:nth-child(even) {
+    justify-self: end;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.incentives__buttones {
+    display: flex;
+    column-gap: 10px;
+}
+
+.incentives__buttones .btn-n-dark {
+    width: 100px;
+    height: 42px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+}
+
+.incentives__buttones .btn-n-primary {
+    width: 205px;
+    height: 42px;
+    padding: 0;
+    white-space: nowrap;
+    font-size: 1.4rem;
+    border-radius: 5px;
+}
