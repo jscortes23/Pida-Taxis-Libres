@@ -60,84 +60,66 @@ if (btnMenuOpen && btnMenuClose) {
 /*****************************************************/
 /*          Functions menu side                      */
 /*****************************************************/
-/*  const btnsMenuSide = document.querySelectorAll('.btn-n-menu__side')
- const listMenuSide = $('.home__menu__side__list')
- const profileMenuSide = $('.container-profile')
- const tripsMenuSide = $('.container-done-trips')
- const exitProfileMenu = $('.container-profile > .btn-n:first-child')
- const exitTripsMenu = $('.container-done-trips > .btn-n')
- const nameProfile = $('.home__menu__side__title')
+const btnsMenuSide = document.querySelectorAll('.btn-n-menu__side')
+const listMenuSide = $('.home__menu__side__list')
+const profileMenuSide = $('.container-profile')
+const tripsMenuSide = $('.container-done-trips')
+const exitProfileMenu = $('.container-profile > .btn-n:first-child')
+const exitTripsMenu = $('.container-done-trips > .btn-n')
+const nameProfile = $('.home__menu__side__title')
+
+
+function hiddenMenuSide() {
+  btnMenuClose.textContent = '';
+  listMenuSide.classList.add('home__box--hidden')
+  nameProfile.classList.add('home__box--hidden')
+}
+
+function showMenuSide() {
+  btnMenuClose.textContent = 'X';
+  listMenuSide.classList.remove('home__box--hidden')
+  nameProfile.classList.remove('home__box--hidden')
+}
  
+// Profile
+btnsMenuSide[0].addEventListener('click', () => {
+  hiddenMenuSide()
+  profileMenuSide.classList.replace('home__box--hidden', 'home__box--show')
+})
+
+exitProfileMenu.addEventListener('click', () => {
+  showMenuSide()
+  profileMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+})
  
- function hiddenMenuSide() {
-     btnMenuClose.textContent = '';
-     listMenuSide.classList.add('home__box--hidden')
-     nameProfile.classList.add('home__box--hidden')
- }
+// Trips
+btnsMenuSide[1].addEventListener('click', () => {
+  hiddenMenuSide()
+  tripsMenuSide.classList.replace('home__box--hidden', 'home__box--show')
+})
+
+exitTripsMenu.addEventListener('click', () => {
+  showMenuSide()
+  tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+})
  
- function showMenuSide() {
-     btnMenuClose.textContent = 'X';
-     listMenuSide.classList.remove('home__box--hidden')
-     nameProfile.classList.remove('home__box--hidden')
- } */
- 
- /* Profile */
-/*  btnsMenuSide[0].addEventListener('click', () => {
-     hiddenMenuSide()
-     profileMenuSide.classList.replace('home__box--hidden', 'home__box--show')
- })
- 
- exitProfileMenu.addEventListener('click', () => {
-     showMenuSide()
-     profileMenuSide.classList.replace('home__box--show', 'home__box--hidden')
- }) */
- 
- /* Trips */
-/*  btnsMenuSide[1].addEventListener('click', () => {
-     hiddenMenuSide()
-     tripsMenuSide.classList.replace('home__box--hidden', 'home__box--show')
- })
- 
- exitTripsMenu.addEventListener('click', () => {
-     showMenuSide()
-     tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
- }) */
- 
- /* resume trip */
-/*  const doneTrip = document.querySelectorAll('.content-done-trip')
- const resumeTripMenuSide = $('.container-resume-trip')
- const exitResumtripMenu = $('.container-resume-trip .btn-n')
- 
- doneTrip.forEach( (trip) => {
-     trip.addEventListener('click', () => {
-         tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
-         resumeTripMenuSide.classList.replace('home__box--hidden', 'home__box--show')
-     })
- })
- 
- exitResumtripMenu.addEventListener('click', () => {
-     tripsMenuSide.classList.replace('home__box--hidden','home__box--show')
-     resumeTripMenuSide.classList.replace('home__box--show', 'home__box--hidden')
- }) */
- 
- /* cancel trip */
-/*  const containerCancelTrip = $('.container-cancel-trip')
- const btnCancelTrip = $('.container-request .btn-n-cancel')
- const cancelTrip = $('.container-cancel-trip > .btn-n')
- const optionsCancelTrip = document.querySelectorAll('.container__btn-checkbox-cancel-trip')
- 
- btnCancelTrip.addEventListener('click', () => {
-     conatinerDriverAssigned.classList.add('home__box--hidden')
-     containerCancelTrip.classList.replace('home__box--hidden', 'home__box--show')
-     containerDetailRequest.style.display = 'none'
-    //  time = 1000
- })
- 
- optionsCancelTrip.forEach( (option) => {
-     option.addEventListener('click', () => {
-         cancelTrip.disabled = false
-     })
- }) */
+// resume trip
+const doneTrip = document.querySelectorAll('.content-done-trip')
+const resumeTripMenuSide = $('.container-resume-trip')
+const exitResumtripMenu = $('.container-resume-trip .btn-n')
+
+doneTrip.forEach( (trip) => {
+  trip.addEventListener('click', () => {
+    tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+    resumeTripMenuSide.classList.replace('home__box--hidden', 'home__box--show')
+  })
+})
+
+exitResumtripMenu.addEventListener('click', () => {
+  tripsMenuSide.classList.replace('home__box--hidden','home__box--show')
+  resumeTripMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+})
+
 
 /*****************************************************/
 /*          Origin and destiny                       */
@@ -417,7 +399,6 @@ const agreePaymentMethods = $('.container__payment__methods .home__box__content 
 const containerDigitalVoucher = $('.container__payment__methods .container-digital-voucher')
 const btnEnterVoucher = $('.container__payment__methods .container-digital-voucher .btn-n-primary-small')
 const containerCheckboxPaymentMethods = $('.container__payment__methods .list');
-const conatinerDriverAssigned = $('.container__driver-assigned')
 let chosenPaymentMethod
 
 function hiddenCheckbox() {
@@ -432,6 +413,7 @@ function hiddenCheckbox() {
     }
     if (containerCheckboxsPaymentMethods[0].firstElementChild.checked) {
       containerDigitalVoucher.classList.remove('home__box--hidden')
+      btnOrderTaxi.classList.add('home__box--hidden')
     } else {
       containerDigitalVoucher.classList.add('home__box--hidden')
     }
@@ -489,10 +471,13 @@ menuHome.addEventListener('click', () => {
 /*****************************************************/
 const mainMenu = $('.content__home')
 const containerDetailRequest = $('.container-request')
-btnOrderTaxi.disabled = false
-let whoOrderTaxi
-
+const conatinerDriverAssigned = $('.container__driver-assigned')
 const ForWhoOrderTaxi = document.querySelectorAll('.home__btn-for-who')
+
+let whoOrderTaxi
+let countdown
+let time = 10
+let startTime = $('.container-waiting-driver p:not(.fs-17).fw-600').textContent = `00:${('0'+time).slice(-2)}`
 
 ForWhoOrderTaxi.forEach( (who) => {
   who.addEventListener('click', () => {
@@ -500,12 +485,22 @@ ForWhoOrderTaxi.forEach( (who) => {
   })
 })
 
-btnOrderTaxi.addEventListener('click', () => {
-  containerDetailRequest.classList.remove('home__box--hidden')
-  mainMenu.classList.add('home__box--hidden')
-  routeTrip.classList.add('home__box--hidden')
-  pointOrigin.classList.add('home__box--hidden')
+function countdownTimer(time) {
+  countdown = setInterval(() => {waitTime(time--)}, 1000);
+}
 
+function waitTime(time) {
+  const waitTime = $('.container-waiting-driver p:not(.fs-17).fw-600')
+  waitTime.textContent = `00:${('0'+time).slice(-2)}`
+  if (time <= 0) {
+    clearInterval(countdown)
+    conatinerDriverAssigned.classList.remove('home__box--hidden')
+    containerDetailRequest.classList.add('home__box--hidden')
+    pointOrigin.classList.remove('home__box--hidden')
+  }
+}
+
+function showDetailOrder() {
   const details = document.querySelectorAll('.detail-section > p:not(.fw-600)')
   const detailsIcon = document.querySelectorAll('.detail-section > span')
   const detailCharacteristics = $('.detail-section:nth-child(7)')
@@ -513,6 +508,7 @@ btnOrderTaxi.addEventListener('click', () => {
   let iconTypeTaxi = typeTaxiChosen.children[0].classList[2]
   let methodPayment = chosenPaymentMethod.childNodes[6].textContent
   let iconMethodPayment = chosenPaymentMethod.children[2].classList[2]
+  let price = typeTaxiChosen.children[2].textContent
 
   // taxi
   details[0].textContent = whoOrderTaxi ?? 'Para mi'
@@ -537,7 +533,49 @@ btnOrderTaxi.addEventListener('click', () => {
 
   // Characteristics of the taxi
   chosenCharacteristics.forEach( (characteristics) => {
-    const IconCharacteristics = `<p class="fs-18">${characteristics}</p>`
+    const IconCharacteristics = `<p>${characteristics}</p>`
     detailCharacteristics.insertAdjacentHTML('beforeend', IconCharacteristics)
+  })
+
+  // Price
+  details[6].textContent = price
+}
+
+btnOrderTaxi.addEventListener('click', () => {
+  containerDetailRequest.classList.remove('home__box--hidden')
+  mainMenu.classList.add('home__box--hidden')
+  routeTrip.classList.add('home__box--hidden')
+  pointOrigin.classList.add('home__box--hidden')
+
+  showDetailOrder()
+
+  // countdown
+  countdownTimer(time)
+})
+
+/*****************************************************/
+/*          Cancel trip                              */
+/*****************************************************/
+const containerCancelTrip = $('.container-cancel-trip')
+const btnCancelTrip = $('.container-request .btn-n-cancel')
+const cancelTrip = $('.container-cancel-trip > .btn-n')
+const optionsCancelTrip = document.querySelectorAll('.container__btn-checkbox-cancel-trip')
+const btnCloseInfoDriver = $('.container__driver-assigned .driver-assigned__contact .btn-n')
+
+btnCancelTrip.addEventListener('click', () => {
+  conatinerDriverAssigned.classList.add('home__box--hidden')
+  containerDetailRequest.classList.add('home__box--hidden')
+  containerCancelTrip.classList.replace('home__box--hidden', 'home__box--show')
+  clearInterval(countdown)
+})
+
+btnCloseInfoDriver.addEventListener('click', () => {
+  conatinerDriverAssigned.classList.add('home__box--hidden')
+  mainMenu.classList.remove('home__box--hidden')
+})
+
+optionsCancelTrip.forEach( (option) => {
+  option.addEventListener('click', () => {
+    cancelTrip.disabled = false
   })
 })
