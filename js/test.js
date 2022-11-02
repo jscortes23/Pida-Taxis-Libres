@@ -476,7 +476,7 @@ const ForWhoOrderTaxi = document.querySelectorAll('.home__btn-for-who')
 
 let whoOrderTaxi
 let countdown
-let time = 10
+let time = 5
 let startTime = $('.container-waiting-driver p:not(.fs-17).fw-600').textContent = `00:${('0'+time).slice(-2)}`
 
 ForWhoOrderTaxi.forEach( (who) => {
@@ -569,9 +569,46 @@ btnCancelTrip.addEventListener('click', () => {
   clearInterval(countdown)
 })
 
+
+
+function resetAllOptionMenuHome() {
+  const allOptionChosen = document.querySelectorAll('.home__box__container__chosen')
+  const opntionsMenuHome = document.querySelectorAll('input[name="seccion"]')
+  const checkboxsMethodsPayment = document.querySelectorAll('.container__payment__methods .checkbox')
+  const opntionMethodPayment = $('input[name="formaPago"] + label')
+  const btnsMenuHome = document.querySelectorAll('input[name="seccion"] + label')
+  const checkMethodPayment = $('input#formaPago')
+
+  checkMethodPayment.disabled = true
+  checkMethodPayment.checked = false
+  containerTaxiChosen.classList.add('home__box--hidden')
+  sectionCharacteristics.classList.add('home__box--hidden')
+  opntionMethodPayment.classList.remove('home__box--hidden')
+  
+  allOptionChosen.forEach( (option) => {
+    option.classList.add('home__box--hidden')
+  })
+
+  opntionsMenuHome.forEach( (option) => {
+    option.checked = false
+  })
+
+  checkboxsMethodsPayment.forEach( (option) => {
+    option.checked = false
+  })
+
+  btnsMenuHome.forEach( (btn) => {
+    btn.style.display = ''
+  })
+}
+
 btnCloseInfoDriver.addEventListener('click', () => {
   conatinerDriverAssigned.classList.add('home__box--hidden')
   mainMenu.classList.remove('home__box--hidden')
+  resetAllOptionMenuHome()
+  removeAllPreferences()
+  // returnChoose(menuOrigin, addressOrigin);
+  // returnMenuHome('origen')
 })
 
 optionsCancelTrip.forEach( (option) => {
