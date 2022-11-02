@@ -7,8 +7,8 @@
     <title>Crear cuenta | Pida un taxi</title>
     <link rel="stylesheet" href="/css/style/main.css">
     <meta name="description" content="Pida taxi">
-    <script defer src="/js/main.js"></script>
-    <!-- <script defer src="/js/test.js"></script> -->
+    <!-- <script defer src="/js/main.js"></script> -->
+    <script defer src="/js/test.js"></script>
 </head>
 <body class="bckg-map">
     <main class="container__home">
@@ -165,44 +165,40 @@
         </div>
         <div class="content__home">
             <input type="radio" name="eleccion" class="home__input-radio" id="para-otros">
-            <label class="home__btn" for="para-mi">Para mi</label>
+            <label class="home__btn-for-who" for="para-mi">Para mi</label>
             <input type="radio" name="eleccion" class="home__input-radio" id="para-mi" checked>
-            <label class="home__btn" for="para-otros">Para otr@s</label>
+            <label class="home__btn-for-who" for="para-otros">Para otr@s</label>
             <div class="home__box-functions" id="formPidaTaxi"> <!-- poner etique from -->
-                <label class="home__box__container__btn" for="nombre" data-section="nombre" data-eleccion="otros">
+                <!-- <label class="home__box__container__btn" for="nombre" data-section="nombre" data-eleccion="otros">
                     <input class="home__input-radio" id="nombre" type="radio" name="seccion">
-                    <button class="btn-n home__box__btn">
-                        <span class="icon icon-user"></span>
-                        <input class="home__description" type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Nombre">
-                        <p class="txt-input"></p>
-                        <span class="icon icon-close home__box--hidden"></span>
-                    </button>
-                </label>
-                <label class="home__box__container__btn" for="celular" data-section="celular" data-eleccion="otros">
+                </label> -->
+                <button class="home__box__container__btn btn-n home__box__btn" data-eleccion="otros">
+                    <span class="icon icon-user"></span>
+                    <input class="home__description" type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Nombre">
+                    <p class="txt-input"></p>
+                    <span class="icon icon-close home__box--hidden"></span>
+                </button>
+                <!-- <label class="home__box__container__btn" for="celular" data-section="celular" data-eleccion="otros">
                     <input class="home__input-radio" id="celular" type="radio" name="seccion">
-                    <button class="btn-n home__box__btn">
-                        <span class="icon icon-phone"></span>
-                        <input class="home__description" type="number" name="celularUsuario" id="celularUsuario" placeholder="Celular">
-                        <p class="txt-input"></p>
-                        <span class="icon icon-close home__box--hidden"></span>
-                    </button>
+                </label> -->
+                <button class="home__box__container__btn btn-n home__box__btn" data-section="celular" data-eleccion="otros">
+                    <span class="icon icon-phone"></span>
+                    <input class="home__description" type="number" name="celularUsuario" id="celularUsuario" placeholder="Celular">
+                    <p class="txt-input"></p>
+                    <span class="icon icon-close home__box--hidden"></span>
+                </button>
+                <input class="home__box__input-radio" id="origen" type="radio" name="seccion">
+                <label class="home__box__container__btn btn-n home__box__btn" for="origen">
+                    <span class="icon icon-origin"></span>
+                    Origen
+                    <span class="icon icon-right-arrow justify-end"></span>
                 </label>
-                <label class="home__box__container__btn" for="origen" data-section="origen">
-                    <input class="home__input-radio" id="origen" type="radio" name="seccion">
-                    <button class="btn-n home__box__btn">
-                        <span class="icon icon-origin"></span>
-                        Origen
-                        <span class="icon icon-right-arrow justify-end"></span>
-                    </button>
-                </label>
-                <div class="home__box__content home__box--hidden" data-section="origen">
+                <div class="home__box__content" data-section="origen">
                     <div class="home__box--show">
                         <h5 class="home__title__md">Aquí me recoje</h5>
                         <div class="home__container__row">
                             <span class="icon icon-origin"></span>
                             <input class="home__description" type="text" name="origin" id="origin" placeholder="¿Dónde estas?">
-                            <p class="home__description home__box--hidden"></p>
-                            <span class="icon icon-close home__box--hidden"></span>
                         </div>
                     </div>
                         <div class="home__box--show">
@@ -232,21 +228,25 @@
                             </div>
                         </div>
                 </div>
-                <label class="home__box__container__btn" for="destino" data-section="destino">
-                    <input class="home__input-radio" id="destino" type="radio" name="seccion">
-                    <button class="btn-n home__box__btn">
-                        <span class="icon icon-destiny"></span>
-                        Destino
-                        <span class="icon icon-right-arrow justify-end"></span>
-                    </button>
+                <div class="home__box__container__chosen home__box--hidden" data-section="origen">
+                    <h5 class="home__title__md">Aquí me recoje</h5>
+                    <div class="home__container__row">
+                        <span class="icon icon-origin"></span>
+                        <p class="home__description fs-16"></p>
+                        <span class="icon icon-close"></span>
+                    </div>
+                </div>
+                <input class="home__box__input-radio" id="destino" type="radio" name="seccion">
+                <label class="home__box__container__btn btn-n home__box__btn" for="destino">
+                    <span class="icon icon-destiny"></span>
+                    Destino
+                    <span class="icon icon-right-arrow justify-end"></span>
                 </label>
-                <div class="home__box__content home__box--hidden" data-section="destino">
+                <div class="home__box__content" data-section="destino">
                     <h5 class="home__title__md">Para allá voy</h5>
                     <div class="home__container__row">
                         <span class="icon icon-destiny"></span>
                         <input class="home__description" type="text" name="destiny" id="destiny" placeholder="¿Adónde quieres ir?">
-                        <p class="home__description home__box--hidden"></p>
-                        <span class="icon icon-close home__box--hidden"></span>
                     </div>
                     <div class="home__box--show">
                         <ul class="home__box__content-scroll h-100 box__text__sm">
@@ -259,6 +259,9 @@
                             <li class="item__ubication">
                                 <div class="box__ubication ubication__suggestied">Salitre plaza otra vez</div>
                             </li>
+                            <li class="item__ubication">
+                                <div class="box__ubication ubication__suggestied">Cra 80 N2</div>
+                            </li>
                         </ul>
                         <div class="box__ubication box__text__sm" data-section="destino">
                             <span class="icon icon-pin-map-green"></span>
@@ -270,14 +273,20 @@
                         </div>
                     </div>
                 </div>
-                <label class="home__box__container__btn" for="tipoTaxi" data-section="tipoTaxi">
-                    <input class="home__input-radio" id="tipoTaxi" type="radio" name="seccion">
-                    <button class="btn-n home__box__btn">
-                        <span class="icon icon-taxi icon-bill"></span>
-                        Tipo de taxi
-                    </button>
+                <div class="home__box__container__chosen home__box--hidden" data-section="destino">
+                    <h5 class="home__title__md">Para allá voy</h5>
+                    <div class="home__container__row">
+                        <span class="icon icon-destiny"></span>
+                        <p class="home__description fs-16"></p>
+                        <span class="icon icon-close"></span>
+                    </div>
+                </div>
+                <input class="home__box__input-radio" id="tipoTaxi" type="radio" name="seccion">
+                <label class="home__box__container__btn btn-n home__box__btn" for="tipoTaxi">
+                    <span class="icon icon-taxi icon-bill"></span>
+                    Tipo de taxi
                 </label>
-                <div class="home__box__content home__box--hidden" data-section="tipoTaxi">
+                <div class="home__box__content" data-section="tipoTaxi">
                     <ul class="list">
                         <li class="item-list">
                             <button class="btn-n btn-n-type-taxi">
@@ -307,7 +316,7 @@
                     </div>
                 </div>
                 <div class="container__characteristics__taxi home__box--hidden">
-                    <p class="home__title__md">Preferencia de mi viaje</p>
+                    <p class="home__title__md">Preferencia de mi viaje <span class="icon icon-close icon-x-sm"></span></p>
                     <div class="characteristics__taxi__container-select">
                         <span class="icon icon-right-arrow icon-arrow-select--right"></span>
                         <select name="prefer" id="prefer" class="characteristics__taxi__select">
@@ -383,12 +392,10 @@
                         </li>
                     </ul> -->
                 </div>
-                <label class="home__box__container__btn" for="formaPago" data-section="formaPago">
-                    <input class="home__input-radio" id="formaPago" type="radio" name="seccion">
-                    <button class="btn-n home__box__btn" disabled>
-                        <span class="icon icon-bill"></span>
-                        Forma de pago
-                    </button>
+                <input class="home__box__input-radio" id="formaPago" type="checkbox" name="formaPago" disabled>
+                <label class="home__box__container__btn btn-n home__box__btn" for="formaPago">
+                    <span class="icon icon-bill"></span>
+                    Forma de pago
                 </label>
                 <div class="home__box__content container__payment__methods home__box--hidden">
                     <p class="home__title__md">Forma de pago</p>
@@ -418,14 +425,14 @@
                             </label>
                         </li>
                     </ul>
-                    <div class="home__box__content home__box--hidden">
+                    <div class="container-digital-voucher home__box--hidden">
                         <label class="login__label">
                             <span class="icon pos-icon-input icon-id-card"></span>
-                            <input class="login__input home__input" type="number" name="voucherNumber" id="voucherNumber" placeholder="Número del vale" required>
+                            <input class="login__input home__input" type="number" name="voucherNumber" id="voucherNumber" placeholder="Número del vale" minlength="4" required>
                         </label>
                         <label class="login__label">
                             <span class="icon pos-icon-input icon-padlock"></span>
-                            <input class="login__input home__input" type="password" name="voucherPassword" id="voucherPassword" placeholder="Codigo del vale" required>
+                            <input class="login__input home__input" type="password" name="voucherPassword" id="voucherPassword" placeholder="Codigo del vale" minlength="4" required>
                         </label>
                         <a class="login__link btn-n" href="#" target="_blank" rel="noopener noreferrer">Olvidé la contraseña</a>
                         <button class="btn-n btn-n-primary-small" disabled>Ingresar Vale Digital</button>
@@ -441,7 +448,7 @@
         </div>
         <section class="container__bottom-center home__box--hidden" data-screen="aqui-me-recoge">
             <button class="btn-n btn-n-back icon"></button>
-            <p class="btn-n btn-n-white">Kr 70 B # 80 - 20</p>
+            <p class="btn-n btn-n-white"></p>
             <button class="btn-n btn-n-dark">¡Aquí me recoge!</button>
             <div class="point-location"></div>
         </section>
@@ -459,49 +466,51 @@
             <div class="point-map route-r" data-location="Destino"></div>
         </div>
 
-        <section class="container-request content__home">
-            <ul class="details-request">
-                <li class="detail-section fs-17">
-                    <p class="fw-600">Taxi:</p>
-                    <p>Para mi</p>
-                </li>
-                <li class="detail-section fs-17">
-                    <p class="fw-600">Celular:</p>
-                    <p>3225661175</p>
-                </li>
-                <li class="detail-section fs-17">
-                    <p class="fw-600">Origen:</p>
-                    <p>Kr 70 B # 80 - 20</p>
-                </li>
-                <li class="detail-section fs-17">
-                    <p class="fw-600">Destino: </p>
-                    <p>Salitre mágico</p>
-                </li>
-                <li class="detail-section grid-detail fs-17">
-                    <p class="fw-600">Tipo de taxi:</p>
-                    <p>Normal</p>
-                    <span class="icon icon-md-detail grid-detail-icon"></span>
-                </li>
-                <li class="detail-section grid-detail fs-17">
-                    <p class="fw-600">Forma de pago:</p>
-                    <p></p>
-                    <span class="icon icon-md-detail grid-detail-icon"></span>
-                </li>
-                <li class="detail-section fs-17">
-                    <p class="fw-600">Características:</p>
-                </li>
-                <li class="detail-section fs-17">
-                    <p class="fw-600">Valor</p>
-                    <p>13.500-17.500</p>
-                </li>
-            </ul>
-            <div class="container-waiting-driver">
-                <p class="fs-17 fw-600">Buscando un taxi seguro para ti...</p>
-                <div class="progress-bar">
-                    <div class="percentege"></div>
+        <section class="container-request content__home home__box--hidden">
+            <div class="content-request">
+                <ul class="details-request">
+                    <li class="detail-section fs-17">
+                        <p class="fw-600">Taxi:</p>
+                        <p></p>
+                    </li>
+                    <li class="detail-section fs-17">
+                        <p class="fw-600">Celular:</p>
+                        <p>3225661175</p>
+                    </li>
+                    <li class="detail-section fs-17">
+                        <p class="fw-600">Origen:</p>
+                        <p></p>
+                    </li>
+                    <li class="detail-section fs-17">
+                        <p class="fw-600">Destino: </p>
+                        <p></p>
+                    </li>
+                    <li class="detail-section grid-detail fs-17">
+                        <p class="fw-600">Tipo de taxi:</p>
+                        <p>Normal</p>
+                        <span class="icon icon-md-detail grid-detail-icon"></span>
+                    </li>
+                    <li class="detail-section grid-detail fs-17">
+                        <p class="fw-600">Forma de pago:</p>
+                        <p></p>
+                        <span class="icon icon-md-detail grid-detail-icon"></span>
+                    </li>
+                    <li class="detail-section fs-17">
+                        <p class="fw-600">Características:</p>
+                    </li>
+                    <li class="detail-section fs-17">
+                        <p class="fw-600">Valor</p>
+                        <p>13.500-17.500</p>
+                    </li>
+                </ul>
+                <div class="container-waiting-driver">
+                    <p class="fs-17 fw-600">Buscando un taxi seguro para ti...</p>
+                    <div class="progress-bar">
+                        <div class="percentege"></div>
+                    </div>
+                    <p class="fw-600">00:00</p>
+                    <button class="btn-n btn-n-cancel fs-17 fw-600">Cancelar solicitud</button>
                 </div>
-                <p class="fw-600">00:00</p>
-                <button class="btn-n btn-n-cancel fs-17 fw-600">Cancelar solicitud</button>
             </div>
         </section>
 

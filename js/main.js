@@ -61,7 +61,7 @@ if (btnMenuOpen && btnMenuClose) {
 const btnsDropdown = document.querySelectorAll(".home__box__container__btn");
 const optionsMenu = document.querySelectorAll(".home__box__content");
 
-function hideAllMenus(btnPressed) {
+/* function hideAllMenus(btnPressed) {
   const allMenu = document.querySelectorAll(
     ".home__box__container__btn[data-section] + .home__box__content"
   );
@@ -96,9 +96,9 @@ function stateBtns(btnMenu, btnPressed) {
       }
     }
   });
-}
+} */
 
-const btnCloseMenu = document.querySelectorAll('.home__box__container__btn .icon.icon-close')
+/* const btnCloseMenu = document.querySelectorAll('.home__box__container__btn .icon.icon-close')
 const btnMenuNombre = $('.home__box__container__btn[data-section="nombre"]')
 const btnMenuCelular = $('.home__box__container__btn[data-section="celular"]')
 
@@ -142,7 +142,7 @@ btnsDropdown.forEach((btn) => {
     stateBtns(btnsDropdown, btnPressed);
   });
 });
-
+ */
 
 /* Show my current location */
 const contentHome = $('.content__home');
@@ -153,11 +153,25 @@ const btnHere = document.querySelectorAll('.btn-n-dark');
 const viewPickMeUpHere = $('[data-screen="aqui-me-recoge"]');
 const menuDropdown = document.querySelectorAll('.home__box__content');
 const sectionsOrigin = document.querySelectorAll('.home__box__content[data-section="origen"] > .home__box--show');
-const btnDropdownOrigin = $('.home__box__container__btn[data-section="origen"]');
+const btnDropdownOrigin = $('.home__box__container__btn[for="origen"]');
 const sectionMenuHome = document.querySelectorAll('.home__container__row');
 const showOriginLocation = $('.container__bottom-center[data-screen="aqui-me-recoge"] .btn-n-white');
 const textOriginLocation = document.querySelectorAll('[data-section="origen"] .home__container__row .home__description');
 const pointsMap = document.querySelectorAll('.point-map');
+const ubicationSuggestied = document.querySelectorAll('.ubication__suggestied');
+
+function locatePoint() {
+    const entreAddress = textOriginLocation[0].value
+    textOriginLocation[0].classList.add('home__box--hidden');
+    textOriginLocation[1].classList.remove('home__box--hidden');
+    textOriginLocation[1].textContent = entreAddress;
+    sectionMenuHome[0].children[3].classList.remove('home__box--hidden')
+    sectionsOrigin[1].classList.replace('home__box--show', 'home__box--hidden');
+    menuDropdown[0].classList.add('home__box__container__btn');
+    // btnDropdownOrigin.classList.add('home__box--hidden');
+    backHome(viewPickMeUpHere);
+}
+
 
 function backHome(view) {
     contentHome.classList.toggle('home__box--hidden');
@@ -169,7 +183,7 @@ function resetFieldOrigin() {
     sectionMenuHome[0].children[3].classList.add('home__box--hidden')
     sectionMenuHome[0].children[3].classList.add('home__box--hidden')
     textOriginLocation[0].classList.remove('home__box--hidden');
-    btnDropdownOrigin.classList.add('home__box--hidden');
+    // btnDropdownOrigin.classList.add('home__box--hidden');
     sectionsOrigin[1].classList.replace('home__box--hidden', 'home__box--show');
     menuDropdown[0].classList.remove('home__box__container__btn');
 }
@@ -179,19 +193,20 @@ if (contentHome) {
     btnFixedLocationStrat.addEventListener('click', () => {backHome(viewPickMeUpHere)});
     btnBackHome[0].addEventListener('click', () => {backHome(viewPickMeUpHere)});
 
-    btnHere[0].addEventListener('click', () => {
-        textOriginLocation[0].classList.add('home__box--hidden');
-        textOriginLocation[1].classList.toggle('home__box--hidden');
-        textOriginLocation[1].textContent = showOriginLocation.textContent;
-        sectionMenuHome[0].children[3].classList.remove('home__box--hidden')
-        sectionMenuHome[0].children[3].addEventListener('click', () => {
-            resetFieldOrigin()
+    ubicationSuggestied.forEach( (ubication) => {
+        ubication.addEventListener('click', () => {
+            locatePoint()
         })
-        sectionsOrigin[1].classList.replace('home__box--show', 'home__box--hidden');
-        menuDropdown[0].classList.add('home__box__container__btn');
-        btnDropdownOrigin.classList.add('home__box--hidden');
-        backHome(viewPickMeUpHere);
-    });    
+    })
+    
+    btnHere[0].addEventListener('click', () => {
+        locatePoint()
+        btnDropdownOrigin.classList.add('home__box--hidden')
+    });
+
+    /* sectionMenuHome[0].children[3].addEventListener('click', () => {
+        resetFieldOrigin()
+    }) */
 }
 
 /* Show my current location */
@@ -210,7 +225,7 @@ function resetFieldDestiny() {
     textDestinyLocation[1].classList.add('home__box--hidden');    
     menuDropdown[1].classList.toggle('home__box__container__btn');
     sectionsDestiny.classList.replace('home__box--hidden', 'home__box--show');
-    btnDropdownDestiny.classList.add('home__box--hidden');
+    // btnDropdownDestiny.classList.add('home__box--hidden');
     pointsMap[0].classList.add('home__box--hidden');
     pointsMap[1].classList.add('home__box--hidden');
 }
@@ -225,7 +240,7 @@ function showLocation(msg) {
     })
     sectionsDestiny.classList.replace('home__box--show', 'home__box--hidden');
     menuDropdown[1].classList.add('home__box__container__btn');
-    btnDropdownDestiny.classList.add('home__box--hidden');
+    // btnDropdownDestiny.classList.add('home__box--hidden');
 }
 
 if (contentHome) {
@@ -287,7 +302,7 @@ if (allTypeTaxis) {
     allTypeTaxis.forEach( (typeTaxi) => {
         typeTaxi.addEventListener('click', () => {
             orderTaxi.classList.add('home__box--hidden');
-            btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
+            // btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
             sectionsTypeTaxi.classList.add('home__box--hidden');
             taxi.children[0].classList.add(typeTaxi.children[0].classList[2]);
             taxi.children[1].innerText = typeTaxi.children[1].textContent;
@@ -351,7 +366,7 @@ checkboxsCharacteristics.forEach( (checkbox) => {
 
 agreeCharacteristics.addEventListener('click', () => {
     orderTaxi.classList.remove('home__box--hidden');
-    btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
+    // btnBoxHomeTypeTaxi.classList.add('home__box--hidden');
     sectionCharacteristics.children[1].classList.add('home__box--hidden')
     sectionCharacteristics.children[3].classList.add('home__box--hidden')
     containerPaymentMethods.classList.remove('home__box--hidden')
