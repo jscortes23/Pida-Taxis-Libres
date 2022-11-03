@@ -761,7 +761,26 @@ img, picture {
 }
 
 .icon-car-small {
+    width: 24px;
+    height: 28px;
     background-image: url('/assets/icons/carro-pequeno.svg');
+}
+
+.icon-car-small__time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 30px;
+    font-size: 1.4rem;
+    background-color: #1B1F3B;
+    color: var(--blanco);
+    border-radius: 8px;
+}
+
+.location-car {
+    display: flex;
+    column-gap: 22px;
 }
 
 .icon-chronometer {
@@ -1358,6 +1377,7 @@ img, picture {
 .container__driver-assigned {
     min-width: 400px;
     height: auto;
+    margin-left: 38px;
     padding: 17px 21px 21px;
     border-radius: 20px;
     background-color: var(--blanco);
@@ -1510,6 +1530,7 @@ img, picture {
 /* Section confirmed taxis */
 .container__confirmed-taxis {
     width: 376px;
+    margin-left: 38px;
     padding: 41px 34px 26px;
     background-color: var(--blanco);
     border-radius: 20px;
@@ -1945,6 +1966,7 @@ section > .fs-20 {
 .container-cancel-trip {
     width: 375px;
     height: 500px;
+    margin-left: 38px;
     background-color: var(--blanco);
     box-shadow: var(--sombra-boton-pequeno);
     border-radius: 20px;

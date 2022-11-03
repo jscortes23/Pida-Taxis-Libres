@@ -350,11 +350,14 @@ function controlListPreferences(text) {
       option.classList.add('selected-option')
       option.appendChild(document.createElement('p')).textContent = text ?? selectedOption.textContent
       option.appendChild(document.createElement('span')).classList.add('icon', 'icon-close', 'icon-sm-close')
-      chosenCharacteristics.add(selectedOption.textContent)
+      chosenCharacteristics.add(text ?? selectedOption.textContent)
       containerOption.insertAdjacentElement('beforeend', option)
       option.lastChild.addEventListener('click', () => {
         containerOption.removeChild(option)
         chosenCharacteristics.delete(selectedOption.textContent)
+        if (containerOption.children.length <= 0) {
+          removeAllPreferences()
+        }
       })
     }
   }
@@ -380,7 +383,7 @@ const containerPaymentMethods = $('.container__payment__methods');
 
 btnAgreeCharacteristics.addEventListener('click', () => {
   if (chosenCharacteristics.size === 0) {
-    controlListPreferences('ninguna')
+    controlListPreferences('No seleccionadas')
   }
   const checkMethodPayment = $('input#formaPago')
   checkMethodPayment.disabled = false
@@ -389,7 +392,6 @@ btnAgreeCharacteristics.addEventListener('click', () => {
   sectionCharacteristics.children[3].classList.add('home__box--hidden')
   containerPaymentMethods.classList.remove('home__box--hidden')
 });
-
 
 /*****************************************************/
 /*          Chosen payment methods                   */
@@ -524,12 +526,20 @@ function showDetailOrder() {
 
   // Icon type of taxi
   detailsIcon[0].classList.add(iconTypeTaxi)
+  console.log("type", detailsIcon[0].classList.length);
+  if (detailsIcon[0].classList.length >= 5) {
+    detailsIcon[0].classList.remove(detailsIcon[0].classList[3])
+  }
 
   // Method payment
   details[5].textContent = methodPayment
 
   // Icon method payment
   detailsIcon[1].classList.add(iconMethodPayment)
+  console.log(detailsIcon[1].classList.length);
+  if (detailsIcon[1].classList.length >= 5) {
+    detailsIcon[1].classList.remove(detailsIcon[1].classList[3])
+  }
 
   // Characteristics of the taxi
   chosenCharacteristics.forEach( (characteristics) => {
@@ -561,15 +571,19 @@ const btnCancelTrip = $('.container-request .btn-n-cancel')
 const cancelTrip = $('.container-cancel-trip > .btn-n')
 const optionsCancelTrip = document.querySelectorAll('.container__btn-checkbox-cancel-trip')
 const btnCloseInfoDriver = $('.container__driver-assigned .driver-assigned__contact .btn-n')
+const orderOtherTaxi = $('.container__driver-assigned .btn-n-lg')
 
 btnCancelTrip.addEventListener('click', () => {
   conatinerDriverAssigned.classList.add('home__box--hidden')
   containerDetailRequest.classList.add('home__box--hidden')
-  containerCancelTrip.classList.replace('home__box--hidden', 'home__box--show')
+  containerCancelTrip.classList.add('home__box--hidden')
   clearInterval(countdown)
 })
 
-
+function resetAllView() {
+  routeTrip.classList.add('home__box--hidden')
+  pointOrigin.classList.add('home__box--hidden')
+}
 
 function resetAllOptionMenuHome() {
   const allOptionChosen = document.querySelectorAll('.home__box__container__chosen')
@@ -602,13 +616,27 @@ function resetAllOptionMenuHome() {
   })
 }
 
+function resetAllFieldMenu() {
+  origin = '' 
+  destiny = '' 
+  typeTaxiChosen.children[0].classList.remove(typeTaxiChosen.children[0].classList[2])
+  chosenPaymentMethod = undefined
+  btnOrderTaxi.disabled = true
+}
+
 btnCloseInfoDriver.addEventListener('click', () => {
+  containerCancelTrip.classList.remove('home__box--hidden')
+  conatinerDriverAssigned.classList.add('home__box--hidden')
+  resetAllView()
+})
+
+orderOtherTaxi.addEventListener('click', () => {
+  resetAllOptionMenuHome()
+  resetAllFieldMenu()
+  removeAllPreferences()
+  resetAllView()
   conatinerDriverAssigned.classList.add('home__box--hidden')
   mainMenu.classList.remove('home__box--hidden')
-  resetAllOptionMenuHome()
-  removeAllPreferences()
-  // returnChoose(menuOrigin, addressOrigin);
-  // returnMenuHome('origen')
 })
 
 optionsCancelTrip.forEach( (option) => {
