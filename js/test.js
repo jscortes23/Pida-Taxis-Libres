@@ -54,7 +54,13 @@ const homeMenuSide = $('.home__menu__side');
 
 if (btnMenuOpen && btnMenuClose) {
   btnMenuOpen.addEventListener('click', () => {homeMenuSide.style.transform = 'translateX(0)'});
-  btnMenuClose.addEventListener('click', () => {homeMenuSide.style.transform = 'translateX(110vw)'});
+  btnMenuClose.addEventListener('click', () => {
+    homeMenuSide.style.transform = 'translateX(110vw)'
+    listMenuSide.classList.remove('home__box--hidden')
+    profileMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+    tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
+    resumeTripMenuSide.classList.replace('home__box--show', 'home__box--hidden')  
+  });
 }
 
 /*****************************************************/
@@ -107,9 +113,35 @@ exitTripsMenu.addEventListener('click', () => {
 const doneTrip = document.querySelectorAll('.content-done-trip')
 const resumeTripMenuSide = $('.container-resume-trip')
 const exitResumtripMenu = $('.container-resume-trip .btn-n')
+const resumeTripContent = $('.container-resume-trip .container-done-trips--scroll.scroll-size')
+
+function showContentResumeTrip(trip) {
+  let priceTrip = trip.children[4].children[0].textContent
+  let dateTrip = trip.children[0].textContent
+  let originTrip = trip.children[2].textContent
+  let destinyTrip = trip.children[3].textContent
+  let methodPayment = trip.children[4].children[1].textContent
+  // Date
+  resumeTripContent.children[0].children[0].textContent = dateTrip
+
+  // Origin
+  resumeTripContent.children[0].children[2].textContent = originTrip 
+
+  // Destiny
+  resumeTripContent.children[0].children[4].textContent = destinyTrip
+
+  // Price
+  resumeTripContent.children[2].children[1].children[7].textContent = priceTrip 
+  resumeTripContent.children[2].children[1].children[1].textContent = priceTrip 
+  resumeTripContent.lastElementChild.lastElementChild.textContent = priceTrip
+
+  // Method payment
+  resumeTripContent.children[4].textContent = methodPayment
+}
 
 doneTrip.forEach( (trip) => {
   trip.addEventListener('click', () => {
+    showContentResumeTrip(trip)
     tripsMenuSide.classList.replace('home__box--show', 'home__box--hidden')
     resumeTripMenuSide.classList.replace('home__box--hidden', 'home__box--show')
   })

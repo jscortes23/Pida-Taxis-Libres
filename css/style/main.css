@@ -847,6 +847,22 @@ img, picture {
     background-image: url('/assets/icons/advertencia.svg');
 }
 
+.icon-approved-status {
+    width: 14px;
+    height: 14px;
+    background-image: url('/assets/icons/pago-aprobado.svg');
+}
+
+.icon-rejected-status {
+    background-image: url('/assets/icons/');  
+}
+
+.icon-pen {
+    width: 12px;
+    height: 12px;
+    background-image: url('/assets/icons/lapiz.svg');  
+}
+
 .home__box__container__btn:nth-last-child(4) {
     border: none;
 }
@@ -1949,6 +1965,7 @@ section > .fs-20 {
 
 .scroll-size {
     height: 50vh;
+    padding-right: 8px;
 }
 
 .btn-n-comment {
