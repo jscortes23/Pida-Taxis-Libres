@@ -507,6 +507,7 @@ const mainMenu = $('.content__home')
 const containerDetailRequest = $('.container-request')
 const conatinerDriverAssigned = $('.container__driver-assigned')
 const ForWhoOrderTaxi = document.querySelectorAll('.home__btn-for-who')
+const smallCar = $('.location-car')
 
 let whoOrderTaxi
 let countdown
@@ -531,6 +532,7 @@ function waitTime(time) {
     conatinerDriverAssigned.classList.remove('home__box--hidden')
     containerDetailRequest.classList.add('home__box--hidden')
     pointOrigin.classList.remove('home__box--hidden')
+    smallCar.classList.remove('home__box--hidden')
   }
 }
 
@@ -675,4 +677,19 @@ optionsCancelTrip.forEach( (option) => {
   option.addEventListener('click', () => {
     cancelTrip.disabled = false
   })
+})
+
+/*****************************************************/
+/*          Detail of the driver assigned            */
+/*****************************************************/
+const containerDriverAssigned = $('.container__driver-assigned')
+const driverAssignedTypeCar = $('.driver-assigned__car .fs-18')
+let approximateValue = $('.driver-assigned__price')
+
+if (!containerDriverAssigned.classList.contains('home__box--hidden')) {
+  driverAssignedTypeCar = typeTaxiChosen.children[1].textContent
+}
+
+approximateValue.addEventListener('click', () => {
+  
 })

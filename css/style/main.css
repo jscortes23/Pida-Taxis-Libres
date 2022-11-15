@@ -1433,6 +1433,7 @@ img, picture {
     align-items: center;
     justify-content: space-between;
     border-bottom: 1.3px solid #E5E5E5;
+    cursor: pointer;
 }
 
 .driver-assigned__pay {
@@ -2143,4 +2144,13 @@ input[name="amountAmount"]:checked + .incentive-amount {
     white-space: nowrap;
     font-size: 1.4rem;
     border-radius: 5px;
+}
+
+/* Approximate value */
+.container-approximate-value {
+    margin-left: 38px;
+    padding: 41px 23px 32px;
+    background-color: var(--blanco);
+    border-radius: 20px;
+    box-shadow: var(--sombra-boton-pequeno);
 }
