@@ -270,8 +270,10 @@ btnHerePickUp.addEventListener('click', () => {
   resetOptionMenuHome()
   origin = showAddressChosen('aqui-me-recoge', addressOrigin)
   validateAllFieldMenu()
+  showRouteTrip(origin, destiny)
   const deleteAddressOrigin = addressOrigin.children[1].children[2]
   deleteAddressOrigin.addEventListener('click', () => {
+    origin = ''
     returnChoose(menuOrigin, addressOrigin);
     returnMenuHome('origen')
   })
@@ -287,6 +289,7 @@ btnHereLeave.addEventListener('click', () => {
 
 const deleteAddressDestiny = addressDestiny.children[1].children[2]
 deleteAddressDestiny.addEventListener('click', () => {
+  destiny = ''
   returnChoose(menuDestiny, addressDestiny);
   returnMenuHome('destino')
   routeTrip.classList.add('home__box--hidden')
@@ -406,6 +409,12 @@ preference.addEventListener('change', () => {
 btnDeleteAllPreferences.addEventListener('click', () => {
   removeAllPreferences()
 })
+
+/* const detailCharacteristics = $('.detail-section:nth-child(7)')
+chosenCharacteristics.forEach( (characteristics) => {
+    const IconCharacteristics = `<p>${characteristics}</p>`
+    detailCharacteristics.removeChild(IconCharacteristics)
+  }) */
 
 /*****************************************************/
 /*          Select method payment                    */
@@ -533,13 +542,21 @@ function waitTime(time) {
     containerDetailRequest.classList.add('home__box--hidden')
     pointOrigin.classList.remove('home__box--hidden')
     smallCar.classList.remove('home__box--hidden')
+    showDataDriverAssigned()
+
+    // Delete chosen characteristics
+    const detailChosenCharacteristics = document.querySelectorAll('.detail-section:nth-child(7) > p:not(.fw-600)')
+    let chosenCharacteristics = [...detailChosenCharacteristics]
+    chosenCharacteristics.forEach( (characteristics) => {
+      detailCharacteristics.removeChild(characteristics)
+    })
   }
 }
 
+const detailCharacteristics = $('.detail-section:nth-child(7)')
+const details = document.querySelectorAll('.detail-section > p:not(.fw-600)')
 function showDetailOrder() {
-  const details = document.querySelectorAll('.detail-section > p:not(.fw-600)')
   const detailsIcon = document.querySelectorAll('.detail-section > span')
-  const detailCharacteristics = $('.detail-section:nth-child(7)')
   let typeTaxi = typeTaxiChosen.children[1].textContent
   let iconTypeTaxi = typeTaxiChosen.children[0].classList[2]
   let methodPayment = chosenPaymentMethod.childNodes[6].textContent
@@ -560,7 +577,6 @@ function showDetailOrder() {
 
   // Icon type of taxi
   detailsIcon[0].classList.add(iconTypeTaxi)
-  console.log("type", detailsIcon[0].classList.length);
   if (detailsIcon[0].classList.length >= 5) {
     detailsIcon[0].classList.remove(detailsIcon[0].classList[3])
   }
@@ -570,7 +586,6 @@ function showDetailOrder() {
 
   // Icon method payment
   detailsIcon[1].classList.add(iconMethodPayment)
-  console.log(detailsIcon[1].classList.length);
   if (detailsIcon[1].classList.length >= 5) {
     detailsIcon[1].classList.remove(detailsIcon[1].classList[3])
   }
@@ -585,6 +600,10 @@ function showDetailOrder() {
   details[6].textContent = price
 }
 
+/*****************************************************/
+/*          Order taxi                               */
+/*****************************************************/
+let numberOrders = 0
 btnOrderTaxi.addEventListener('click', () => {
   containerDetailRequest.classList.remove('home__box--hidden')
   mainMenu.classList.add('home__box--hidden')
@@ -595,28 +614,69 @@ btnOrderTaxi.addEventListener('click', () => {
 
   // countdown
   countdownTimer(time)
+  numberOrders++
+
+  // Show taxi on the way 
+  showTaxiOnTheWay(numberOrders)
 })
+
+/*****************************************************/
+/*          Show taxi on the way                     */
+/*****************************************************/
+function showTaxiOnTheWay(numberOrders) {
+  const btnShowTaxiOrders = $('.btn-n-taxi-go')
+  if (numberOrders >= 2) {
+    btnShowTaxiOrders.style.visibility = 'visible'
+  }
+}
 
 /*****************************************************/
 /*          Cancel trip                              */
 /*****************************************************/
 const containerCancelTrip = $('.container-cancel-trip')
 const btnCancelTrip = $('.container-request .btn-n-cancel')
+const btnBackCancelTrip = $('.container-cancel-trip .btn-n.btn-n-back')
 const cancelTrip = $('.container-cancel-trip > .btn-n')
 const optionsCancelTrip = document.querySelectorAll('.container__btn-checkbox-cancel-trip')
 const btnCloseInfoDriver = $('.container__driver-assigned .driver-assigned__contact .btn-n')
+const btnBackInfoDriver = $('.container__driver-assigned .btn-n.btn-n-back')
 const orderOtherTaxi = $('.container__driver-assigned .btn-n-lg')
 
 btnCancelTrip.addEventListener('click', () => {
-  conatinerDriverAssigned.classList.add('home__box--hidden')
+  containerCancelTrip.classList.remove('home__box--hidden')
   containerDetailRequest.classList.add('home__box--hidden')
-  containerCancelTrip.classList.add('home__box--hidden')
+  btnBackCancelTrip.classList.add('home__box--hidden')
   clearInterval(countdown)
 })
 
+btnBackCancelTrip.addEventListener('click', () => {
+  containerCancelTrip.classList.add('home__box--hidden')
+  conatinerDriverAssigned.classList.remove('home__box--hidden')
+})
+
+cancelTrip.addEventListener('click', () => {
+  containerCancelTrip.classList.add('home__box--hidden')
+  resetAllOptionMenuHome()
+  resetAllFieldMenu()
+  removeAllPreferences()
+  resetAllView()
+  mainMenu.classList.remove('home__box--hidden')
+})
+
+optionsCancelTrip.forEach( (option) => {
+  option.addEventListener('click', () => {
+    cancelTrip.disabled = false
+  })
+})
+
+/*****************************************************/
+/*          Reset menu                               */
+/*****************************************************/
 function resetAllView() {
   routeTrip.classList.add('home__box--hidden')
   pointOrigin.classList.add('home__box--hidden')
+  smallCar.classList.add('home__box--hidden')
+  btnBackCancelTrip.classList.remove('home__box--hidden')
 }
 
 function resetAllOptionMenuHome() {
@@ -673,23 +733,62 @@ orderOtherTaxi.addEventListener('click', () => {
   mainMenu.classList.remove('home__box--hidden')
 })
 
-optionsCancelTrip.forEach( (option) => {
-  option.addEventListener('click', () => {
-    cancelTrip.disabled = false
-  })
+btnBackInfoDriver.addEventListener('click', () => {
+  resetAllOptionMenuHome()
+  resetAllFieldMenu()
+  removeAllPreferences()
+  resetAllView()
+  conatinerDriverAssigned.classList.add('home__box--hidden')
+  mainMenu.classList.remove('home__box--hidden')
 })
 
 /*****************************************************/
 /*          Detail of the driver assigned            */
 /*****************************************************/
-const containerDriverAssigned = $('.container__driver-assigned')
-const driverAssignedTypeCar = $('.driver-assigned__car .fs-18')
-let approximateValue = $('.driver-assigned__price')
+  
+function showDataDriverAssigned() {
+  const driverAssignedTypeCar = $('.driver-assigned__car .fs-18')
+  const driverAssignedIconTypeCar = $('.driver-assigned__car .icon')
+  const driverAssignedMethodPayment = $('.driver-assigned__pay-with .fs-18')
+  const driverAssignedapproximateValuePrice = $('.driver-assigned__price .fs-18.fw-500')
+  const driverAssignedIconMehtodPayment = $('.driver-assigned__pay-with .icon')
 
-if (!containerDriverAssigned.classList.contains('home__box--hidden')) {
-  driverAssignedTypeCar = typeTaxiChosen.children[1].textContent
+  // Type of the taxi
+  driverAssignedTypeCar.textContent = typeTaxiChosen.children[1].textContent
+  // Icon type of the taxi
+  driverAssignedIconTypeCar.classList.add(typeTaxiChosen.children[0].classList[2])
+  if (driverAssignedIconTypeCar.classList.length >= 4) {
+    driverAssignedIconTypeCar.classList.remove(driverAssignedIconTypeCar.classList[2])
+  }
+  // Price
+  driverAssignedapproximateValuePrice.textContent = typeTaxiChosen.children[2].textContent
+  // Method payment
+  driverAssignedMethodPayment.textContent = chosenPaymentMethod.childNodes[6].textContent
+  // Icon method payment
+  driverAssignedIconMehtodPayment.classList.add(chosenPaymentMethod.children[2].classList[2])
+  if (driverAssignedIconMehtodPayment.classList.length >= 3) {
+    driverAssignedIconMehtodPayment.classList.remove(driverAssignedIconMehtodPayment.classList[1])
+  }
 }
 
-approximateValue.addEventListener('click', () => {
-  
+/*****************************************************/
+/*          Approximate value                        */
+/*****************************************************/
+const driverAssignedApproximateValue = $('.driver-assigned__price')
+const containerApproximateValue = $('.container-approximate-value')
+const btnBackApproximateValue = $('.container-approximate-value .btn-n.btn-n-back')
+
+driverAssignedApproximateValue.addEventListener('click', () => {
+  conatinerDriverAssigned.classList.add('home__box--hidden')
+  containerApproximateValue.classList.remove('home__box--hidden')
+  smallCar.classList.add('home__box--hidden')
+  pointOrigin.classList.add('home__box--hidden')
 })
+
+btnBackApproximateValue.addEventListener('click', () => {
+  conatinerDriverAssigned.classList.remove('home__box--hidden')
+  containerApproximateValue.classList.add('home__box--hidden')
+  smallCar.classList.remove('home__box--hidden')
+  pointOrigin.classList.remove('home__box--hidden')
+})
+
