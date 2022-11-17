@@ -410,12 +410,6 @@ btnDeleteAllPreferences.addEventListener('click', () => {
   removeAllPreferences()
 })
 
-/* const detailCharacteristics = $('.detail-section:nth-child(7)')
-chosenCharacteristics.forEach( (characteristics) => {
-    const IconCharacteristics = `<p>${characteristics}</p>`
-    detailCharacteristics.removeChild(IconCharacteristics)
-  }) */
-
 /*****************************************************/
 /*          Select method payment                    */
 /*****************************************************/
@@ -623,12 +617,25 @@ btnOrderTaxi.addEventListener('click', () => {
 /*****************************************************/
 /*          Show taxi on the way                     */
 /*****************************************************/
+const btnShowTaxiOrders = $('.btn-n-taxi-go')
+const taxiOnTheWay = $('.container__confirmed-taxis')
+const btnBacktaxiOnTheWay = $('.container__confirmed-taxis .btn-n.btn-n-back')
+
 function showTaxiOnTheWay(numberOrders) {
-  const btnShowTaxiOrders = $('.btn-n-taxi-go')
   if (numberOrders >= 2) {
     btnShowTaxiOrders.style.visibility = 'visible'
   }
 }
+
+btnShowTaxiOrders.addEventListener('click', () => {
+  menuHome.classList.add('home__box--hidden')
+  taxiOnTheWay.classList.remove('home__box--hidden')
+})
+
+btnBacktaxiOnTheWay.addEventListener('click', () => {
+  menuHome.classList.remove('home__box--hidden')
+  taxiOnTheWay.classList.add('home__box--hidden')
+})
 
 /*****************************************************/
 /*          Cancel trip                              */
