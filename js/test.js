@@ -1,6 +1,8 @@
 const $ = (element) => document.querySelector(element);
 
-/* Close and open pop-up */
+/*****************************************************/
+/*          Close and open pop-up                    */
+/*****************************************************/
 const btnsClose = document.querySelectorAll('.pop-up .btn-n');
 const popUp = $('.pop-up');
 
@@ -10,7 +12,9 @@ btnsClose.forEach((btnClose) => {
   })
 });
 
-/* Continue with login  */
+/*****************************************************/
+/*          Continue with login                      */
+/*****************************************************/
 const btnNextLogin = $('.login__part-one > .btn-n-primary');
 const btnBackLogin = $('.login__part-two > .btn-n-secondary');
 const partOneLogin = $('.login__part-one');
@@ -28,7 +32,9 @@ if (partOneLogin && partTwoLogin) {
   });    
 }
 
-/* Show password */
+/*****************************************************/
+/*          Show password                            */
+/*****************************************************/
 const btnShowPassword = $('.icon-eye');
 const btnHiddenPassword = $('.icon-eye-block');
 const fieldPassword = $('.login__input[type="password"]');
@@ -47,7 +53,9 @@ if (btnShowPassword && btnHiddenPassword) {
   });
 }
 
-/* Close and open menu*/
+/*****************************************************/
+/*          Close and open menu                      */
+/*****************************************************/
 const btnMenuOpen = $('.btn-n-menu');
 const btnMenuClose = $('.btn-n-menu__close');
 const homeMenuSide = $('.home__menu__side');
@@ -64,6 +72,38 @@ if (btnMenuOpen && btnMenuClose) {
 }
 
 /*****************************************************/
+/*          Enter phone and name                     */
+/*****************************************************/
+const inpustHome = document.querySelectorAll('.home__box__btn .home__description')
+const textInpustHome = document.querySelectorAll('.home__box__btn .txt-input')
+
+inpustHome.forEach( (input) => {
+  input.addEventListener('input', (e) => {
+    const iconCheck = e.path[1].children[1]
+    const textInpustHome = e.path[2].children[2]
+    const deteleText = e.path[2].children[3]
+    if (input.value !== '') {
+      iconCheck.classList.remove('home__box--hidden')
+      iconCheck.addEventListener('mousedown', () => {
+        textInpustHome.textContent = input.value
+        textInpustHome.classList.remove('home__box--hidden')
+        input.classList.add('home__box--hidden')
+        iconCheck.classList.add('home__box--hidden')
+        deteleText.classList.remove('home__box--hidden')
+      })
+      deteleText.addEventListener('mousedown', () => {
+        textInpustHome.textContent = ''
+        textInpustHome.classList.add('home__box--hidden')
+        deteleText.classList.add('home__box--hidden')
+        input.classList.remove('home__box--hidden')
+      })
+    } else {
+      iconCheck.classList.add('home__box--hidden')
+    }
+  })
+})
+
+/*****************************************************/
 /*          Functions menu side                      */
 /*****************************************************/
 const btnsMenuSide = document.querySelectorAll('.btn-n-menu__side')
@@ -73,7 +113,6 @@ const tripsMenuSide = $('.container-done-trips')
 const exitProfileMenu = $('.container-profile > .btn-n:first-child')
 const exitTripsMenu = $('.container-done-trips > .btn-n')
 const nameProfile = $('.home__menu__side__title')
-
 
 function hiddenMenuSide() {
   btnMenuClose.textContent = '';
@@ -151,7 +190,6 @@ exitResumtripMenu.addEventListener('click', () => {
   tripsMenuSide.classList.replace('home__box--hidden','home__box--show')
   resumeTripMenuSide.classList.replace('home__box--show', 'home__box--hidden')
 })
-
 
 /*****************************************************/
 /*          Origin and destiny                       */

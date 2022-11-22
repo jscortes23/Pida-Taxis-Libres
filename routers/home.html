@@ -168,31 +168,31 @@
         </div>
         <div class="content__home">
             <input type="radio" name="eleccion" class="home__input-radio" id="para-otros">
-            <label class="home__btn-for-who" for="para-mi">Para mi</label>
+            <label class="home__btn-for-who" for="para-mi">Para mí</label>
             <input type="radio" name="eleccion" class="home__input-radio" id="para-mi" checked>
-            <label class="home__btn-for-who" for="para-otros">Para otra persona</label>
+            <label class="home__btn-for-who" for="para-otros">Para otro</label>
             <div class="home__box-functions" id="formPidaTaxi"> <!-- poner etique from -->
-                <!-- <label class="home__box__container__btn" for="nombre" data-section="nombre" data-eleccion="otros">
-                    <input class="home__input-radio" id="nombre" type="radio" name="seccion">
-                </label> -->
                 <button class="home__box__container__btn btn-n home__box__btn" data-eleccion="otros">
-                    <span class="icon icon-user"></span>
-                    <input class="home__description" type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Nombre">
+                    <span class="icon icon-user icon-lg"></span>
+                    <div class="container-input">
+                        <input class="home__description" type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Nombre">
+                        <span class="icon icon-check home__box--hidden"></span>
+                    </div>
                     <p class="txt-input"></p>
-                    <span class="icon icon-close home__box--hidden"></span>
+                    <span class="icon icon-close justify-end home__box--hidden"></span>
                 </button>
-                <!-- <label class="home__box__container__btn" for="celular" data-section="celular" data-eleccion="otros">
-                    <input class="home__input-radio" id="celular" type="radio" name="seccion">
-                </label> -->
                 <button class="home__box__container__btn btn-n home__box__btn" data-section="celular" data-eleccion="otros">
-                    <span class="icon icon-phone"></span>
-                    <input class="home__description" type="number" name="celularUsuario" id="celularUsuario" placeholder="Celular">
+                    <span class="icon icon-phone icon-lg"></span>
+                    <div class="container-input">
+                        <input class="home__description" type="number" name="celularUsuario" id="celularUsuario" placeholder="Celular">
+                        <span class="icon icon-check home__box--hidden"></span>
+                    </div>
                     <p class="txt-input"></p>
-                    <span class="icon icon-close home__box--hidden"></span>
+                    <span class="icon icon-close justify-end home__box--hidden"></span>
                 </button>
                 <input class="home__box__input-radio" id="origen" type="radio" name="seccion">
                 <label class="home__box__container__btn btn-n home__box__btn" for="origen">
-                    <span class="icon icon-origin"></span>
+                    <span class="icon icon-origin icon-lg"></span>
                     Origen
                     <span class="icon icon-right-arrow justify-end"></span>
                 </label>
@@ -241,7 +241,7 @@
                 </div>
                 <input class="home__box__input-radio" id="destino" type="radio" name="seccion">
                 <label class="home__box__container__btn btn-n home__box__btn" for="destino">
-                    <span class="icon icon-destiny"></span>
+                    <span class="icon icon-destiny icon-lg"></span>
                     Destino
                     <span class="icon icon-right-arrow justify-end"></span>
                 </label>
@@ -286,7 +286,7 @@
                 </div>
                 <input class="home__box__input-radio" id="tipoTaxi" type="radio" name="seccion">
                 <label class="home__box__container__btn btn-n home__box__btn" for="tipoTaxi">
-                    <span class="icon icon-taxi icon-bill"></span>
+                    <span class="icon icon-taxi icon-lg"></span>
                     Tipo de taxi
                 </label>
                 <div class="home__box__content" data-section="tipoTaxi">
@@ -397,7 +397,7 @@
                 </div>
                 <input class="home__box__input-radio" id="formaPago" type="checkbox" name="formaPago" disabled>
                 <label class="home__box__container__btn btn-n home__box__btn" for="formaPago">
-                    <span class="icon icon-bill"></span>
+                    <span class="icon icon-bill icon-lg"></span>
                     Forma de pago
                 </label>
                 <div class="home__box__content container__payment__methods home__box--hidden">

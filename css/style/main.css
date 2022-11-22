@@ -538,6 +538,10 @@ img, picture {
     height: 14px;
 }
 
+.icon-lg {
+    width: 44px;
+}
+
 .container__characteristics__taxi .home__title__md{
     display: flex;
     align-items: center;
@@ -586,22 +590,18 @@ img, picture {
 }
 
 .icon-origin {
-    width: 44px;
     background-image: url('/assets/icons/ubicacion.svg');
 }
 
 .icon-destiny {
-    width: 44px;
     background-image: url('/assets/icons/bandera.svg');
 }
 
 .icon-bill {
-    width: 44px;
     background-image: url('/assets/icons/billete.svg');
 }
 
 .icon-taxi {
-    width: 44px;
     background-image: url('/assets/icons/taxi-normal.svg');
 }
 
@@ -863,6 +863,10 @@ img, picture {
     background-image: url('/assets/icons/lapiz.svg');  
 }
 
+.icon-check {
+    background-image: url('/assets/icons/check.svg');
+}
+
 .home__box__container__btn:nth-last-child(4) {
     border: none;
 }
@@ -911,6 +915,16 @@ img, picture {
 
 .home__box__content--open {
     opacity: 1;
+}
+
+.container-input {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.container-input .home__description {
+    width: 200px;
 }
 
 .icon--rotate-90 {
@@ -994,6 +1008,8 @@ img, picture {
 }
 
 .txt-input {
+    position: absolute;
+    left: 90px;
     width: 200px;
     text-align: left;
 }
